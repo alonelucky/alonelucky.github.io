@@ -1,0 +1,19 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "小码农博客 • All posts by \"composer\" tag",
+    "description": null,
+    "home_page_url": "http://qiubo.ink",
+    "items": [
+        {
+            "id": "http://qiubo.ink/2016/11/12/windows%E4%B8%8B%E9%85%8D%E7%BD%AEcomposer/",
+            "url": "http://qiubo.ink/2016/11/12/windows%E4%B8%8B%E9%85%8D%E7%BD%AEcomposer/",
+            "title": "windows下配置composer",
+            "date_published": "2016-11-12T11:37:26.000Z",
+            "content_html": "<h2 id=\"1-配置php环境\"><a href=\"#1-配置php环境\" class=\"headerlink\" title=\"1. 配置php环境\"></a>1. 配置php环境</h2><p>我使用的是<code>phpstudy</code>其他环境除路径外，其他类似</p>\n<ol>\n<li><p>我的电脑 –&gt; 属性 –&gt; 高级系统设置 –&gt; 高级 –&gt; 环境变量</p>\n</li>\n<li><p>在系统变量中找到path变量 –&gt; 编辑其值 –&gt; 添加路径 <code>c:\\\\phpstudy\\\\php55n</code>;</p>\n<pre><code> 注：此步骤注意最后的分号（英文）不能少\n</code></pre>\n</li>\n<li><p>在系统变量中新建</p>\n<pre><code> 变量名：`PHP_HOME`\n 值：`c:\\phpstudy\\php55n`\n     此步骤不需要分号\n</code></pre>\n</li>\n<li><p>配置检测</p>\n<ol>\n<li><p>打开<code>cmd</code> dos命令行</p>\n<pre><code> win + R 打开运行  --&gt;  cmd\n</code></pre>\n</li>\n<li><p>输入 <code>php -v</code></p>\n<pre><code> 显示 php 5.5.30 ·····\n</code></pre>\n</li>\n<li><p>php环境变量配置成功</p>\n</li>\n</ol>\n</li>\n</ol>\n<h3 id=\"2-配置composer\"><a href=\"#2-配置composer\" class=\"headerlink\" title=\"2. 配置composer\"></a>2. 配置composer</h3><p>我参考的是国内镜像站<a href=\"http://phpcomposer.com/\">phpcomposer.com</a></p>\n<ol>\n<li><p>下载安装<code>composer-setup.exe</code></p>\n<pre><code> https://getcomposer.org/Composer-Setup.exe\n</code></pre>\n</li>\n<li><p>php环境变量配置完成后，安装composer会自动识别php路径，一路next到最后即可。</p>\n</li>\n<li><p>此时composer -v仍不能正常显示</p>\n</li>\n<li><p>需要cmd下运行如下语句</p>\n<figure class=\"highlight plaintext\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">php -r &quot;readfile(&#x27;https://getcomposer.org/installer&#x27;);&quot; | php</span><br></pre></td></tr></table></figure>\n<pre><code> 注意： 如果收到 readfile 错误提示，请使用 http 链接或者在 php.ini 中开启 php_openssl.dll \n</code></pre>\n</li>\n<li><p><code>composer -v</code> 显示</p>\n<pre><code> composer version 1.2.2\n</code></pre>\n</li>\n<li><p>composer环境配置完成</p>\n</li>\n</ol>\n<h3 id=\"3-以上内容也是百度参考了几篇文章结合自己实际情况配置完成的，参考链接\"><a href=\"#3-以上内容也是百度参考了几篇文章结合自己实际情况配置完成的，参考链接\" class=\"headerlink\" title=\"3. 以上内容也是百度参考了几篇文章结合自己实际情况配置完成的，参考链接\"></a>3. 以上内容也是百度参考了几篇文章结合自己实际情况配置完成的，参考链接</h3><h5 id=\"phpcomposer官网windows下composer配置\"><a href=\"#phpcomposer官网windows下composer配置\" class=\"headerlink\" title=\"phpcomposer官网windows下composer配置\"></a>phpcomposer官网windows下composer配置</h5><pre><code>http://docs.phpcomposer.com/00-intro.html#Downloading-the-Composer-Executable\n</code></pre>\n",
+            "tags": [
+                "composer",
+                "php管理"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang=zh-CN><head><meta charset=utf-8><meta name=author content="萧逸雨, xiaqiubo123@gmail.com"><link rel=alternate type=application/rss+xml title=小码农博客 href=http://qiubo.ink/rss.xml><link rel=alternate type=application/atom+xml title=小码农博客 href=http://qiubo.ink/atom.xml><link rel=alternate type=application/json title=小码农博客 href=http://qiubo.ink/feed.json><title>学习使用wrk进行压力测试 | 小码农博客</title><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=keywords content=测试,lua,wrk,><script src=//cdn.bootcss.com/jquery/3.3.1/jquery.min.js></script><script>console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n', 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');</script><link rel=icon href=/images/favicon.ico><link rel=apple-touch-icon href=/images/touch-icon.png><link href=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css rel=stylesheet><link rel=stylesheet href=/css/base.css><link rel=stylesheet href=/icon/iconfont.css><link rel=stylesheet href=/css/github-markdown.css><link rel=stylesheet href=/css/highlight.css><script src=/js/util.js></script><script src=/js/valine.min.js></script><link rel=stylesheet href=/css/custom.css><link href=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css rel=stylesheet><script src=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js async></script><meta name=generator content="Hexo 7.0.0-rc2"></head><body><div id=app><div class=header-wrap><header><div class=site-brand><div class=site-title><a href=/ >小码农博客</a></div></div><nav class=site-navigation><ul class=nav-menu><li class=nav-item data-path=/ ><a href=/ target=_self>主页</a></li><li class=nav-item data-path=/archives/ ><a href=/archives/ target=_self>归档</a></li><li class=nav-item data-path=/categories/ ><a href=/categories/ target=_self>分类</a></li><li class=nav-item data-path=/tags/ ><a href=/tags/ target=_self>标签</a></li><li class=nav-item data-path=""><a href=javascript:void(0); v-else>抓到我</a><ul class=nav-menu--dropdown><li><a href=https://github.com/alonelucky target=_blank>Github</a></li></ul></li></ul></nav><i class="iconfont icon-menu"></i></header></div><script>let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
+
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked 
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })</script><div class="container post-index"><div class=post><h1 class=article-title><span>学习使用wrk进行压力测试</span></h1><div class=article-top-meta><span>发布 : 2023-08-30</span></div><div class=article-content><div class=markdown-body><p><img src=/images/2023-08-30/01.png></p><p>根据官方示例，其实 <code>wrk</code> 最大的特点是支持动态脚本修改请求，本身不大的身体集成了 <code>luajit</code> 用于实施请求时动态修改请求&#x2F;响应。</p><h3 id=安装><a href=#安装 class=headerlink title=安装></a>安装</h3><h5 id=Windows><a href=#Windows class=headerlink title=Windows></a>Windows</h5><p>由于wrk依赖的一些特性在Windows上没有，因此<a href=https://github.com/wg/wrk/issues/187>不支持</a>在windows上编译运行，编译成功也会有一些奇怪的问题。因此建议曲线使用，在 docker 中编译, 借助docker在windows上使用。</p><h5 id=MacOS><a href=#MacOS class=headerlink title=MacOS></a>MacOS</h5><ol><li><code>brew install wrk</code></li><li>源码安装<figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br></pre></td><td class=code><pre><span class=line><span class=comment># 拉取源码</span></span><br><span class=line>git <span class=built_in>clone</span> https://github.com/wg/wrk</span><br><span class=line><span class=comment># mbp2018 大概编译10分钟</span></span><br><span class=line><span class=built_in>cd</span> wrk &amp;&amp; make</span><br><span class=line><span class=comment># 运行</span></span><br><span class=line>wrk -h</span><br></pre></td></tr></table></figure></li></ol><h5 id=Linux><a href=#Linux class=headerlink title=Linux></a>Linux</h5><p>源码安装</p><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br></pre></td><td class=code><pre><span class=line><span class=comment># 拉取源码</span></span><br><span class=line>git <span class=built_in>clone</span> https://github.com/wg/wrk</span><br><span class=line><span class=comment># 编译过程相关依赖可以参照 dockerfile 中的依赖项</span></span><br><span class=line><span class=built_in>cd</span> wrk &amp;&amp; make</span><br><span class=line><span class=comment># 运行</span></span><br><span class=line>wrk -h</span><br></pre></td></tr></table></figure><h5 id=Docker安装><a href=#Docker安装 class=headerlink title=Docker安装></a>Docker安装</h5><p>Dockerfile内容如下，较少的依赖，编译后无依赖项</p><figure class="highlight dockerfile"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br></pre></td><td class=code><pre><span class=line><span class=keyword>FROM</span> ubuntu:latest as BUILD</span><br><span class=line><span class=keyword>WORKDIR</span><span class=language-bash> root</span></span><br><span class=line><span class=keyword>ADD</span><span class=language-bash> ./ /root/wrk</span></span><br><span class=line><span class=keyword>RUN</span><span class=language-bash> <span class=built_in>cd</span> wrk &amp;&amp; apt update &amp;&amp; apt install make gcc unzip openssl libterm-readkey-perl -y </span></span><br><span class=line><span class=keyword>RUN</span><span class=language-bash> make</span></span><br><span class=line></span><br><span class=line><span class=keyword>FROM</span> ubuntu:latest</span><br><span class=line><span class=keyword>COPY</span><span class=language-bash> --from=BUILD /root/wrk/wrk /usr/local/bin</span></span><br></pre></td></tr></table></figure><h3 id=使用介绍><a href=#使用介绍 class=headerlink title=使用介绍></a>使用介绍</h3><figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br><span class=line>10</span><br><span class=line>11</span><br><span class=line>12</span><br><span class=line>13</span><br><span class=line>14</span><br><span class=line>15</span><br></pre></td><td class=code><pre><span class=line>wrk: invalid option -- h</span><br><span class=line>Usage: wrk &lt;options&gt; &lt;url&gt;                            </span><br><span class=line>  Options:                                            </span><br><span class=line>    -c, --connections &lt;N&gt;  Connections to keep open   # 总连接数(客户端数)</span><br><span class=line>    -d, --duration    &lt;T&gt;  Duration of test           # 测试运行总时间</span><br><span class=line>    -t, --threads     &lt;N&gt;  Number of threads to use   # 线程数</span><br><span class=line>                                                      </span><br><span class=line>    -s, --script      &lt;S&gt;  Load Lua script file       # 执行脚本 </span><br><span class=line>    -H, --header      &lt;H&gt;  Add header to request      # 全局请求 header</span><br><span class=line>        --latency          Print latency statistics   # 输出延迟统计信息</span><br><span class=line>        --timeout     &lt;T&gt;  Socket/request timeout     # 单次请求超时时间</span><br><span class=line>    -v, --version          Print version details      # 版本</span><br><span class=line>                                                      </span><br><span class=line>  Numeric arguments may include a SI unit (1k, 1M, 1G) # 数值参数可以包括单位(1K、1M、1G)</span><br><span class=line>  Time arguments may include a time unit (2s, 2m, 2h)  # 时间参数可以包括时间单位(2s、2m、2h)</span><br></pre></td></tr></table></figure><h3 id=示例><a href=#示例 class=headerlink title=示例></a>示例</h3><p>使用 <code>nodejs</code> 写了一个脚本, 用于测试并发</p><figure class="highlight java"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br><span class=line>10</span><br><span class=line>11</span><br><span class=line>12</span><br><span class=line>13</span><br><span class=line>14</span><br><span class=line>15</span><br><span class=line>16</span><br><span class=line>17</span><br><span class=line>18</span><br><span class=line>19</span><br><span class=line>20</span><br><span class=line>21</span><br><span class=line>22</span><br><span class=line>23</span><br><span class=line>24</span><br><span class=line>25</span><br><span class=line>26</span><br><span class=line>27</span><br><span class=line>28</span><br></pre></td><td class=code><pre><span class=line><span class=type>const</span> <span class=variable>http</span> <span class=operator>=</span> require(<span class=string>&#x27;http&#x27;</span>);</span><br><span class=line><span class=type>const</span> <span class=variable>port</span> <span class=operator>=</span> Number(process.argv[<span class=number>2</span>]) || <span class=number>0</span>;</span><br><span class=line>console.log(port);</span><br><span class=line></span><br><span class=line><span class=type>let</span> <span class=variable>count</span> <span class=operator>=</span> <span class=number>0</span>;</span><br><span class=line>http.createServer((req, res) =&gt; &#123;</span><br><span class=line>    <span class=keyword>if</span> (req.url.includes(<span class=string>&#x27;status&#x27;</span>)) <span class=keyword>return</span> res.end();</span><br><span class=line>    <span class=keyword>if</span> (req.url.includes(<span class=string>&#x27;count&#x27;</span>)) &#123; <span class=comment>// 可以事后统计实际处理的请求数量</span></span><br><span class=line>        res.write(`hello $&#123;count&#125;`);</span><br><span class=line>        <span class=keyword>return</span> res.end();</span><br><span class=line>    &#125;</span><br><span class=line>    <span class=type>let</span> <span class=variable>closed</span> <span class=operator>=</span> <span class=literal>false</span>; <span class=comment>// 记录请求被取消</span></span><br><span class=line>    req.on(<span class=string>&#x27;close&#x27;</span>, () =&gt; &#123;</span><br><span class=line>        closed = <span class=literal>true</span>;</span><br><span class=line>    &#125;)</span><br><span class=line>    setTimeout(() =&gt; &#123;</span><br><span class=line>        <span class=keyword>if</span> (closed) &#123;</span><br><span class=line>            console.log(<span class=string>&#x27;req cancel&#x27;</span>); <span class=comment>// 最终停止时可能有部分请求被强制取消，作为记录</span></span><br><span class=line>            <span class=keyword>return</span> res.end();</span><br><span class=line>        &#125;</span><br><span class=line>        res.write(`hello $&#123;port&#125;`);</span><br><span class=line>        res.statusCode = <span class=number>200</span>;</span><br><span class=line>        res.end();</span><br><span class=line>        count++; <span class=comment>// 计数</span></span><br><span class=line>    &#125;, Math.random() * <span class=number>1000</span>) <span class=comment>// 模拟响应处理延迟</span></span><br><span class=line>&#125;).listen(port, () =&gt; &#123;</span><br><span class=line>    console.log(`server is running at $&#123;port&#125;`);</span><br><span class=line>&#125;);</span><br></pre></td></tr></table></figure><p>使用 <code>pm2</code> 进程管理启动集群服务，多进程方式处理响应</p><p>动态请求脚本内容如下</p><figure class="highlight lua"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br></pre></td><td class=code><pre><span class=line>counter = <span class=number>1</span></span><br><span class=line></span><br><span class=line><span class=function><span class=keyword>function</span> <span class=title>request</span><span class=params>()</span></span></span><br><span class=line>    <span class=built_in>path</span> = <span class=string>&quot;/&quot;</span> .. counter</span><br><span class=line>    wrk.headers[<span class=string>&quot;X-Counter&quot;</span>] = counter # 为每次请求头增加叠加数字</span><br><span class=line>    counter = counter + <span class=number>1</span></span><br><span class=line>    <span class=keyword>return</span> wrk.<span class=built_in>format</span>(<span class=literal>nil</span>, <span class=built_in>path</span>)</span><br><span class=line><span class=keyword>end</span></span><br></pre></td></tr></table></figure><p>请求示例如下:</p><figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br><span class=line>10</span><br><span class=line>11</span><br><span class=line>12</span><br><span class=line>13</span><br><span class=line>14</span><br><span class=line>15</span><br><span class=line>16</span><br></pre></td><td class=code><pre><span class=line>$ wrk -c 5 -t 5 -s 1280.lua --latency http://127.0.0.1:1280/</span><br><span class=line></span><br><span class=line>Running 10s test @ http://127.0.0.1:1280/   # 默认执行10s</span><br><span class=line>  5 threads and 5 connections               # 5个线程，一共5个客户端, 平均一个线程作为一个客户端 </span><br><span class=line>  Thread Stats   Avg      Stdev     Max     +/- Stdev </span><br><span class=line>                (平均值)  (标准差)   (最大值)  (正负一个标准差所占比例)</span><br><span class=line>    Latency   531.20ms  284.56ms   1.01s    59.34%  (延迟)[主要关注]</span><br><span class=line>    Req/Sec     2.44      2.57     10.00    91.95%  (每秒处理中的请求数)</span><br><span class=line>  Latency Distribution  (延迟分布)</span><br><span class=line>     50%  576.00ms      # 50%以内的请求</span><br><span class=line>     75%  777.17ms      # 75%以内的请求</span><br><span class=line>     90%  914.97ms      # 90%以内的请求</span><br><span class=line>     99%    1.01s       # 99%以内的请求</span><br><span class=line>  91 requests in 10.02s, 13.95KB read   (10s之内共处理完成了91个请求，读取了13.95KB数据)</span><br><span class=line>Requests/sec:      9.09     (平均每秒262.22个请求)</span><br><span class=line>Transfer/sec:      1.39KB   (平均每秒读取数据554.27KB)</span><br></pre></td></tr></table></figure><h3 id=参考文章><a href=#参考文章 class=headerlink title=参考文章></a>参考文章</h3><ol><li><code>https://www.escapelife.site/posts/4b014d0b.html</code></li><li><code>https://corvo.myseu.cn/2021/03/24/2021-03-24-使用wrk压测并精细控制并发请求量/</code></li><li><code>http://www.taodudu.cc/news/show-5177501.html?action=onClick</code></li></ol></div></div><div class=copy-right><div class=markdown-body><blockquote>本文作者 : 萧逸雨<br>原文链接 : <a href="">http://qiubo.ink/2023/08/30/学习使用wrk进行压力测试/</a><br>版权声明 : 本博客所有文章除特别声明外，均采用 <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/ >CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</blockquote></div></div><div class=article-footer><div class="article-meta pull-left"><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/%E6%B5%8B%E8%AF%95/ >#测试 </a></span><span class=span--tag><a href=/tags/lua/ >#lua </a></span><span class=span--tag><a href=/tags/wrk/ >#wrk</a></span></span></div><div class="article-meta pull-right"></div></div></div><aside id=sidebar><p id=sidebar-header></p><ol id=sidebar-toc></ol></aside><script async>setTimeout(generateToc, 10);</script><nav class=post-navigation><div class=nav-pre><i class="iconfont icon-prev"></i> 上一篇: <a href=/2023/03/16/Nodejs-v19-x-%E6%94%AF%E6%8C%81%E6%89%93%E5%8C%85%E5%8F%AF%E6%89%A7%E8%A1%8C%E5%8D%95%E6%96%87%E4%BB%B6/ target=_self>Nodejs v19.x 支持打包可执行单文件</a></div><div class=nav-next>下一篇: <a href=/2023/09/05/%E4%BD%BF%E7%94%A8openresty%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E7%81%B0%E5%BA%A6%E5%88%87%E6%8D%A2/ target=_self>使用openresty实现简单的灰度切换</a> <i class="iconfont icon-next"></i></div></nav></div><footer><p class=site-info>博客已萌萌哒运行<span id=time-to-now></span><span class=my-face>(●'◡'●)ﾉ♥</span><br>Theme - <a href=https://github.com/dongyuanxin/theme-bmw>BMW</a> | Made With 💗 | Powered by <a href=https://godbmw.com/ >GodBMW</a><br><a href=https://letsencrypt.org/ target=_blank>Let&#180;s Encrypt</a> 签发SSL证书</p></footer><script>const timeToNowDOM = document.querySelector("#time-to-now");
+  const startTimestamp = new Date(2016, 8, 10).getTime();
+
+  const updateTimeStr = () => {
+    let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+      day = Math.floor(offset / 86400),
+      hour = Math.floor((offset % 86400) / 3600),
+      minute = Math.floor(((offset % 86400) % 3600) / 60),
+      second = Math.floor(((offset % 86400) % 3600) % 60);
+    timeToNowDOM.innerHTML =
+      day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+    setTimeout(updateTimeStr, 500);
+  }
+
+  setTimeout(updateTimeStr, 500);</script><script>var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?db150be7214fe869c6daac9d53405523";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();</script><div class="back-to-top hidden"><span><i class="iconfont icon-60"></i><span></span>%</span></div><script>const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
+
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
+    });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);</script></div><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script>(() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()</script><script src=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js async></script><script async>let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);</script></body></html>

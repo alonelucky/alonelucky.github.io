@@ -1,0 +1,26 @@
+/* 一级分类 */
+.container.category-index .category-list>.category-list-item:host() {
+    background: #dedede;
+}
+
+.container.category-index .category-list>.category-list-item:not(.category-list-child) {
+    background: #fff;
+}
+
+/* 二级分类 */
+/* .container.category-index .category-list > .category-list-item > .category-list-child {
+    background: #dedede;
+} */
+
+/* 三级分类 */
+/* .container.category-index .category-list > .category-list-item > .category-list-child > .category-list-item .category-list-child  {
+    background: #fff;
+} */
+
+.container.category-index .category-list>.category-list-item {
+    display: block;
+}
+
+.container.category-index .category-list>.category-list-item>a {
+    font-weight: 600;
+}

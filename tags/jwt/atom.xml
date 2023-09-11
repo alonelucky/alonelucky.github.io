@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://qiubo.ink</id>
+    <title>小码农博客 • Posts by &#34;jwt&#34; tag</title>
+    <link href="http://qiubo.ink" />
+    <updated>2018-09-14T11:57:03.000Z</updated>
+    <category term="cmder" />
+    <category term="git学习" />
+    <category term="服务器环境配置mysql" />
+    <category term="golang" />
+    <category term="mod" />
+    <category term="module" />
+    <category term="私服" />
+    <category term="测试" />
+    <category term="string" />
+    <category term="linux" />
+    <category term="内存" />
+    <category term="nodejs" />
+    <category term="git" />
+    <category term="git版本管理" />
+    <category term="Vscode" />
+    <category term="常用插件" />
+    <category term="编辑器" />
+    <category term="npm" />
+    <category term="docker" />
+    <category term="frp" />
+    <category term="网络" />
+    <category term="gulp" />
+    <category term="前端自动化" />
+    <category term="虚拟主机" />
+    <category term="mysql" />
+    <category term="数据库" />
+    <category term="node操作数据库" />
+    <category term="josn web token" />
+    <category term="jwt" />
+    <category term="redis" />
+    <category term="并发" />
+    <category term="composer" />
+    <category term="php管理" />
+    <category term="cli" />
+    <category term="openresty" />
+    <category term="nginx" />
+    <category term="lua" />
+    <category term="响应式图片" />
+    <category term="移动端兼容" />
+    <category term="前端" />
+    <category term="wrk" />
+    <category term="web" />
+    <category term="dart" />
+    <entry>
+        <id>http://qiubo.ink/2018/09/14/nodejs%E5%AE%9E%E7%8E%B0%E5%9F%BA%E7%A1%80%E7%9A%84jwt/</id>
+        <title>nodejs实现基础的jwt</title>
+        <link rel="alternate" href="http://qiubo.ink/2018/09/14/nodejs%E5%AE%9E%E7%8E%B0%E5%9F%BA%E7%A1%80%E7%9A%84jwt/"/>
+        <content type="html">&lt;p&gt;手动实现 &lt;code&gt;JSON Web Token&lt;/code&gt; 了解 token 验证基本原理&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;p&gt;使用模块,nodejs原生模块&lt;br&gt;Crypto&lt;/p&gt;
+&lt;h3 id=&#34;1-实现机制&#34;&gt;&lt;a href=&#34;#1-实现机制&#34; class=&#34;headerlink&#34; title=&#34;1. 实现机制&#34;&gt;&lt;/a&gt;1. 实现机制&lt;/h3&gt;&lt;p&gt;JSON Web Token 由三部分组成，头部（Header）、载荷（Payload）与签名（Signature），并由 &lt;code&gt;.&lt;/code&gt; 英文点拼接。&lt;/p&gt;
+&lt;h6 id=&#34;1-Header&#34;&gt;&lt;a href=&#34;#1-Header&#34; class=&#34;headerlink&#34; title=&#34;1. Header&#34;&gt;&lt;/a&gt;1. Header&lt;/h6&gt;&lt;p&gt;生成jwt头部,声明其类型以及签名所用的算法等的JSON格式,并将其进行base64转码&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;let jwtHeader = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    typ:&amp;#x27;JWT&amp;#x27;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    alg:&amp;#x27;SHA256&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;jwtHeader = Buffer.from(JSON.stringify(jwtHeader)).toString(&amp;#x27;base64&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;// base64&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h6 id=&#34;2-Payload&#34;&gt;&lt;a href=&#34;#2-Payload&#34; class=&#34;headerlink&#34; title=&#34;2. Payload&#34;&gt;&lt;/a&gt;2. Payload&lt;/h6&gt;&lt;p&gt;生成jwt载荷部分,并将其进行base64转码&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;iss: 该JWT的签发者，是否使用是可选的；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;sub: 该JWT所面向的用户，是否使用是可选的；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;aud: 接收该JWT的一方，是否使用是可选的；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;exp(expires): 什么时候过期，这里是一个Unix时间戳，是否使用是可选的；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;iat(issued at): 在什么时候签发的(UNIX时间)，是否使用是可选的；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;nbf (Not Before)：如果当前时间在nbf里的时间之前，则Token不被接受；一般都会留一些余地，比如几分钟；，是否使用是可选的；&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;let jwtPayload = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    data:&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        userId: 123456&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    exp: &amp;#x27;2018-08-01&amp;#x27;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;jwtPayload = Buffer.from(JSON.stringify(jwtPayload)).toString(&amp;#x27;base64&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h6 id=&#34;3-Signature&#34;&gt;&lt;a href=&#34;#3-Signature&#34; class=&#34;headerlink&#34; title=&#34;3. Signature&#34;&gt;&lt;/a&gt;3. Signature&lt;/h6&gt;&lt;p&gt;将上面的两个编码后的字符串都用句号.连接在一起（头部在前）,并使用sha256及secret对其进行签名处理&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;const crypto = require(&amp;#x27;crypto&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;let jwtStr = jwtHeader + &amp;#x27;.&amp;#x27; + jwtPayload;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;let jwtSignature = crypto.createHmac(&amp;#x27;sha256&amp;#x27;,&amp;#x27;my secret&amp;#x27;).update(jwtStr).digest(&amp;#x27;base64&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h6 id=&#34;4-jwt&#34;&gt;&lt;a href=&#34;#4-jwt&#34; class=&#34;headerlink&#34; title=&#34;4. jwt&#34;&gt;&lt;/a&gt;4. jwt&lt;/h6&gt;&lt;p&gt;将三个部分连接即组成了完整的jwt&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;let jwtToken = jwtHeader + &amp;#x27;.&amp;#x27; + jwtPayload + &amp;#x27;.&amp;#x27; + jwtSignature;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;2-jwt解析&#34;&gt;&lt;a href=&#34;#2-jwt解析&#34; class=&#34;headerlink&#34; title=&#34;2. jwt解析&#34;&gt;&lt;/a&gt;2. jwt解析&lt;/h3&gt;&lt;p&gt;处理生成 &lt;code&gt;jwt&lt;/code&gt; 是需要使用的，生成如上，解析自然也就比较简单&lt;/p&gt;
+&lt;h6 id=&#34;1-校验签名&#34;&gt;&lt;a href=&#34;#1-校验签名&#34; class=&#34;headerlink&#34; title=&#34;1. 校验签名&#34;&gt;&lt;/a&gt;1. 校验签名&lt;/h6&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;// 拆分jwt&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;let jwtArr = jwtToken.split(&amp;#x27;.&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;// 根据头部和载荷验证签名是否匹配&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;let checkToken = crypto.createHmac(&amp;#x27;sha256&amp;#x27;,&amp;#x27;my secret&amp;#x27;).update(jwtArr[0]+&amp;#x27;.&amp;#x27;+jwtArr[1]).digest(&amp;#x27;base64&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;checkToken ?= jwtArr[2]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h6 id=&#34;2-解析数据&#34;&gt;&lt;a href=&#34;#2-解析数据&#34; class=&#34;headerlink&#34; title=&#34;2. 解析数据&#34;&gt;&lt;/a&gt;2. 解析数据&lt;/h6&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;//　校验签名通过，解析载荷的base64数据&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;let jwtPayload = JSON.parse(Buffer.from(jwtArr[1],&amp;#x27;base64&amp;#x27;).toString())&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+        <category term="josn web token" />
+        <category term="jwt" />
+        <updated>2018-09-14T11:57:03.000Z</updated>
+    </entry>
+</feed>

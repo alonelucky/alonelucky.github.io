@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://qiubo.ink</id>
+    <title>小码农博客 • Posts by &#34;mod&#34; tag</title>
+    <link href="http://qiubo.ink" />
+    <updated>2019-03-19T17:00:43.000Z</updated>
+    <category term="cmder" />
+    <category term="git学习" />
+    <category term="服务器环境配置mysql" />
+    <category term="golang" />
+    <category term="mod" />
+    <category term="module" />
+    <category term="私服" />
+    <category term="测试" />
+    <category term="string" />
+    <category term="linux" />
+    <category term="内存" />
+    <category term="nodejs" />
+    <category term="git" />
+    <category term="git版本管理" />
+    <category term="Vscode" />
+    <category term="常用插件" />
+    <category term="编辑器" />
+    <category term="npm" />
+    <category term="docker" />
+    <category term="frp" />
+    <category term="网络" />
+    <category term="gulp" />
+    <category term="前端自动化" />
+    <category term="虚拟主机" />
+    <category term="mysql" />
+    <category term="数据库" />
+    <category term="node操作数据库" />
+    <category term="josn web token" />
+    <category term="jwt" />
+    <category term="redis" />
+    <category term="并发" />
+    <category term="composer" />
+    <category term="php管理" />
+    <category term="cli" />
+    <category term="openresty" />
+    <category term="nginx" />
+    <category term="lua" />
+    <category term="响应式图片" />
+    <category term="移动端兼容" />
+    <category term="前端" />
+    <category term="wrk" />
+    <category term="web" />
+    <category term="dart" />
+    <entry>
+        <id>http://qiubo.ink/2019/03/19/Go%20module%E7%A7%81%E6%9C%8D/</id>
+        <title>Go module 私服</title>
+        <link rel="alternate" href="http://qiubo.ink/2019/03/19/Go%20module%E7%A7%81%E6%9C%8D/"/>
+        <content type="html">&lt;p&gt;golang 1.11.0 之后 &lt;code&gt;go&lt;/code&gt; 提供 mod 内置包管理工具&lt;/p&gt;
+&lt;p&gt;但是实际应用时，由于网络等原因造成请求部分网站托管模块时无法响应，导致无法使用，使用ss代理有时又会产生新的问题， 又或者由于依赖过多，致使go mod 网络处理时长过久等原因，于是便有了go mod 私服项目 &lt;a href=&#34;https://github.com/gomods/athens&#34;&gt;Athens&lt;/a&gt;&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h4 id=&#34;1-背景&#34;&gt;&lt;a href=&#34;#1-背景&#34; class=&#34;headerlink&#34; title=&#34;1. 背景&#34;&gt;&lt;/a&gt;1. 背景&lt;/h4&gt;&lt;p&gt;golang 1.11.0 之后 &lt;code&gt;go&lt;/code&gt; 提供 mod 内置包管理工具&lt;/p&gt;
+&lt;p&gt;但是实际应用时，由于网络等原因造成请求部分网站托管模块时无法响应，导致无法使用，使用ss代理有时又会产生新的问题， 又或者由于依赖过多，致使go mod 网络处理时长过久等原因，于是便有了go mod 私服项目 &lt;a href=&#34;https://github.com/gomods/athens&#34;&gt;Athens&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2-服务部署&#34;&gt;&lt;a href=&#34;#2-服务部署&#34; class=&#34;headerlink&#34; title=&#34;2. 服务部署&#34;&gt;&lt;/a&gt;2. 服务部署&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;拉取代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# progromeRoot&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;git &lt;span class=&#34;built_in&#34;&gt;clone&lt;/span&gt; https://github.com/gomods/athens&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;cd&lt;/span&gt; athens/cmd/proxy&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;go install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;检查安装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$GOPATH&lt;/span&gt;/bin/proxy version&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;部署 使用任何常用的进程守护工具均可，此处 pm2 实例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;默认配置文件端口为3000-3001-有冲突修改配置文件&#34;&gt;&lt;a href=&#34;#默认配置文件端口为3000-3001-有冲突修改配置文件&#34; class=&#34;headerlink&#34; title=&#34;默认配置文件端口为3000&amp;#x2F;3001 有冲突修改配置文件&#34;&gt;&lt;/a&gt;默认配置文件端口为3000&amp;#x2F;3001 有冲突修改配置文件&lt;/h6&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;pm2 start ./proxy -- -config_file=progromeRoot/config.dev.toml&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;(可选)配置nginx 代理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 简单配置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;server &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    listen 80;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    server_name your.domain.com;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    location / &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        proxy_pass http://127.0.0.1:3000;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;3-本地使用&#34;&gt;&lt;a href=&#34;#3-本地使用&#34; class=&#34;headerlink&#34; title=&#34;3. 本地使用&#34;&gt;&lt;/a&gt;3. 本地使用&lt;/h4&gt;&lt;p&gt;服务配置完成后&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;host: http://your.domain.com&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;port: 80&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;修改本地环境变量&lt;/p&gt;
+&lt;h6 id=&#34;go-mod-go-get-使用的代理&#34;&gt;&lt;a href=&#34;#go-mod-go-get-使用的代理&#34; class=&#34;headerlink&#34; title=&#34;go mod &amp;#x2F;go get 使用的代理&#34;&gt;&lt;/a&gt;go mod &amp;#x2F;go get 使用的代理&lt;/h6&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;export&lt;/span&gt; GOPROXY=http://your.domian.com&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h6 id=&#34;不需要使用代理的域名&#34;&gt;&lt;a href=&#34;#不需要使用代理的域名&#34; class=&#34;headerlink&#34; title=&#34;不需要使用代理的域名&#34;&gt;&lt;/a&gt;不需要使用代理的域名&lt;/h6&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;export&lt;/span&gt; NO_PROXY=github.com,&lt;span class=&#34;variable&#34;&gt;$NO_PROXY&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;4-小结&#34;&gt;&lt;a href=&#34;#4-小结&#34; class=&#34;headerlink&#34; title=&#34;4. 小结&#34;&gt;&lt;/a&gt;4. 小结&lt;/h4&gt;&lt;p&gt;此文是go mod 私服配置简版，该项目支持模块缓存，默认是使用内存，有兴趣的可以自行研究配置&lt;/p&gt;
+</content>
+        <category term="golang" />
+        <category term="mod" />
+        <category term="module" />
+        <category term="私服" />
+        <updated>2019-03-19T17:00:43.000Z</updated>
+    </entry>
+</feed>

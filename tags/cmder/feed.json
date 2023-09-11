@@ -1,0 +1,19 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "小码农博客 • All posts by \"cmder\" tag",
+    "description": null,
+    "home_page_url": "http://qiubo.ink",
+    "items": [
+        {
+            "id": "http://qiubo.ink/2016/12/15/Cmder%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8F%8Agit%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA%E4%B8%8D%E5%AE%8C%E6%95%B4%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/",
+            "url": "http://qiubo.ink/2016/12/15/Cmder%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8F%8Agit%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA%E4%B8%8D%E5%AE%8C%E6%95%B4%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/",
+            "title": "Cmder中文乱码及git中文显示不完整解决方法",
+            "date_published": "2016-12-15T09:25:00.000Z",
+            "content_html": "<p>Cmder是一款Windows环境下非常简洁美观易用的cmd替代者,它支持了大部分的Linux命令。 但是，默认的中文相关设置Gb2312、Chinese big 都无法解决cmder显示中文乱码的现象，在网上找了很多中文设置方法，由于版本不对，找不到对应设置项。 今天找到了一篇博文，解决了这个问题。</p>\n<ol>\n<li>打开<code>cmder</code></li>\n<li><code>win+alt+p</code>（右下角–》setting）打开设置面板</li>\n<li>在左侧栏中 Startup&#x3D;&#x3D;》Environment 添加<figure class=\"highlight shell\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">set LANG=zh_CN.UTF8</span><br></pre></td></tr></table></figure>\n </li>\n<li>一般这样就OK了大部分场合都能正确的显示中文（GBK须设置set LANG&#x3D;zh_CN.CBK） 具体更多细节和cmder详细介绍请参考原文。 <a href=\"http://blog.csdn.net/mihupengpeng/article/details/53009110?locationNum=16&fps=1\">原文链接</a></li>\n</ol>\n<p>另外，解决cmder中文显示问题后，cmder自带的git中文显示仍然有问题，本人情况如下 “345\\214\\273\\351\\227\\256\\347\\255\\224\\347\\244\\276\\345\\214\\272.md” 解决方法<a href=\"http://blog.csdn.net/yunnywu/article/details/50553908\">参考文章</a>（该文章提供了多种情景git显示乱码的解决方案） 在bash提示符下输入：</p>\n<figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">git config --global core.quotepath <span class=\"literal\">false</span></span><br></pre></td></tr></table></figure>\n<p>core.quotepath设为false的话，就不会对0x80以上的字符进行quote。中文显示正常。</p>\n",
+            "tags": [
+                "cmder",
+                "git学习"
+            ]
+        }
+    ]
+}

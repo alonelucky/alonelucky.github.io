@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang=zh-CN><head><meta charset=utf-8><meta name=author content="萧逸雨, xiaqiubo123@gmail.com"><link rel=alternate type=application/rss+xml title=小码农博客 href=http://qiubo.ink/rss.xml><link rel=alternate type=application/atom+xml title=小码农博客 href=http://qiubo.ink/atom.xml><link rel=alternate type=application/json title=小码农博客 href=http://qiubo.ink/feed.json><title>小码农博客</title><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=keywords content="Hexo, theme-bmw"><script src=//cdn.bootcss.com/jquery/3.3.1/jquery.min.js></script><script>console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n', 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');</script><link rel=icon href=/images/favicon.ico><link rel=apple-touch-icon href=/images/touch-icon.png><link href=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css rel=stylesheet><link rel=stylesheet href=/css/base.css><link rel=stylesheet href=/icon/iconfont.css><link rel=stylesheet href=/css/github-markdown.css><link rel=stylesheet href=/css/highlight.css><script src=/js/util.js></script><script src=/js/valine.min.js></script><link rel=stylesheet href=/css/custom.css><link href=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css rel=stylesheet><script src=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js async></script><meta name=generator content="Hexo 7.0.0-rc2"></head><body><div id=app><div class=header-wrap><header><div class=site-brand><div class=site-title><a href=/ >小码农博客</a></div></div><nav class=site-navigation><ul class=nav-menu><li class=nav-item data-path=/ ><a href=/ target=_self>主页</a></li><li class=nav-item data-path=/archives/ ><a href=/archives/ target=_self>归档</a></li><li class=nav-item data-path=/categories/ ><a href=/categories/ target=_self>分类</a></li><li class=nav-item data-path=/tags/ ><a href=/tags/ target=_self>标签</a></li><li class=nav-item data-path=""><a href=javascript:void(0); v-else>抓到我</a><ul class=nav-menu--dropdown><li><a href=https://github.com/alonelucky target=_blank>Github</a></li></ul></li></ul></nav><i class="iconfont icon-menu"></i></header></div><script>let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
+
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked 
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })</script><div class="container home-index"><div class=post><h1 class=article-title><a href=/2023/09/05/%E4%BD%BF%E7%94%A8openresty%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E7%81%B0%E5%BA%A6%E5%88%87%E6%8D%A2/ ><span>使用openresty实现简单的灰度切换</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2023-09-05</span></div><div class="article-top-meta mobile-view"><span>发布 : 2023-09-05 </span><span>分类 : <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记</a></span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)><p>通过了解 <code>C10K</code> 了解到了 <a href=https://openresty.org/ >openresty</a>。OpenResty® 是一个基于 Nginx 与 Lua 的高性能 Web 平台，其内部集成了大量精良的 Lua 库、第三方模块以及大多数的依赖项。用于方便地搭建能够处理超高并发、扩展性极高的动态 Web 应用、Web 服务和动态网关。</p></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><i class="iconfont icon-tag"></i>分类: <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记 </a></span><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/openresty/ >#openresty </a></span><span class=span--tag><a href=/tags/nginx/ >#nginx </a></span><span class=span--tag><a href=/tags/lua/ >#lua</a></span></span></div></div></div><div class=post><h1 class=article-title><a href=/2023/08/30/%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8wrk%E8%BF%9B%E8%A1%8C%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/ ><span>学习使用wrk进行压力测试</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2023-08-30</span></div><div class="article-top-meta mobile-view"><span>发布 : 2023-08-30</span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)><p>最近发现了一个新的 HTTP 压力测试工具 <code>wrk</code>，非常容易上手和使用。<code>wrk</code> 使用非常简单，对应的命令行参数也不多，但是足够自己简单压测一些 <code>http</code> 服务了。官方下载地址为 <code>https://github.com/wg/wrk</code>。</p></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/%E6%B5%8B%E8%AF%95/ >#测试 </a></span><span class=span--tag><a href=/tags/lua/ >#lua </a></span><span class=span--tag><a href=/tags/wrk/ >#wrk</a></span></span></span></div></div></div><div class=post><h1 class=article-title><a href=/2023/03/16/Nodejs-v19-x-%E6%94%AF%E6%8C%81%E6%89%93%E5%8C%85%E5%8F%AF%E6%89%A7%E8%A1%8C%E5%8D%95%E6%96%87%E4%BB%B6/ ><span>Nodejs v19.x 支持打包可执行单文件</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2023-03-16</span></div><div class="article-top-meta mobile-view"><span>发布 : 2023-03-16 </span><span>分类 : <a href=/categories/%E8%B5%84%E8%AE%AF/ >资讯</a></span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)><p>官方文档：<a href=https://nodejs.org/dist/latest-v19.x/docs/api/single-executable-applications.html>Single executable applications</a></p></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><i class="iconfont icon-tag"></i>分类: <a href=/categories/%E8%B5%84%E8%AE%AF/ >资讯 </a></span><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/nodejs/ >#nodejs</a></span></span></div></div></div><div class=post><h1 class=article-title><a href=/2021/11/11/%E6%AC%A1%E5%B8%B8%E7%94%A8git%E5%91%BD%E4%BB%A4/ ><span>次常用git命令</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2021-11-11</span></div><div class="article-top-meta mobile-view"><span>发布 : 2021-11-11</span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)><p>部分场景下需要获取一些git信息, 如CI&#x2F;CD自动化部署时, 获取最近hashID, 提交信息等</p></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/git/ >#git</a></span></span></span></div></div></div><div class=post><h1 class=article-title><a href=/2021/03/04/redis%E9%99%90%E6%B5%81%E6%96%B9%E6%B3%95/ ><span>redis限流方法</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2021-03-04</span></div><div class="article-top-meta mobile-view"><span>发布 : 2021-03-04</span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)><ol><li>利用之前的redis锁来处理队列请求</li><li>使用zset有序集合限定某一时间内的流量</li><li>使用令牌桶算法限流</li></ol></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/redis/ >#redis</a></span></span></span></div></div></div><div class=post><h1 class=article-title><a href=/2021/02/20/%E7%94%A8200%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0web%E6%A1%86%E6%9E%B6/ ><span>用200行代码实现web框架</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2021-02-20</span></div><div class="article-top-meta mobile-view"><span>发布 : 2021-02-20</span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)><p>简化的web框架实现, 实现类似express的函数式路由注册, 支持模糊路由匹配, 支持洋葱中间件模型</p></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/golang/ >#golang </a></span><span class=span--tag><a href=/tags/nodejs/ >#nodejs </a></span><span class=span--tag><a href=/tags/web/ >#web </a></span><span class=span--tag><a href=/tags/dart/ >#dart</a></span></span></span></div></div></div><div class=post><h1 class=article-title><a href=/2020/12/25/redis%E9%98%B2%E6%AD%A2%E8%B6%85%E5%94%AE/ ><span>redis防止超售</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2020-12-25</span></div><div class="article-top-meta mobile-view"><span>发布 : 2020-12-25 </span><span>分类 : <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记</a></span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)><p>redis在应用中越来越广泛, 其中常用的大部分操作都是非原子性的, 例如<code>set</code>&#x2F;<code>get</code>&#x2F;<code>hmset</code>…这些会在多个操作时后边的覆写前边的</p></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><i class="iconfont icon-tag"></i>分类: <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记 </a></span><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/nodejs/ >#nodejs </a></span><span class=span--tag><a href=/tags/redis/ >#redis </a></span><span class=span--tag><a href=/tags/%E5%B9%B6%E5%8F%91/ >#并发</a></span></span></div></div></div><div class=post><h1 class=article-title><a href=/2020/03/26/docker%E5%85%8D%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE/ ><span>docker免删除容器修改配置</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2020-03-26</span></div><div class="article-top-meta mobile-view"><span>发布 : 2020-03-26 </span><span>分类 : <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记</a></span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)><p>适用于小服务, 原理是暂停docker服务来修改容器配置,然后启动</p></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><i class="iconfont icon-tag"></i>分类: <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记 </a></span><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/%E6%B5%8B%E8%AF%95/ >#测试 </a></span><span class=span--tag><a href=/tags/docker/ >#docker</a></span></span></div></div></div><div class=post><h1 class=article-title><a href=/2019/06/27/Golang%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%8F%8A%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%8E%87/ ><span>Golang单元测试及测试覆盖率</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2019-06-27</span></div><div class="article-top-meta mobile-view"><span>发布 : 2019-06-27 </span><span>分类 : <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记</a></span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)><p>使用 Golang 内置库 <code>testing</code> 测试书写的代码,如有不足,请雅正.</p></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><i class="iconfont icon-tag"></i>分类: <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记 </a></span><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/golang/ >#golang </a></span><span class=span--tag><a href=/tags/%E6%B5%8B%E8%AF%95/ >#测试</a></span></span></div></div></div><div class=post><h1 class=article-title><a href=/2019/06/21/Golang%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6/ ><span>Golang获取字符串长度</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2019-06-21</span></div><div class="article-top-meta mobile-view"><span>发布 : 2019-06-21 </span><span>分类 : <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记</a></span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)><p>尝试通过实际使用逐步了解go源码及发现实用函数</p></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><i class="iconfont icon-tag"></i>分类: <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记 </a></span><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/golang/ >#golang </a></span><span class=span--tag><a href=/tags/string/ >#string</a></span></span></div></div></div><div class=post><h1 class=article-title><a href=/2019/03/19/Go%20module%E7%A7%81%E6%9C%8D/ ><span>Go module 私服</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2019-03-19</span></div><div class="article-top-meta mobile-view"><span>发布 : 2019-03-19 </span><span>分类 : <a href=/categories/%E6%95%99%E7%A8%8B/ >教程</a></span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)><p>golang 1.11.0 之后 <code>go</code> 提供 mod 内置包管理工具</p><p>但是实际应用时，由于网络等原因造成请求部分网站托管模块时无法响应，导致无法使用，使用ss代理有时又会产生新的问题， 又或者由于依赖过多，致使go mod 网络处理时长过久等原因，于是便有了go mod 私服项目 <a href=https://github.com/gomods/athens>Athens</a></p></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><i class="iconfont icon-tag"></i>分类: <a href=/categories/%E6%95%99%E7%A8%8B/ >教程 </a></span><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/golang/ >#golang </a></span><span class=span--tag><a href=/tags/mod/ >#mod </a></span><span class=span--tag><a href=/tags/module/ >#module </a></span><span class=span--tag><a href=/tags/%E7%A7%81%E6%9C%8D/ >#私服</a></span></span></div></div></div><div class=post><h1 class=article-title><a href=/2018/09/25/Linux%E6%89%8B%E5%8A%A8%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98/ ><span>Linux手动释放内存</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2018-09-25</span></div><div class="article-top-meta mobile-view"><span>发布 : 2018-09-25 </span><span>分类 : <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记</a></span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><i class="iconfont icon-tag"></i>分类: <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记 </a></span><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/linux/ >#linux </a></span><span class=span--tag><a href=/tags/%E5%86%85%E5%AD%98/ >#内存</a></span></span></div></div></div><div class=post><h1 class=article-title><a href=/2018/09/14/%E4%BD%BF%E7%94%A8nodejs%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/ ><span>使用nodejs创建自己的自动化工具</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2018-09-14</span></div><div class="article-top-meta mobile-view"><span>发布 : 2018-09-14 </span><span>分类 : <a href=/categories/%E6%95%99%E7%A8%8B/ >教程</a></span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)><p>nodejs能方便的进行前端的文件压缩结合等等,自动化操作,但是经常使用的我们,是不是也能方便的建立自己的自动化部署工具呢?比如:经常从头建立的文件夹模式,千篇一律的index.html等等</p></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><i class="iconfont icon-tag"></i>分类: <a href=/categories/%E6%95%99%E7%A8%8B/ >教程 </a></span><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/nodejs/ >#nodejs </a></span><span class=span--tag><a href=/tags/cli/ >#cli</a></span></span></div></div></div><div class=post><h1 class=article-title><a href=/2018/09/14/nodejs%E5%AE%9E%E7%8E%B0%E5%9F%BA%E7%A1%80%E7%9A%84jwt/ ><span>nodejs实现基础的jwt</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2018-09-14</span></div><div class="article-top-meta mobile-view"><span>发布 : 2018-09-14 </span><span>分类 : <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记</a></span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)><p>手动实现 <code>JSON Web Token</code> 了解 token 验证基本原理</p></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><i class="iconfont icon-tag"></i>分类: <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记 </a></span><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/josn-web-token/ >#josn web token </a></span><span class=span--tag><a href=/tags/jwt/ >#jwt</a></span></span></div></div></div><div class=post><h1 class=article-title><a href=/2018/09/14/frp%E7%BD%91%E7%BB%9C%E6%98%A0%E5%B0%84%E8%AE%B0%E5%BD%95/ ><span>frp网络映射记录</span></a></h1><div class="article-top-meta pc-view"><span>发布时间 : 2018-09-14</span></div><div class="article-top-meta mobile-view"><span>发布 : 2018-09-14 </span><span>分类 : <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记</a></span></div><div class=article-content><div class="markdown-body article-content--inner" v-html=mdToHtml(psg.summary)><p><code>frp</code>是使用 Golang 开发的一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透。简单的部署和配置即可满足端口映射功能，用于调试微信开发或是其他必须外网条件的应用…</p></div></div><div class=article-footer><div class="article-meta pull-left"><span class=pc-view><i class="iconfont icon-tag"></i>分类: <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记 </a></span><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/frp/ >#frp </a></span><span class=span--tag><a href=/tags/%E7%BD%91%E7%BB%9C/ >#网络</a></span></span></div></div></div><nav class=page-navigation><a href=/page/2/ >下一页</a></nav></div><footer><p class=site-info>博客已萌萌哒运行<span id=time-to-now></span><span class=my-face>(●'◡'●)ﾉ♥</span><br>Theme - <a href=https://github.com/dongyuanxin/theme-bmw>BMW</a> | Made With 💗 | Powered by <a href=https://godbmw.com/ >GodBMW</a><br><a href=https://letsencrypt.org/ target=_blank>Let&#180;s Encrypt</a> 签发SSL证书</p></footer><script>const timeToNowDOM = document.querySelector("#time-to-now");
+  const startTimestamp = new Date(2016, 8, 10).getTime();
+
+  const updateTimeStr = () => {
+    let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+      day = Math.floor(offset / 86400),
+      hour = Math.floor((offset % 86400) / 3600),
+      minute = Math.floor(((offset % 86400) % 3600) / 60),
+      second = Math.floor(((offset % 86400) % 3600) % 60);
+    timeToNowDOM.innerHTML =
+      day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+    setTimeout(updateTimeStr, 500);
+  }
+
+  setTimeout(updateTimeStr, 500);</script><script>var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?db150be7214fe869c6daac9d53405523";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();</script><div class="back-to-top hidden"><span><i class="iconfont icon-60"></i><span></span>%</span></div><script>const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
+
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
+    });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);</script></div><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script>(() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()</script><script src=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js async></script><script async>let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);</script></body></html>

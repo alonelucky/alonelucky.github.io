@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>小码农博客 • Posts by &#34;mysql&#34; tag</title>
+        <link>http://qiubo.ink</link>
+        <description></description>
+        <language>ZH-cn</language>
+        <pubDate>Fri, 12 May 2017 17:47:06 +0000</pubDate>
+        <lastBuildDate>Fri, 12 May 2017 17:47:06 +0000</lastBuildDate>
+        <category>cmder</category>
+        <category>git学习</category>
+        <category>服务器环境配置mysql</category>
+        <category>golang</category>
+        <category>mod</category>
+        <category>module</category>
+        <category>私服</category>
+        <category>测试</category>
+        <category>string</category>
+        <category>linux</category>
+        <category>内存</category>
+        <category>nodejs</category>
+        <category>git</category>
+        <category>git版本管理</category>
+        <category>Vscode</category>
+        <category>常用插件</category>
+        <category>编辑器</category>
+        <category>npm</category>
+        <category>docker</category>
+        <category>frp</category>
+        <category>网络</category>
+        <category>gulp</category>
+        <category>前端自动化</category>
+        <category>虚拟主机</category>
+        <category>mysql</category>
+        <category>数据库</category>
+        <category>node操作数据库</category>
+        <category>josn web token</category>
+        <category>jwt</category>
+        <category>redis</category>
+        <category>并发</category>
+        <category>composer</category>
+        <category>php管理</category>
+        <category>cli</category>
+        <category>openresty</category>
+        <category>nginx</category>
+        <category>lua</category>
+        <category>响应式图片</category>
+        <category>移动端兼容</category>
+        <category>前端</category>
+        <category>wrk</category>
+        <category>web</category>
+        <category>dart</category>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2017/05/12/node-mysql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid>
+            <title>node-mysql基础操作</title>
+            <link>http://qiubo.ink/2017/05/12/node-mysql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link>
+            <category>nodejs</category>
+            <category>mysql</category>
+            <category>node操作数据库</category>
+            <pubDate>Fri, 12 May 2017 17:47:06 +0000</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;1-安装mysql模块&#34;&gt;&lt;a href=&#34;#1-安装mysql模块&#34; class=&#34;headerlink&#34; title=&#34;1. 安装mysql模块&#34;&gt;&lt;/a&gt;1. 安装mysql模块&lt;/h4&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;npm install mysql --save&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;2-创建mysql-js&#34;&gt;&lt;a href=&#34;#2-创建mysql-js&#34; class=&#34;headerlink&#34; title=&#34;2. 创建mysql.js&#34;&gt;&lt;/a&gt;2. 创建mysql.js&lt;/h4&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var mysql = require(&amp;#x27;mysql&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var connection = mysql.createConnection(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    host:&amp;#x27;localhost&amp;#x27;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    user:&amp;#x27;root&amp;#x27;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    password:&amp;#x27;root&amp;#x27;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    database:&amp;#x27;node&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;利用mysql模块的createConnection函数,配置好相应参数即可连接mysql数据库,&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;connection.connect();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(&amp;#x27;数据库连接成功&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;建立连接&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;connection.query(sql,function(err,res)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    if(err)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        console.log(err);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        console.log(res);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;运行sql语句,返回数据信息&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;connection.end();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(&amp;#x27;数据库关闭&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;关闭数据库连接&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2017/05/12/mysql%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%8F%8A%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE/</guid>
+            <title>mysql创建用户及权限设置</title>
+            <link>http://qiubo.ink/2017/05/12/mysql%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%8F%8A%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE/</link>
+            <category>mysql</category>
+            <pubDate>Fri, 12 May 2017 17:46:19 +0000</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;1-grant&#34;&gt;&lt;a href=&#34;#1-grant&#34; class=&#34;headerlink&#34; title=&#34;1. grant&#34;&gt;&lt;/a&gt;1. grant&lt;/h4&gt;&lt;p&gt;查看用户权限:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;show grants;&lt;/code&gt; &amp;#x2F;&amp;#x2F; 查看当前用户权限&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;show grants for username@localhost;&lt;/code&gt; &amp;#x2F;&amp;#x2F; 查看已知用户权限&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h6 id=&#34;普通权限&#34;&gt;&lt;a href=&#34;#普通权限&#34; class=&#34;headerlink&#34; title=&#34;普通权限:&#34;&gt;&lt;/a&gt;普通权限:&lt;/h6&gt;&lt;p&gt;grant 权限 on 数据库对象 to 用户@访问地址 by密码&lt;/p&gt;
+&lt;p&gt;权限:&lt;br&gt;    1. select&lt;br&gt;    2. instert&lt;br&gt;    3. update&lt;br&gt;    4. delete&lt;/p&gt;
+&lt;h6 id=&#34;数据库操作权限&#34;&gt;&lt;a href=&#34;#数据库操作权限&#34; class=&#34;headerlink&#34; title=&#34;数据库操作权限&#34;&gt;&lt;/a&gt;数据库操作权限&lt;/h6&gt;&lt;p&gt;grant 创建、修改、删除 MySQL 数据表结构权限。&lt;/p&gt;
+&lt;p&gt;权限;&lt;br&gt;    1. create&lt;br&gt;    2. alter&lt;br&gt;    3. drop&lt;br&gt;    4. references&lt;br&gt;    5. index&lt;/p&gt;
+&lt;h6 id=&#34;常见数据库命令操作&#34;&gt;&lt;a href=&#34;#常见数据库命令操作&#34; class=&#34;headerlink&#34; title=&#34;常见数据库命令操作&#34;&gt;&lt;/a&gt;常见数据库命令操作&lt;/h6&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1. grant all on *.* to username@&amp;quot;%&amp;quot; by password&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2. flush privileges&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;创建远程连接的用户,可以访问操作所有数据库&lt;/p&gt;
+&lt;p&gt;去除已设定的权限:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在mysql下的user表中去除或更新表内容&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;gt; use mysql;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;gt; select user,host from user;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;gt; delete from user where user=&amp;quot;username&amp;quot; and host=&amp;quot;localhost&amp;quot;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;gt; update user set host=&amp;quot;&amp;quot; where user=&amp;quot;username&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;revoke&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;gt; revoke all on _._ from username@localhost;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2017/05/05/mysql%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/</guid>
+            <title>mysql学习(二)</title>
+            <link>http://qiubo.ink/2017/05/05/mysql%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/</link>
+            <category>mysql</category>
+            <category>数据库</category>
+            <pubDate>Fri, 05 May 2017 08:52:46 +0000</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;1-排序-order-by&#34;&gt;&lt;a href=&#34;#1-排序-order-by&#34; class=&#34;headerlink&#34; title=&#34;1. 排序 order by&#34;&gt;&lt;/a&gt;1. 排序 order by&lt;/h4&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;    mysql&amp;gt; SELCET * FROM table_name ORDER BY author ASC;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;排序:asc正序&lt;br&gt;    desc 倒序&lt;/p&gt;
+&lt;p&gt;将table_name表中的数据按照作者名称倒序排列&lt;/p&gt;
+&lt;h4 id=&#34;2-分组&#34;&gt;&lt;a href=&#34;#2-分组&#34; class=&#34;headerlink&#34; title=&#34;2. 分组&#34;&gt;&lt;/a&gt;2. 分组&lt;/h4&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;    mysql&amp;gt; select author,count(*) from yable_name group by author;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;将表中数据按照作者名字统计&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;    +--------+----------+&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    | author | count(*) |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    +--------+----------+&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    | Jick   |        1 |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    | John   |        1 |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    | To     |        1 |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    | Tomy   |        2 |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    | 小      |        2 |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    +--------+----------+&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;分组数据再归纳&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;    mysql&amp;gt; select author,count(*) from table_name group by author with rollup;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    +--------+----------+&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    | author | count(*) |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    +--------+----------+&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    | Jick   |        1 |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    | John   |        1 |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    | To     |        1 |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    | Tomy   |        2 |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    | 小      |        2 |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    | NULL   |        7 |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    +--------+----------+&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;3-连接多个表的查询结果&#34;&gt;&lt;a href=&#34;#3-连接多个表的查询结果&#34; class=&#34;headerlink&#34; title=&#34;3. 连接多个表的查询结果&#34;&gt;&lt;/a&gt;3. 连接多个表的查询结果&lt;/h4&gt;&lt;p&gt;a) 创建新数据表并设置外键&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;    mysql&amp;gt; create table table_name2(&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         &amp;gt; id int not null auto_increment,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         &amp;gt; author_id int not null,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         &amp;gt; comments text not null,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         &amp;gt; create_date date,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         &amp;gt; primary key (id),&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         &amp;gt; foreign key (author\_id) references test\_table(id),&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         &amp;gt; )engine=InnoDB default charset=utf8;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    mysql&amp;gt; select a.id,a.author,b.comments from table\_name a inner join table\_name2 b on a.id = b.author_id;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    +----+--------+----------+&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    | id | author | comments |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    +----+--------+----------+&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    |  3 | 小      | like     |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    |  4 | Tomy   | like     |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    |  4 | Tomy   | love     |&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    +----+--------+----------+&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2017/05/05/mysql%E5%AD%A6%E4%B9%A0(%E4%B8%80)/</guid>
+            <title>mysql学习(一)</title>
+            <link>http://qiubo.ink/2017/05/05/mysql%E5%AD%A6%E4%B9%A0(%E4%B8%80)/</link>
+            <category>mysql</category>
+            <category>数据库</category>
+            <pubDate>Fri, 05 May 2017 08:52:00 +0000</pubDate>
+            <description><![CDATA[ &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;创建数据库&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;     mysql&amp;gt; create database database_name;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;删除数据库&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;     mysql&amp;gt; drop database database_name;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;创建表&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;     mysql&amp;gt; create table table_name(&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;          &amp;gt; id int not null auto_increment,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;          &amp;gt; author varchar(10) not null,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;          &amp;gt; title varchar(50) not null,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;          &amp;gt; content text,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;          &amp;gt; create_date date,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;          &amp;gt; primary key ( id )&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;          &amp;gt; )engine=InnoDB default charset=utf8;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;创建id为整型,不为空,自动增加&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;作者为长度为10的字符串,不为空&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;标题为不为空的长度为100的字符串&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;内容为长文本类型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;创建时间为时间类型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;设置id为主键&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;设置mysql存储引擎为InnoDB,字符集为utf-8&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;删除表&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;     mysql&amp;gt; drop table table_name;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;删除table_name的表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;增加数据&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;     mysql&amp;gt; insert into table_name&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;          &amp;gt; (author,title,content,create_date)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;          &amp;gt; values&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;          &amp;gt; (&amp;#x27;Tomy&amp;#x27;,&amp;#x27;Read book&amp;#x27;,&amp;#x27;&amp;#x27;,now());&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;增加数据作者为Tomy 标题为Read book 内容为null 时间为当前时间&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;查询数据&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;     mysql&amp;gt; select id,author,title,create_date&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;          &amp;gt; from table_name&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;          &amp;gt; where id &amp;gt; 2 limit 2 offset 5;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     // binary 区分大小写匹配&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     // limit 限制显示数据条数&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     // offset 数据偏移条数&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;查询id 大于2的行,展示从第6条开始的两条数据的id,作者,标题,创建时间&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;删除数据&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;     mysql&amp;gt; delete from test_table where id = 1;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;删除id为1的数据行&lt;/p&gt;
+&lt;p&gt;注:&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;     mysql&amp;gt; dalete from test_table;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;没有注明查询条件的话,默认清空当前表中所有数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改数据&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;     mysql&amp;gt; update table_name set author=&amp;#x27;New data&amp;#x27; where id = 2;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;修改id为2行的作者为New data&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;     mysql&amp;gt; update table_name set author=&amp;#x27;New name&amp;#x27;,title=&amp;#x27;Learning&amp;#x27; where id =3;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;修改id为3的数据行的作者和标题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Like&lt;/code&gt; 查询模糊数据&lt;br&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;     mysql&amp;gt; select * from table_name where author like &amp;#x27;%o&amp;#x27;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br&gt;查询table_name表中作者字段以字母o结尾的数据&lt;br&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;     mysql&amp;gt; select * from table_name where author like &amp;#x27;t%&amp;#x27;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br&gt;查询table_name表中作者字段以字母t起始的数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt; union &lt;/code&gt;查询语句&lt;br&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;mysql&amp;gt; select * from table_name where author like &amp;#x27;www%&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     &amp;gt; union all&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     &amp;gt; select * from table_name where author like &amp;#x27;%cn&amp;#x27;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br&gt;union 两个参数:all 输出所有查询结果,包括重复数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;         :distinct 排除重复数据并输出(默认值)
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

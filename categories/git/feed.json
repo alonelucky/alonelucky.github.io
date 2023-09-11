@@ -1,0 +1,19 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "小码农博客 • All posts by \"git\" category",
+    "description": null,
+    "home_page_url": "http://qiubo.ink",
+    "items": [
+        {
+            "id": "http://qiubo.ink/2017/05/05/Push%E6%9C%AC%E5%9C%B0%E5%8E%9F%E6%9C%89%E6%96%87%E4%BB%B6%E5%88%B0github%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/",
+            "url": "http://qiubo.ink/2017/05/05/Push%E6%9C%AC%E5%9C%B0%E5%8E%9F%E6%9C%89%E6%96%87%E4%BB%B6%E5%88%B0github%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/",
+            "title": "Push 本地原有文件到github新建项目",
+            "date_published": "2017-05-05T08:55:51.000Z",
+            "content_html": "<ol>\n<li><p>本地项目已经完成，此时想同步至github上。</p>\n</li>\n<li><p>方法一：创建文件夹 clone github项目至本地 ，拷贝项目并上传</p>\n</li>\n<li><p>方法二：在项目文件夹下git init 创建git本地版本库，再上传</p>\n</li>\n<li><p>方法二显然更合适，不过在方法二进行时出现<code>failed to push some refs to git</code>错误提示,(不经常研究git工作原理，只是作为版本同步工具使用)，于是网上搜索。</p>\n</li>\n<li><p>是因为远程文件不在本地文件夹中所致，运行命令</p>\n<figure class=\"highlight plaintext\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">     git pull --rebase ogigin master</span><br></pre></td></tr></table></figure></li>\n</ol>\n<p>4.本地出现远程文件，此时运行git push则无报错。</p>\n",
+            "tags": [
+                "git",
+                "git版本管理"
+            ]
+        }
+    ]
+}

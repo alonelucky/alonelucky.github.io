@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang=zh-CN><head><meta charset=utf-8><meta name=author content="萧逸雨, xiaqiubo123@gmail.com"><link rel=alternate type=application/rss+xml title=小码农博客 href=http://qiubo.ink/rss.xml><link rel=alternate type=application/atom+xml title=小码农博客 href=http://qiubo.ink/atom.xml><link rel=alternate type=application/json title=小码农博客 href=http://qiubo.ink/feed.json><title>gulp初体验 | 小码农博客</title><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=keywords content=笔记,nodejs,nodejs,gulp,前端自动化,><script src=//cdn.bootcss.com/jquery/3.3.1/jquery.min.js></script><script>console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n', 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');</script><link rel=icon href=/images/favicon.ico><link rel=apple-touch-icon href=/images/touch-icon.png><link href=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css rel=stylesheet><link rel=stylesheet href=/css/base.css><link rel=stylesheet href=/icon/iconfont.css><link rel=stylesheet href=/css/github-markdown.css><link rel=stylesheet href=/css/highlight.css><script src=/js/util.js></script><script src=/js/valine.min.js></script><link rel=stylesheet href=/css/custom.css><link href=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css rel=stylesheet><script src=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js async></script><meta name=generator content="Hexo 7.0.0-rc2"></head><body><div id=app><div class=header-wrap><header><div class=site-brand><div class=site-title><a href=/ >小码农博客</a></div></div><nav class=site-navigation><ul class=nav-menu><li class=nav-item data-path=/ ><a href=/ target=_self>主页</a></li><li class=nav-item data-path=/archives/ ><a href=/archives/ target=_self>归档</a></li><li class=nav-item data-path=/categories/ ><a href=/categories/ target=_self>分类</a></li><li class=nav-item data-path=/tags/ ><a href=/tags/ target=_self>标签</a></li><li class=nav-item data-path=""><a href=javascript:void(0); v-else>抓到我</a><ul class=nav-menu--dropdown><li><a href=https://github.com/alonelucky target=_blank>Github</a></li></ul></li></ul></nav><i class="iconfont icon-menu"></i></header></div><script>let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
+
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked 
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })</script><div class="container post-index"><div class=post><h1 class=article-title><span>gulp初体验</span></h1><div class=article-top-meta><span>发布 : 2016-12-08 </span><span>分类 : <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记</a></span></div><div class=article-content><div class=markdown-body><p>在云IDEcloud9中体验测试了gulp</p><h4 id=1-首先npm-install-gulp-g><a href=#1-首先npm-install-gulp-g class=headerlink title="1. 首先npm install gulp -g"></a>1. 首先npm install gulp -g</h4><figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre></td><td class=code><pre><span class=line>npm install gulp --save-dev 全局和项目安装gulp</span><br></pre></td></tr></table></figure><h4 id=2-测试项目为压缩文件和修改文件名称><a href=#2-测试项目为压缩文件和修改文件名称 class=headerlink title="2. 测试项目为压缩文件和修改文件名称"></a>2. 测试项目为压缩文件和修改文件名称</h4><p>安装gulp依赖项</p><p>| 名称 | 含义 |<br>|gulp-minify|压缩css文件|<br>|gulp-uglify|压缩js文件|<br>|gulp-concat|合并文件|<br>|gulp-rename|修改文件或文件夹名称|</p><figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre></td><td class=code><pre><span class=line>npm install gulp-minify --save-dev</span><br></pre></td></tr></table></figure><h4 id=3-创建gulpfile-js文件><a href=#3-创建gulpfile-js文件 class=headerlink title="3. 创建gulpfile.js文件"></a>3. 创建gulpfile.js文件</h4><figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br><span class=line>10</span><br><span class=line>11</span><br><span class=line>12</span><br><span class=line>13</span><br><span class=line>14</span><br></pre></td><td class=code><pre><span class=line>var gulp = require(&#x27;gulp&#x27;),</span><br><span class=line>    minify = require(&#x27;gulp-minify&#x27;),</span><br><span class=line>    uglify = require(&#x27;gulp-uglify&#x27;),</span><br><span class=line>    concat = require(&#x27;gulp-concat&#x27;),</span><br><span class=line>    rename = require(&#x27;gulp-rename&#x27;);</span><br><span class=line>//获取每个组件</span><br><span class=line> gulp.task(&#x27;taskName&#x27;,function()&#123;</span><br><span class=line>    return gulp.src(&#x27;./dst/js/*.js&#x27;)               //返回任务操作路径和文件</span><br><span class=line>        .pipe(concat(&#x27;functions.js&#x27;))              //合并所有的js文件为functions.js</span><br><span class=line>        .pipe(gulp.dest(&#x27;./src/js/&#x27;))              //输出functions.js文件到根目录下src下js文件夹</span><br><span class=line>        .pipe(uglify())                            //压缩该文件</span><br><span class=line>        .pipe(rename(&#123;extname:&#x27;.min.js&#x27;&#125;))         //对压缩后的文件进行重命名，修改文件后缀为.min.js</span><br><span class=line>        .pipe(gulp.dest(&#x27;./src/js/&#x27;));             //输出到与未压缩同目录下</span><br><span class=line> &#125;);//新建一个名字叫taskName的任务</span><br></pre></td></tr></table></figure><h4 id=4-文件内容详解：><a href=#4-文件内容详解： class=headerlink title="4. 文件内容详解："></a>4. 文件内容详解：</h4><h5 id=require-函数：><a href=#require-函数： class=headerlink title=require()函数：></a>require()函数：</h5><p>参数为string<br><strong>1. 如果string为内置模块</strong><br>返回该模块 不再继续执行<br><strong>2. 如果string以文件路径形式（如：’.&#x2F;X’、’..&#x2F;X’ 、’&#x2F;X’）</strong><br>根据 X 所在的父模块，确定 X 的绝对路径。 将 X 当成文件，依次查找名称为X的文件，只要其中有一个存在，就返回该文件，不再继续执行。 X X.js X.json X.node 将 X 当成目录，依次查找下面文件，只要其中有一个存在，就返回该文件，不再继续执行。 X&#x2F;package.json X&#x2F;index.js X&#x2F;index.json X&#x2F;index.node<br><strong>3. 如果string不带路径</strong><br>根据 X 所在的父模块，确定 X 可能的安装目录。 依次在每个目录中，将 X 当成文件名或目录名加载。<br><a href=http://www.ruanyifeng.com/blog/2015/05/require.html>参考文章1</a><br><a href=http://www.jdon.com/idea/nodejs/how-require-actually-works.html>参考文章2</a></p><h5 id=gulp-task><a href=#gulp-task class=headerlink title=gulp.task()></a>gulp.task()</h5><p>用于创建gulp任务，默认任务名称为<code>default task(&#39;a&#39;,b)</code>; 参数a：指定任务名称 参数b：匿名函数 执行任务时运行 gulp a（默认任务名直接执行 gulp 即可）</p><h5 id=gulp-src><a href=#gulp-src class=headerlink title=gulp.src()></a>gulp.src()</h5><pre><code>    `gulp.src(globs[, options])`
+    1. `globs` 参数是文件匹配模式(类似正则表达式)，用来匹配文件路径(包括文件名)，当然这里也可以直接指定某个具体的文件路径。当有多个匹配模式时，该参数可以为一个数组。
+    2. `options` 为可选参数。通常情况下我们不需要用到。
+</code></pre><h5 id=pipe><a href=#pipe class=headerlink title=pipe()></a>pipe()</h5><p><code>node.js</code> 中 <code>stream</code>（流）的指示方向</p><h5 id=gulp-dest><a href=#gulp-dest class=headerlink title=gulp.dest()></a>gulp.dest()</h5><p><code>gulp.dest()</code> 方法是用来写文件的，其语法为：</p><pre><code>    `gulp.dest(path[,options])`
+    1. path为写入文件的路径
+    2. options为一个可选的参数对象，通常我们不需要用到
+</code></pre><h5 id=concat><a href=#concat class=headerlink title=concat()></a>concat()</h5><p>合并文件，指定参数为合并后的文件名称</p><h5 id=uglify><a href=#uglify class=headerlink title=uglify()></a>uglify()</h5><p>压缩文件，没有制定参数，直接压缩js文件</p><h5 id=rename><a href=#rename class=headerlink title=rename()></a>rename()</h5><p>参数为数组，<code>basename</code>、<code>prefix/suffix</code>、<code>extname</code>、<code>dirname</code> 常用：prefix: ‘pre-‘ 增加前缀pre- suffix: ‘-suf’ 增加后缀，不改变文件性质 extname:’.min.js’ 修改文件后缀 <a href=http://www.cnblogs.com/2050/p/4198792.html>参考文章3</a></p></div></div><div class=copy-right><div class=markdown-body><blockquote>本文作者 : 萧逸雨<br>原文链接 : <a href="">http://qiubo.ink/2016/12/08/gulp初体验/</a><br>版权声明 : 本博客所有文章除特别声明外，均采用 <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/ >CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</blockquote></div></div><div class=article-footer><div class="article-meta pull-left"><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/nodejs/ >#nodejs </a></span><span class=span--tag><a href=/tags/gulp/ >#gulp </a></span><span class=span--tag><a href=/tags/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96/ >#前端自动化</a></span></span></div><div class="article-meta pull-right"></div></div></div><aside id=sidebar><p id=sidebar-header></p><ol id=sidebar-toc></ol></aside><script async>setTimeout(generateToc, 10);</script><nav class=post-navigation><div class=nav-pre><i class="iconfont icon-prev"></i> 上一篇: <a href=/2016/11/19/git%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6/ target=_self>【小码农博客】git添加文件夹下所有文件</a></div><div class=nav-next>下一篇: <a href=/2016/12/08/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87/ target=_self>响应式图片</a> <i class="iconfont icon-next"></i></div></nav></div><footer><p class=site-info>博客已萌萌哒运行<span id=time-to-now></span><span class=my-face>(●'◡'●)ﾉ♥</span><br>Theme - <a href=https://github.com/dongyuanxin/theme-bmw>BMW</a> | Made With 💗 | Powered by <a href=https://godbmw.com/ >GodBMW</a><br><a href=https://letsencrypt.org/ target=_blank>Let&#180;s Encrypt</a> 签发SSL证书</p></footer><script>const timeToNowDOM = document.querySelector("#time-to-now");
+  const startTimestamp = new Date(2016, 8, 10).getTime();
+
+  const updateTimeStr = () => {
+    let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+      day = Math.floor(offset / 86400),
+      hour = Math.floor((offset % 86400) / 3600),
+      minute = Math.floor(((offset % 86400) % 3600) / 60),
+      second = Math.floor(((offset % 86400) % 3600) % 60);
+    timeToNowDOM.innerHTML =
+      day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+    setTimeout(updateTimeStr, 500);
+  }
+
+  setTimeout(updateTimeStr, 500);</script><script>var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?db150be7214fe869c6daac9d53405523";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();</script><div class="back-to-top hidden"><span><i class="iconfont icon-60"></i><span></span>%</span></div><script>const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
+
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
+    });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);</script></div><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script>(() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()</script><script src=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js async></script><script async>let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);</script></body></html>

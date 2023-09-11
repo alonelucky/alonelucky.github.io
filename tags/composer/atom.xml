@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://qiubo.ink</id>
+    <title>小码农博客 • Posts by &#34;composer&#34; tag</title>
+    <link href="http://qiubo.ink" />
+    <updated>2016-11-12T11:37:26.000Z</updated>
+    <category term="cmder" />
+    <category term="git学习" />
+    <category term="服务器环境配置mysql" />
+    <category term="golang" />
+    <category term="mod" />
+    <category term="module" />
+    <category term="私服" />
+    <category term="测试" />
+    <category term="string" />
+    <category term="linux" />
+    <category term="内存" />
+    <category term="nodejs" />
+    <category term="git" />
+    <category term="git版本管理" />
+    <category term="Vscode" />
+    <category term="常用插件" />
+    <category term="编辑器" />
+    <category term="npm" />
+    <category term="docker" />
+    <category term="frp" />
+    <category term="网络" />
+    <category term="gulp" />
+    <category term="前端自动化" />
+    <category term="虚拟主机" />
+    <category term="mysql" />
+    <category term="数据库" />
+    <category term="node操作数据库" />
+    <category term="josn web token" />
+    <category term="jwt" />
+    <category term="redis" />
+    <category term="并发" />
+    <category term="composer" />
+    <category term="php管理" />
+    <category term="cli" />
+    <category term="openresty" />
+    <category term="nginx" />
+    <category term="lua" />
+    <category term="响应式图片" />
+    <category term="移动端兼容" />
+    <category term="前端" />
+    <category term="wrk" />
+    <category term="web" />
+    <category term="dart" />
+    <entry>
+        <id>http://qiubo.ink/2016/11/12/windows%E4%B8%8B%E9%85%8D%E7%BD%AEcomposer/</id>
+        <title>windows下配置composer</title>
+        <link rel="alternate" href="http://qiubo.ink/2016/11/12/windows%E4%B8%8B%E9%85%8D%E7%BD%AEcomposer/"/>
+        <content type="html">&lt;h2 id=&#34;1-配置php环境&#34;&gt;&lt;a href=&#34;#1-配置php环境&#34; class=&#34;headerlink&#34; title=&#34;1. 配置php环境&#34;&gt;&lt;/a&gt;1. 配置php环境&lt;/h2&gt;&lt;p&gt;我使用的是&lt;code&gt;phpstudy&lt;/code&gt;其他环境除路径外，其他类似&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;我的电脑 –&amp;gt; 属性 –&amp;gt; 高级系统设置 –&amp;gt; 高级 –&amp;gt; 环境变量&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在系统变量中找到path变量 –&amp;gt; 编辑其值 –&amp;gt; 添加路径 &lt;code&gt;c:\\phpstudy\\php55n&lt;/code&gt;;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 注：此步骤注意最后的分号（英文）不能少
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在系统变量中新建&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 变量名：`PHP_HOME`
+ 值：`c:\phpstudy\php55n`
+     此步骤不需要分号
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置检测&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;打开&lt;code&gt;cmd&lt;/code&gt; dos命令行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; win + R 打开运行  --&amp;gt;  cmd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;输入 &lt;code&gt;php -v&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 显示 php 5.5.30 ·····
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;php环境变量配置成功&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2-配置composer&#34;&gt;&lt;a href=&#34;#2-配置composer&#34; class=&#34;headerlink&#34; title=&#34;2. 配置composer&#34;&gt;&lt;/a&gt;2. 配置composer&lt;/h3&gt;&lt;p&gt;我参考的是国内镜像站&lt;a href=&#34;http://phpcomposer.com/&#34;&gt;phpcomposer.com&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;下载安装&lt;code&gt;composer-setup.exe&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; https://getcomposer.org/Composer-Setup.exe
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;php环境变量配置完成后，安装composer会自动识别php路径，一路next到最后即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;此时composer -v仍不能正常显示&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;需要cmd下运行如下语句&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;php -r &amp;quot;readfile(&amp;#x27;https://getcomposer.org/installer&amp;#x27;);&amp;quot; | php&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code&gt; 注意： 如果收到 readfile 错误提示，请使用 http 链接或者在 php.ini 中开启 php_openssl.dll 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;composer -v&lt;/code&gt; 显示&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; composer version 1.2.2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;composer环境配置完成&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;3-以上内容也是百度参考了几篇文章结合自己实际情况配置完成的，参考链接&#34;&gt;&lt;a href=&#34;#3-以上内容也是百度参考了几篇文章结合自己实际情况配置完成的，参考链接&#34; class=&#34;headerlink&#34; title=&#34;3. 以上内容也是百度参考了几篇文章结合自己实际情况配置完成的，参考链接&#34;&gt;&lt;/a&gt;3. 以上内容也是百度参考了几篇文章结合自己实际情况配置完成的，参考链接&lt;/h3&gt;&lt;h5 id=&#34;phpcomposer官网windows下composer配置&#34;&gt;&lt;a href=&#34;#phpcomposer官网windows下composer配置&#34; class=&#34;headerlink&#34; title=&#34;phpcomposer官网windows下composer配置&#34;&gt;&lt;/a&gt;phpcomposer官网windows下composer配置&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;http://docs.phpcomposer.com/00-intro.html#Downloading-the-Composer-Executable
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+        <category term="composer" />
+        <category term="php管理" />
+        <updated>2016-11-12T11:37:26.000Z</updated>
+    </entry>
+</feed>

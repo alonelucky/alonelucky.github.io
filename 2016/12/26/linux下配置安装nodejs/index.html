@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang=zh-CN><head><meta charset=utf-8><meta name=author content="萧逸雨, xiaqiubo123@gmail.com"><link rel=alternate type=application/rss+xml title=小码农博客 href=http://qiubo.ink/rss.xml><link rel=alternate type=application/atom+xml title=小码农博客 href=http://qiubo.ink/atom.xml><link rel=alternate type=application/json title=小码农博客 href=http://qiubo.ink/feed.json><title>linux下配置安装nodejs | 小码农博客</title><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=keywords content=笔记,nodejs,linux,nodejs,虚拟主机,><script src=//cdn.bootcss.com/jquery/3.3.1/jquery.min.js></script><script>console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n', 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');</script><link rel=icon href=/images/favicon.ico><link rel=apple-touch-icon href=/images/touch-icon.png><link href=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css rel=stylesheet><link rel=stylesheet href=/css/base.css><link rel=stylesheet href=/icon/iconfont.css><link rel=stylesheet href=/css/github-markdown.css><link rel=stylesheet href=/css/highlight.css><script src=/js/util.js></script><script src=/js/valine.min.js></script><link rel=stylesheet href=/css/custom.css><link href=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css rel=stylesheet><script src=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js async></script><meta name=generator content="Hexo 7.0.0-rc2"></head><body><div id=app><div class=header-wrap><header><div class=site-brand><div class=site-title><a href=/ >小码农博客</a></div></div><nav class=site-navigation><ul class=nav-menu><li class=nav-item data-path=/ ><a href=/ target=_self>主页</a></li><li class=nav-item data-path=/archives/ ><a href=/archives/ target=_self>归档</a></li><li class=nav-item data-path=/categories/ ><a href=/categories/ target=_self>分类</a></li><li class=nav-item data-path=/tags/ ><a href=/tags/ target=_self>标签</a></li><li class=nav-item data-path=""><a href=javascript:void(0); v-else>抓到我</a><ul class=nav-menu--dropdown><li><a href=https://github.com/alonelucky target=_blank>Github</a></li></ul></li></ul></nav><i class="iconfont icon-menu"></i></header></div><script>let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
+
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked 
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })</script><div class="container post-index"><div class=post><h1 class=article-title><span>linux下配置安装nodejs</span></h1><div class=article-top-meta><span>发布 : 2016-12-26 </span><span>分类 : <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记</a></span></div><div class=article-content><div class=markdown-body><h2 id=linux下配置安装nodejs><a href=#linux下配置安装nodejs class=headerlink title=linux下配置安装nodejs></a>linux下配置安装nodejs</h2><p>（非广告）virmach 美国VPS主机 <code>7.5刀/年</code>（折合软妹币52.129；按软妹付款为54多）， 配置如下：</p><table><thead><tr><th>CPU</th><th>RAM</th><th>硬盘</th><th>带宽&#x2F;流量</th><th>IP</th><th>DDoS保护</th></tr></thead><tbody><tr><td>1核</td><td>128M</td><td>10G SSD</td><td>1Gbps&#x2F;250Gbp</td><td>一个</td><td>10Gbps</td></tr></tbody></table><p>个人觉得还可以，就买了一个练习配置，因为内存不大，所以打算配置nodejs练练手，就当学习了。下边是linux配置，非购买使用流程。</p><ol><li>根据提供的IP:22使用putty链接</li><li>用户名root 密码***** <img src=http://xiaqiubo.top/wp-content/uploads/2017/02/virmach001-300x188.png></li><li>该主机自带了python2.7.3 <img src=http://xiaqiubo.top/wp-content/uploads/2017/02/virmach002-300x42.png></li><li>于是安装node就省去了很大一步（注：还得在本地虚拟机从零测试安装） <code>cd /usr/local/</code> 在这个文件夹下（当然哪个文件夹都可以），下载nodejs资源包 本来想服务器在国外，下载国外的node资源应该不错，</li></ol><ul><li>于是乎找到下载地址（官网的） <a href=https://nodejs.org/dist/v6.9.2/node-v6.9.2-linux-x86.tar.xz>https://nodejs.org/dist/v6.9.2/node-v6.9.2-linux-x86.tar.xz</a></li><li>运行 <code>wget --no-check-certificate https://nodejs.org/dist/v6.9.2/node-v6.9.2-linux-x86.tar.xz</code> no-check-certificate是阻止wget下载前验证 下载成功 ，而且网速还不错<br><img src=http://xiaqiubo.top/wp-content/uploads/2017/02/virmach003-300x188.png></li><li>解压 <code>tar node-v6.9.2-linux-x86.tar.xz</code> (已解决使用xz命令解压缩  2016-12-26) 格式错误。于是只能拐回国内链接</li><li>同样运行 <code>wget --no-check-certificate https://nodejs.org/dist/v6.2.0/node-v6.2.0-linux-x86.tar.gz</code><br><img src=http://xiaqiubo.top/wp-content/uploads/2017/02/virmach004-300x189.png> 下载成功，网速依旧。</li><li>解压 <code>tar node-v6.9.2-linux-x86.tar.xz</code></li></ul><ol start=5><li>解压文件包并重命名文件夹（详情搜索mv命令） <code>mv node-v6.9.2-linux-x86 node</code></li><li>配置临时环境变量 <code>export PATH=/usr/local/python/bin:/usr/local/node/bin:$PATH</code> 该环境变量为临时变量，关闭ssh窗口即失效 所以需要配置永久环境变量，修改etc&#x2F;profile文件</li><li>编辑添加全局环境变量 <code>vim /etc/profile</code><br><img src=http://xiaqiubo.top/wp-content/uploads/2017/02/virmach005-300x188.png> 增加变量路径 <code>:wq</code>保存退出</li><li>node环境配置成功<br><img src=http://xiaqiubo.top/wp-content/uploads/2017/02/virmach006-300x48.png></li></ol><p>剩下的后期继续更新。</p></div></div><div class=copy-right><div class=markdown-body><blockquote>本文作者 : 萧逸雨<br>原文链接 : <a href="">http://qiubo.ink/2016/12/26/linux下配置安装nodejs/</a><br>版权声明 : 本博客所有文章除特别声明外，均采用 <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/ >CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</blockquote></div></div><div class=article-footer><div class="article-meta pull-left"><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/linux/ >#linux </a></span><span class=span--tag><a href=/tags/nodejs/ >#nodejs </a></span><span class=span--tag><a href=/tags/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/ >#虚拟主机</a></span></span></div><div class="article-meta pull-right"></div></div></div><aside id=sidebar><p id=sidebar-header></p><ol id=sidebar-toc></ol></aside><script async>setTimeout(generateToc, 10);</script><nav class=post-navigation><div class=nav-pre><i class="iconfont icon-prev"></i> 上一篇: <a href=/2016/12/15/Cmder%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8F%8Agit%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA%E4%B8%8D%E5%AE%8C%E6%95%B4%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/ target=_self>Cmder中文乱码及git中文显示不完整解决方法</a></div><div class=nav-next>下一篇: <a href=/2017/02/17/VS%20Code%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/ target=_self>VS Code前端开发常用插件</a> <i class="iconfont icon-next"></i></div></nav></div><footer><p class=site-info>博客已萌萌哒运行<span id=time-to-now></span><span class=my-face>(●'◡'●)ﾉ♥</span><br>Theme - <a href=https://github.com/dongyuanxin/theme-bmw>BMW</a> | Made With 💗 | Powered by <a href=https://godbmw.com/ >GodBMW</a><br><a href=https://letsencrypt.org/ target=_blank>Let&#180;s Encrypt</a> 签发SSL证书</p></footer><script>const timeToNowDOM = document.querySelector("#time-to-now");
+  const startTimestamp = new Date(2016, 8, 10).getTime();
+
+  const updateTimeStr = () => {
+    let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+      day = Math.floor(offset / 86400),
+      hour = Math.floor((offset % 86400) / 3600),
+      minute = Math.floor(((offset % 86400) % 3600) / 60),
+      second = Math.floor(((offset % 86400) % 3600) % 60);
+    timeToNowDOM.innerHTML =
+      day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+    setTimeout(updateTimeStr, 500);
+  }
+
+  setTimeout(updateTimeStr, 500);</script><script>var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?db150be7214fe869c6daac9d53405523";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();</script><div class="back-to-top hidden"><span><i class="iconfont icon-60"></i><span></span>%</span></div><script>const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
+
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
+    });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);</script></div><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script>(() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()</script><script src=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js async></script><script async>let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);</script></body></html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang=zh-CN><head><meta charset=utf-8><meta name=author content="萧逸雨, xiaqiubo123@gmail.com"><link rel=alternate type=application/rss+xml title=小码农博客 href=http://qiubo.ink/rss.xml><link rel=alternate type=application/atom+xml title=小码农博客 href=http://qiubo.ink/atom.xml><link rel=alternate type=application/json title=小码农博客 href=http://qiubo.ink/feed.json><title>使用nodejs创建自己的自动化工具 | 小码农博客</title><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=keywords content=教程,nodejs,nodejs,cli,><script src=//cdn.bootcss.com/jquery/3.3.1/jquery.min.js></script><script>console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n', 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');</script><link rel=icon href=/images/favicon.ico><link rel=apple-touch-icon href=/images/touch-icon.png><link href=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css rel=stylesheet><link rel=stylesheet href=/css/base.css><link rel=stylesheet href=/icon/iconfont.css><link rel=stylesheet href=/css/github-markdown.css><link rel=stylesheet href=/css/highlight.css><script src=/js/util.js></script><script src=/js/valine.min.js></script><link rel=stylesheet href=/css/custom.css><link href=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css rel=stylesheet><script src=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js async></script><meta name=generator content="Hexo 7.0.0-rc2"></head><body><div id=app><div class=header-wrap><header><div class=site-brand><div class=site-title><a href=/ >小码农博客</a></div></div><nav class=site-navigation><ul class=nav-menu><li class=nav-item data-path=/ ><a href=/ target=_self>主页</a></li><li class=nav-item data-path=/archives/ ><a href=/archives/ target=_self>归档</a></li><li class=nav-item data-path=/categories/ ><a href=/categories/ target=_self>分类</a></li><li class=nav-item data-path=/tags/ ><a href=/tags/ target=_self>标签</a></li><li class=nav-item data-path=""><a href=javascript:void(0); v-else>抓到我</a><ul class=nav-menu--dropdown><li><a href=https://github.com/alonelucky target=_blank>Github</a></li></ul></li></ul></nav><i class="iconfont icon-menu"></i></header></div><script>let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
+
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked 
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })</script><div class="container post-index"><div class=post><h1 class=article-title><span>使用nodejs创建自己的自动化工具</span></h1><div class=article-top-meta><span>发布 : 2018-09-14 </span><span>分类 : <a href=/categories/%E6%95%99%E7%A8%8B/ >教程</a></span></div><div class=article-content><div class=markdown-body><h3 id=开发步骤><a href=#开发步骤 class=headerlink title=开发步骤></a>开发步骤</h3><h6 id=1-安装nodejs环境><a href=#1-安装nodejs环境 class=headerlink title="1. 安装nodejs环境"></a>1. 安装nodejs环境</h6><p>从<a href=https://nodejs.org/ >官网</a>或<a href=https://nodejs.cn/ >中文官网</a>下载nodejs的安装包,参照网上的安装方法安装好nodejs环境,</p><p>此处不是介绍nodejs,,因此不介绍如何安装</p><h6 id=2-创建项目><a href=#2-创建项目 class=headerlink title="2. 创建项目"></a>2. 创建项目</h6><p>创建项目文件夹,进入并执行npm init,如下图 <a href=https://github.com/xiaqiubo/nodejs-traning/blob/master/course/imgs/20171031/01.png><img src=https://github.com/xiaqiubo/nodejs-traning/raw/master/course/imgs/20171031/01.png></a></p><p>如下信息是需要填写的 :</p><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br></pre></td><td class=code><pre><span class=line>package name: (jiaocheng)</span><br><span class=line>version: (1.0.0) 0.1.0</span><br><span class=line>description: 自制自动化工具</span><br><span class=line>entry point: (index.js)</span><br><span class=line><span class=built_in>test</span> <span class=built_in>command</span>:</span><br><span class=line>git repository:</span><br><span class=line>keywords:</span><br><span class=line>author: xiaoxia</span><br><span class=line>license: (ISC)</span><br></pre></td></tr></table></figure><p>在最后生成的package.json中增加一项</p><figure class="highlight js"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br></pre></td><td class=code><pre><span class=line>&#123;</span><br><span class=line>  <span class=comment>// ...</span></span><br><span class=line>  <span class=string>&quot;bin&quot;</span>:&#123;</span><br><span class=line>    <span class=string>&quot;jiaocheng&quot;</span>:<span class=string>&quot;index.js&quot;</span>	</span><br><span class=line>  &#125;,</span><br><span class=line>  <span class=comment>// ...</span></span><br><span class=line>&#125;</span><br></pre></td></tr></table></figure><p>bin为可执行命令,<code>jiaocheng</code>为执行命令,<code>index.js</code>为命令执行文件入口</p><p>然后执行</p><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre></td><td class=code><pre><span class=line>npm <span class=built_in>link</span></span><br></pre></td></tr></table></figure><p><a href=https://github.com/xiaqiubo/nodejs-traning/blob/master/course/imgs/20171031/04.png><img src=https://github.com/xiaqiubo/nodejs-traning/raw/master/course/imgs/20171031/04.png></a>此命令向系统增加一条软连接(可以理解为快捷方式)引用,方便使用当前项目的 bin 命令(便于本地调试)</p><h6 id=3-创建index-js-入口文件><a href=#3-创建index-js-入口文件 class=headerlink title="3. 创建index.js,入口文件"></a>3. 创建index.js,入口文件</h6><p>一定要在顶部加上 <code>#!/usr/bin/env node</code> 声明,该文件使用环境变量 node 调用</p><figure class="highlight js"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre></td><td class=code><pre><span class=line><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class=string>&#x27;hello world!&#x27;</span>)</span><br></pre></td></tr></table></figure><p>如图 :</p><p><a href=https://github.com/xiaqiubo/nodejs-traning/blob/master/course/imgs/20171031/02.png><img src=https://github.com/xiaqiubo/nodejs-traning/raw/master/course/imgs/20171031/02.png></a></p><p>然后打开cmd窗口,输入 <code>jiaocheng</code> 回车,输出如下图</p><p><a href=https://github.com/xiaqiubo/nodejs-traning/blob/master/course/imgs/20171031/03.png><img src=https://github.com/xiaqiubo/nodejs-traning/raw/master/course/imgs/20171031/03.png></a></p><h6 id=4-项目依赖选择><a href=#4-项目依赖选择 class=headerlink title="4. 项目依赖选择"></a>4. 项目依赖选择</h6><p>此时已经基本成型了,你可以执行命令做一些你想做的事情,也可以自己处理一些 process 变量</p><p>常用的nodejs自带 process属性</p><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br></pre></td><td class=code><pre><span class=line>process.argv		<span class=comment># 	获取传入参数</span></span><br><span class=line>process.cwd()		<span class=comment>#	获取当前命令执行所在目录</span></span><br><span class=line>process.env			<span class=comment>#	获取当前系统用户的环境变量</span></span><br><span class=line>process.pid			<span class=comment>#	获取当前进程的pid</span></span><br><span class=line>process.platform	<span class=comment>#	获取当前运行的平台(系统)</span></span><br><span class=line>process.stdin		<span class=comment>#	输入</span></span><br><span class=line>process.stdout		<span class=comment># 	输出</span></span><br><span class=line>process.versions	<span class=comment>#	当前nodejs环境所有版本信息</span></span><br></pre></td></tr></table></figure><p>常用模块推荐 (持续更新中):</p><p>commander 	#	作者Tj用于自动生成命令参数获取,单包无依赖</p><p>commander 链接及使用看<a href=https://npmjs.com/package/commander>npmjs</a>介绍或者<a href=https://github.com/tj/commander.js>github</a>介绍即可</p><h3 id=模块发布><a href=#模块发布 class=headerlink title=模块发布></a>模块发布</h3><hr><h6 id=5-注册npmjs账号><a href=#5-注册npmjs账号 class=headerlink title="5. 注册npmjs账号"></a>5. 注册npmjs账号</h6><p>到<a href=https://www.npmjs.com/signup>npmjs官网注册</a>一个npmjs账号,用于发布自己的模块</p><h6 id=6-登录npmjs并发布自己的模块><a href=#6-登录npmjs并发布自己的模块 class=headerlink title="6. 登录npmjs并发布自己的模块"></a>6. 登录npmjs并发布自己的模块</h6><p>模块按照上面的步骤开发,注册过账号后就可以发布自己的模块了,此处的登录不是在网页上的登录,而是在命令行下执行:</p><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre></td><td class=code><pre><span class=line>npm login</span><br></pre></td></tr></table></figure><p>会提示输入账号密码,输入注册的账号密码即可</p><p>登录成功后,到项目目录下,执行</p><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre></td><td class=code><pre><span class=line>npm publish</span><br></pre></td></tr></table></figure><p>片刻后便会执行成功</p><h3 id=注意事项><a href=#注意事项 class=headerlink title=注意事项></a>注意事项</h3><ol><li>部分开发者习惯将npm镜像修改为国内的cnpm.js淘宝镜像,在发布包的时候记得将镜像切换回官方 <a href=https://registry.npmjs.org/ >https://registry.npmjs.org/</a></li></ol><p>可以执行</p><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre></td><td class=code><pre><span class=line>npm config list</span><br></pre></td></tr></table></figure><p>查看是否替换</p><ol start=2><li>发布的npm模块名称必须为全小写,不支持大小驼峰名称,一般修改为英文中横线</li></ol></div></div><div class=copy-right><div class=markdown-body><blockquote>本文作者 : 萧逸雨<br>原文链接 : <a href="">http://qiubo.ink/2018/09/14/使用nodejs创建自己的自动化工具/</a><br>版权声明 : 本博客所有文章除特别声明外，均采用 <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/ >CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</blockquote></div></div><div class=article-footer><div class="article-meta pull-left"><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/nodejs/ >#nodejs </a></span><span class=span--tag><a href=/tags/cli/ >#cli</a></span></span></div><div class="article-meta pull-right"></div></div></div><aside id=sidebar><p id=sidebar-header></p><ol id=sidebar-toc></ol></aside><script async>setTimeout(generateToc, 10);</script><nav class=post-navigation><div class=nav-pre><i class="iconfont icon-prev"></i> 上一篇: <a href=/2018/09/14/nodejs%E5%AE%9E%E7%8E%B0%E5%9F%BA%E7%A1%80%E7%9A%84jwt/ target=_self>nodejs实现基础的jwt</a></div><div class=nav-next>下一篇: <a href=/2018/09/25/Linux%E6%89%8B%E5%8A%A8%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98/ target=_self>Linux手动释放内存</a> <i class="iconfont icon-next"></i></div></nav></div><footer><p class=site-info>博客已萌萌哒运行<span id=time-to-now></span><span class=my-face>(●'◡'●)ﾉ♥</span><br>Theme - <a href=https://github.com/dongyuanxin/theme-bmw>BMW</a> | Made With 💗 | Powered by <a href=https://godbmw.com/ >GodBMW</a><br><a href=https://letsencrypt.org/ target=_blank>Let&#180;s Encrypt</a> 签发SSL证书</p></footer><script>const timeToNowDOM = document.querySelector("#time-to-now");
+  const startTimestamp = new Date(2016, 8, 10).getTime();
+
+  const updateTimeStr = () => {
+    let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+      day = Math.floor(offset / 86400),
+      hour = Math.floor((offset % 86400) / 3600),
+      minute = Math.floor(((offset % 86400) % 3600) / 60),
+      second = Math.floor(((offset % 86400) % 3600) % 60);
+    timeToNowDOM.innerHTML =
+      day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+    setTimeout(updateTimeStr, 500);
+  }
+
+  setTimeout(updateTimeStr, 500);</script><script>var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?db150be7214fe869c6daac9d53405523";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();</script><div class="back-to-top hidden"><span><i class="iconfont icon-60"></i><span></span>%</span></div><script>const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
+
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
+    });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);</script></div><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script>(() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()</script><script src=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js async></script><script async>let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);</script></body></html>

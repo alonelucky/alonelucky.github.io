@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://qiubo.ink</id>
+    <title>小码农博客 • Posts by &#34;移动端兼容&#34; tag</title>
+    <link href="http://qiubo.ink" />
+    <updated>2016-12-08T19:18:03.000Z</updated>
+    <category term="cmder" />
+    <category term="git学习" />
+    <category term="服务器环境配置mysql" />
+    <category term="golang" />
+    <category term="mod" />
+    <category term="module" />
+    <category term="私服" />
+    <category term="测试" />
+    <category term="string" />
+    <category term="linux" />
+    <category term="内存" />
+    <category term="nodejs" />
+    <category term="git" />
+    <category term="git版本管理" />
+    <category term="Vscode" />
+    <category term="常用插件" />
+    <category term="编辑器" />
+    <category term="npm" />
+    <category term="docker" />
+    <category term="frp" />
+    <category term="网络" />
+    <category term="gulp" />
+    <category term="前端自动化" />
+    <category term="虚拟主机" />
+    <category term="mysql" />
+    <category term="数据库" />
+    <category term="node操作数据库" />
+    <category term="josn web token" />
+    <category term="jwt" />
+    <category term="redis" />
+    <category term="并发" />
+    <category term="composer" />
+    <category term="php管理" />
+    <category term="cli" />
+    <category term="openresty" />
+    <category term="nginx" />
+    <category term="lua" />
+    <category term="响应式图片" />
+    <category term="移动端兼容" />
+    <category term="前端" />
+    <category term="wrk" />
+    <category term="web" />
+    <category term="dart" />
+    <entry>
+        <id>http://qiubo.ink/2016/12/08/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87/</id>
+        <title>响应式图片</title>
+        <link rel="alternate" href="http://qiubo.ink/2016/12/08/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87/"/>
+        <content type="html">&lt;p&gt;在当前响应式设计和自适应设计的流行下，大部分web页面往往都兼容多终端设备，其中一个比较麻烦的问题就是图片的加载了。不同平台显然不可能用同一张大的图片，这样子不但浪费手机流量、影响网站载入速度并且在小屏幕下会很不清晰。让浏览器根据分辨率自动识别图片是最好的方法。&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h3 id=&#34;方法一：&#34;&gt;&lt;a href=&#34;#方法一：&#34; class=&#34;headerlink&#34; title=&#34;方法一：&#34;&gt;&lt;/a&gt;方法一：&lt;/h3&gt;&lt;h4 id=&#34;picture标签&#34;&gt;&lt;a href=&#34;#picture标签&#34; class=&#34;headerlink&#34; title=&#34;picture标签&#34;&gt;&lt;/a&gt;picture标签&lt;/h4&gt;&lt;p&gt;引用HTML5新特性&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建标签&lt;/li&gt;
+&lt;li&gt;在标签内使用source元素&lt;/li&gt;
+&lt;li&gt;添加media属性&lt;/li&gt;
+&lt;li&gt;srcset加载图片&lt;/li&gt;
+&lt;li&gt;img元素避免老旧浏览器不识别picture标签和srcset属性&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;picture&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;source&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;srcset&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;img/300.png&amp;quot;&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;media&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;(min-width:300px)&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;source&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;srcset&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;img/600.png&amp;quot;&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;media&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;(min-width:600px)&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;source&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;srcset&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;img/1200.png&amp;quot;&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;media&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;(min-width:1200px)&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;img&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;srcset&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;img/1200.png&amp;quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;                &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;/&lt;span class=&#34;name&#34;&gt;picture&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;方法二：&#34;&gt;&lt;a href=&#34;#方法二：&#34; class=&#34;headerlink&#34; title=&#34;方法二：&#34;&gt;&lt;/a&gt;方法二：&lt;/h3&gt;&lt;h4 id=&#34;srcset属性&#34;&gt;&lt;a href=&#34;#srcset属性&#34; class=&#34;headerlink&#34; title=&#34;srcset属性&#34;&gt;&lt;/a&gt;srcset属性&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;img标签的新属性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配合sizes属性使用更好&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;img&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;srcset&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;img/300.png 300w,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&lt;span class=&#34;tag&#34;&gt;             img/600.png 600w,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&lt;span class=&#34;tag&#34;&gt;             img/1200.png 1200w&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;     &lt;span class=&#34;attr&#34;&gt;sizes&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;(max-width:300px) 100vm,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&lt;span class=&#34;tag&#34;&gt;            (max-width:600px) 50vm,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&lt;span class=&#34;tag&#34;&gt;            (max-width:1200) 300px&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;srcset中的300w、600w、1200w类似于媒体查询，规定了不同宽度下应该加载的图片。当图片外围的宽度不为视口宽度的100%时，该属性会出现一些小问题，所以需要与sizes属性相配合。 sizes属性的媒体查询规定的是视口大小与其缩放比例&lt;/p&gt;
+&lt;h3 id=&#34;方法三：&#34;&gt;&lt;a href=&#34;#方法三：&#34; class=&#34;headerlink&#34; title=&#34;方法三：&#34;&gt;&lt;/a&gt;方法三：&lt;/h3&gt;&lt;p&gt;js或cookie控制服务器 &lt;a href=&#34;http://www.wzsky.net/html/Photo/theory/130077.html&#34;&gt;详细参考&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        <category term="响应式图片" />
+        <category term="移动端兼容" />
+        <category term="前端" />
+        <updated>2016-12-08T19:18:03.000Z</updated>
+    </entry>
+</feed>

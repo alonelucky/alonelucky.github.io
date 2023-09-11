@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>小码农博客 • Posts by &#34;git&#34; tag</title>
+        <link>http://qiubo.ink</link>
+        <description></description>
+        <language>ZH-cn</language>
+        <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
+        <lastBuildDate>Thu, 11 Nov 2021 00:00:00 +0000</lastBuildDate>
+        <category>cmder</category>
+        <category>git学习</category>
+        <category>服务器环境配置mysql</category>
+        <category>golang</category>
+        <category>mod</category>
+        <category>module</category>
+        <category>私服</category>
+        <category>测试</category>
+        <category>string</category>
+        <category>linux</category>
+        <category>内存</category>
+        <category>nodejs</category>
+        <category>git</category>
+        <category>git版本管理</category>
+        <category>Vscode</category>
+        <category>常用插件</category>
+        <category>编辑器</category>
+        <category>npm</category>
+        <category>docker</category>
+        <category>frp</category>
+        <category>网络</category>
+        <category>gulp</category>
+        <category>前端自动化</category>
+        <category>虚拟主机</category>
+        <category>mysql</category>
+        <category>数据库</category>
+        <category>node操作数据库</category>
+        <category>josn web token</category>
+        <category>jwt</category>
+        <category>redis</category>
+        <category>并发</category>
+        <category>composer</category>
+        <category>php管理</category>
+        <category>cli</category>
+        <category>openresty</category>
+        <category>nginx</category>
+        <category>lua</category>
+        <category>响应式图片</category>
+        <category>移动端兼容</category>
+        <category>前端</category>
+        <category>wrk</category>
+        <category>web</category>
+        <category>dart</category>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2021/11/11/%E6%AC%A1%E5%B8%B8%E7%94%A8git%E5%91%BD%E4%BB%A4/</guid>
+            <title>次常用git命令</title>
+            <link>http://qiubo.ink/2021/11/11/%E6%AC%A1%E5%B8%B8%E7%94%A8git%E5%91%BD%E4%BB%A4/</link>
+            <category>git</category>
+            <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;部分场景下需要获取一些git信息, 如CI&amp;#x2F;CD自动化部署时, 获取最近hashID, 提交信息等&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;ol&gt;
+&lt;li&gt;获取当前分支名称&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;git rev-parse --abbrev-ref HEAD&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# f-20210903-entrust-pay-third&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;获取最近一次 commitID&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;git rev-parse HEAD&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 6f50fe018c261e3aa8e2c5199681a42bc25eb6ca&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 获取指定分支最后一次commitID&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;git rev-parse master&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 7226af556d8e7a80192ad3db8cb0fb319425ac87&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;获取.git的实际目录&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;git rev-parse --git-dir&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# .git&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;获取git仓库顶层目录&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;git rev-parse --show-toplevel_&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# /Users/xiaoyiyu/Desktop/your_program_dir&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;获取指提交信息详情&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 获取作者&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;echo&lt;/span&gt; $(git &lt;span class=&#34;built_in&#34;&gt;log&lt;/span&gt; --pretty=format:“%an” 7226af556d8e7a80192ad3db8cb0fb319425ac87 -1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 获取提交信息&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;echo&lt;/span&gt; $(git &lt;span class=&#34;built_in&#34;&gt;log&lt;/span&gt; --pretty=format:“%s” 7226af556d8e7a80192ad3db8cb0fb319425ac87 -1)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 获取修改时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;echo&lt;/span&gt; $(git &lt;span class=&#34;built_in&#34;&gt;log&lt;/span&gt; --pretty=format:“%ad” 7226af556d8e7a80192ad3db8cb0fb319425ac87 --&lt;span class=&#34;built_in&#34;&gt;date&lt;/span&gt;=format:&lt;span class=&#34;string&#34;&gt;&amp;#x27;%Y-%m-%d %H:%M:%S&amp;#x27;&lt;/span&gt; -1)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 获取提交时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;echo&lt;/span&gt; $(git &lt;span class=&#34;built_in&#34;&gt;log&lt;/span&gt; --pretty=format:“%&lt;span class=&#34;built_in&#34;&gt;cd&lt;/span&gt;” 7226af556d8e7a80192ad3db8cb0fb319425ac87 --&lt;span class=&#34;built_in&#34;&gt;date&lt;/span&gt;=format:&lt;span class=&#34;string&#34;&gt;&amp;#x27;%Y-%m-%d %H:%M:%S&amp;#x27;&lt;/span&gt; -1)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 获取提交者的邮件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;echo&lt;/span&gt; $(git &lt;span class=&#34;built_in&#34;&gt;log&lt;/span&gt; --pretty=format:“%ae” 7226af556d8e7a80192ad3db8cb0fb319425ac87 -1)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2017/05/05/Push%E6%9C%AC%E5%9C%B0%E5%8E%9F%E6%9C%89%E6%96%87%E4%BB%B6%E5%88%B0github%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/</guid>
+            <title>Push 本地原有文件到github新建项目</title>
+            <link>http://qiubo.ink/2017/05/05/Push%E6%9C%AC%E5%9C%B0%E5%8E%9F%E6%9C%89%E6%96%87%E4%BB%B6%E5%88%B0github%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/</link>
+            <category>git</category>
+            <category>git版本管理</category>
+            <pubDate>Fri, 05 May 2017 08:55:51 +0000</pubDate>
+            <description><![CDATA[ &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;本地项目已经完成，此时想同步至github上。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;方法一：创建文件夹 clone github项目至本地 ，拷贝项目并上传&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;方法二：在项目文件夹下git init 创建git本地版本库，再上传&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;方法二显然更合适，不过在方法二进行时出现&lt;code&gt;failed to push some refs to git&lt;/code&gt;错误提示,(不经常研究git工作原理，只是作为版本同步工具使用)，于是网上搜索。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;是因为远程文件不在本地文件夹中所致，运行命令&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;     git pull --rebase ogigin master&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;4.本地出现远程文件，此时运行git push则无报错。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2016/11/19/git%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6/</guid>
+            <title>【小码农博客】git添加文件夹下所有文件</title>
+            <link>http://qiubo.ink/2016/11/19/git%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6/</link>
+            <category>git学习</category>
+            <category>git</category>
+            <category>git版本管理</category>
+            <pubDate>Sat, 19 Nov 2016 10:47:05 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;最近，突然想将之前做的部分项目上传至 &lt;code&gt;github&lt;/code&gt; 上，却发现网上对于上传整个文件夹的讲解多种多样，转念一想，其实和添加文件是一样的，首先打开git-bash命令行&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;git status&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;发现有一个新的文件夹 添加文件是&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;git add (files name)&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  或者添加文件夹下所有的文件所&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;git add dirname/*&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这样一下所有的文件都被添加到 &lt;code&gt;git&lt;/code&gt; 暂存区了， 剩下的就是 &lt;code&gt;git commit&lt;/code&gt; 和 &lt;code&gt;git push&lt;/code&gt;了。&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

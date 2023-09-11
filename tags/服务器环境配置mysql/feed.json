@@ -1,0 +1,18 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "小码农博客 • All posts by \"服务器环境配置mysql\" tag",
+    "description": null,
+    "home_page_url": "http://qiubo.ink",
+    "items": [
+        {
+            "id": "http://qiubo.ink/2017/03/28/Debian%E4%B8%8B%E5%AE%89%E8%A3%85mysql,%E5%8F%8A%E8%AE%BF%E9%97%AE%E9%85%8D%E7%BD%AE/",
+            "url": "http://qiubo.ink/2017/03/28/Debian%E4%B8%8B%E5%AE%89%E8%A3%85mysql,%E5%8F%8A%E8%AE%BF%E9%97%AE%E9%85%8D%E7%BD%AE/",
+            "title": "Debian下安装mysql,及访问配置",
+            "date_published": "2017-03-28T09:12:50.000Z",
+            "content_html": "<ol>\n<li><p>使用 <code>putty</code> 连接服务器  </p>\n</li>\n<li><p>直接运行 <code>apt-get install mysql-server mysql-client</code></p>\n</li>\n<li><p>安装完成后,即可自动运行</p>\n</li>\n<li><p>外部不能访问:</p>\n<p>修改 <code>mysql</code> 配置文件 <code>my.conf</code></p>\n<figure class=\"highlight ini\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\"><span class=\"attr\">bind-address</span> = <span class=\"number\">127.0</span>.<span class=\"number\">0.1</span></span><br></pre></td></tr></table></figure>\n<p>修改为:</p>\n<figure class=\"highlight ini\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\"><span class=\"attr\">bind-address</span> = <span class=\"number\">0.0</span>.<span class=\"number\">0.0</span> 或者 行前加 <span class=\"comment\"># 号注释该行</span></span><br></pre></td></tr></table></figure></li>\n<li><p>重启mysql</p>\n</li>\n<li><p>赋予远程访问权限</p>\n<figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">mysql &gt; GRANT ALL ON *.* TO <span class=\"string\">&#x27;root&#x27;</span>@<span class=\"string\">&#x27;%&#x27;</span> IDENTIFIED BY <span class=\"string\">&#x27;root_password&#x27;</span> WITH GRANT OPTION;</span><br></pre></td></tr></table></figure></li>\n<li><p>修改默认用户名密码</p>\n</li>\n<li><p><code>mysql&gt; UPDATE user SET Password=PASSWORD(’newpassword’) where USER=’root’</code> </p>\n</li>\n<li><p><code>mysql&gt; FLUSH PRIVILEGES; </code></p>\n</li>\n</ol>\n<p>此时即可远程访问mysql数据库,进行管理.</p>\n",
+            "tags": [
+                "服务器环境配置mysql"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>小码农博客 • Posts by &#34;服务器环境配置mysql&#34; tag</title>
+        <link>http://qiubo.ink</link>
+        <description></description>
+        <language>ZH-cn</language>
+        <pubDate>Tue, 28 Mar 2017 09:12:50 +0000</pubDate>
+        <lastBuildDate>Tue, 28 Mar 2017 09:12:50 +0000</lastBuildDate>
+        <category>cmder</category>
+        <category>git学习</category>
+        <category>服务器环境配置mysql</category>
+        <category>golang</category>
+        <category>mod</category>
+        <category>module</category>
+        <category>私服</category>
+        <category>测试</category>
+        <category>string</category>
+        <category>linux</category>
+        <category>内存</category>
+        <category>nodejs</category>
+        <category>git</category>
+        <category>git版本管理</category>
+        <category>Vscode</category>
+        <category>常用插件</category>
+        <category>编辑器</category>
+        <category>npm</category>
+        <category>docker</category>
+        <category>frp</category>
+        <category>网络</category>
+        <category>gulp</category>
+        <category>前端自动化</category>
+        <category>虚拟主机</category>
+        <category>mysql</category>
+        <category>数据库</category>
+        <category>node操作数据库</category>
+        <category>josn web token</category>
+        <category>jwt</category>
+        <category>redis</category>
+        <category>并发</category>
+        <category>composer</category>
+        <category>php管理</category>
+        <category>cli</category>
+        <category>openresty</category>
+        <category>nginx</category>
+        <category>lua</category>
+        <category>响应式图片</category>
+        <category>移动端兼容</category>
+        <category>前端</category>
+        <category>wrk</category>
+        <category>web</category>
+        <category>dart</category>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2017/03/28/Debian%E4%B8%8B%E5%AE%89%E8%A3%85mysql,%E5%8F%8A%E8%AE%BF%E9%97%AE%E9%85%8D%E7%BD%AE/</guid>
+            <title>Debian下安装mysql,及访问配置</title>
+            <link>http://qiubo.ink/2017/03/28/Debian%E4%B8%8B%E5%AE%89%E8%A3%85mysql,%E5%8F%8A%E8%AE%BF%E9%97%AE%E9%85%8D%E7%BD%AE/</link>
+            <category>服务器环境配置mysql</category>
+            <pubDate>Tue, 28 Mar 2017 09:12:50 +0000</pubDate>
+            <description><![CDATA[ &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;使用 &lt;code&gt;putty&lt;/code&gt; 连接服务器  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;直接运行 &lt;code&gt;apt-get install mysql-server mysql-client&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装完成后,即可自动运行&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;外部不能访问:&lt;/p&gt;
+&lt;p&gt;修改 &lt;code&gt;mysql&lt;/code&gt; 配置文件 &lt;code&gt;my.conf&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight ini&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;attr&#34;&gt;bind-address&lt;/span&gt; = &lt;span class=&#34;number&#34;&gt;127.0&lt;/span&gt;.&lt;span class=&#34;number&#34;&gt;0.1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;修改为:&lt;/p&gt;
+&lt;figure class=&#34;highlight ini&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;attr&#34;&gt;bind-address&lt;/span&gt; = &lt;span class=&#34;number&#34;&gt;0.0&lt;/span&gt;.&lt;span class=&#34;number&#34;&gt;0.0&lt;/span&gt; 或者 行前加 &lt;span class=&#34;comment&#34;&gt;# 号注释该行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;重启mysql&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;赋予远程访问权限&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;mysql &amp;gt; GRANT ALL ON *.* TO &lt;span class=&#34;string&#34;&gt;&amp;#x27;root&amp;#x27;&lt;/span&gt;@&lt;span class=&#34;string&#34;&gt;&amp;#x27;%&amp;#x27;&lt;/span&gt; IDENTIFIED BY &lt;span class=&#34;string&#34;&gt;&amp;#x27;root_password&amp;#x27;&lt;/span&gt; WITH GRANT OPTION;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改默认用户名密码&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;mysql&amp;gt; UPDATE user SET Password=PASSWORD(’newpassword’) where USER=’root’&lt;/code&gt; &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;mysql&amp;gt; FLUSH PRIVILEGES; &lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;此时即可远程访问mysql数据库,进行管理.&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

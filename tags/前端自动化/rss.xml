@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>小码农博客 • Posts by &#34;前端自动化&#34; tag</title>
+        <link>http://qiubo.ink</link>
+        <description></description>
+        <language>ZH-cn</language>
+        <pubDate>Thu, 08 Dec 2016 12:09:12 +0000</pubDate>
+        <lastBuildDate>Thu, 08 Dec 2016 12:09:12 +0000</lastBuildDate>
+        <category>cmder</category>
+        <category>git学习</category>
+        <category>服务器环境配置mysql</category>
+        <category>golang</category>
+        <category>mod</category>
+        <category>module</category>
+        <category>私服</category>
+        <category>测试</category>
+        <category>string</category>
+        <category>linux</category>
+        <category>内存</category>
+        <category>nodejs</category>
+        <category>git</category>
+        <category>git版本管理</category>
+        <category>Vscode</category>
+        <category>常用插件</category>
+        <category>编辑器</category>
+        <category>npm</category>
+        <category>docker</category>
+        <category>frp</category>
+        <category>网络</category>
+        <category>gulp</category>
+        <category>前端自动化</category>
+        <category>虚拟主机</category>
+        <category>mysql</category>
+        <category>数据库</category>
+        <category>node操作数据库</category>
+        <category>josn web token</category>
+        <category>jwt</category>
+        <category>redis</category>
+        <category>并发</category>
+        <category>composer</category>
+        <category>php管理</category>
+        <category>cli</category>
+        <category>openresty</category>
+        <category>nginx</category>
+        <category>lua</category>
+        <category>响应式图片</category>
+        <category>移动端兼容</category>
+        <category>前端</category>
+        <category>wrk</category>
+        <category>web</category>
+        <category>dart</category>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2016/12/08/gulp%E5%88%9D%E4%BD%93%E9%AA%8C/</guid>
+            <title>gulp初体验</title>
+            <link>http://qiubo.ink/2016/12/08/gulp%E5%88%9D%E4%BD%93%E9%AA%8C/</link>
+            <category>nodejs</category>
+            <category>gulp</category>
+            <category>前端自动化</category>
+            <pubDate>Thu, 08 Dec 2016 12:09:12 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;在云IDEcloud9中体验测试了gulp&lt;/p&gt;
+&lt;h4 id=&#34;1-首先npm-install-gulp-g&#34;&gt;&lt;a href=&#34;#1-首先npm-install-gulp-g&#34; class=&#34;headerlink&#34; title=&#34;1. 首先npm install gulp -g&#34;&gt;&lt;/a&gt;1. 首先npm install gulp -g&lt;/h4&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;npm install gulp --save-dev 全局和项目安装gulp&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;2-测试项目为压缩文件和修改文件名称&#34;&gt;&lt;a href=&#34;#2-测试项目为压缩文件和修改文件名称&#34; class=&#34;headerlink&#34; title=&#34;2. 测试项目为压缩文件和修改文件名称&#34;&gt;&lt;/a&gt;2. 测试项目为压缩文件和修改文件名称&lt;/h4&gt;&lt;p&gt;安装gulp依赖项&lt;/p&gt;
+&lt;p&gt;| 名称 | 含义 |&lt;br&gt;|gulp-minify|压缩css文件|&lt;br&gt;|gulp-uglify|压缩js文件|&lt;br&gt;|gulp-concat|合并文件|&lt;br&gt;|gulp-rename|修改文件或文件夹名称|&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;npm install gulp-minify --save-dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;3-创建gulpfile-js文件&#34;&gt;&lt;a href=&#34;#3-创建gulpfile-js文件&#34; class=&#34;headerlink&#34; title=&#34;3. 创建gulpfile.js文件&#34;&gt;&lt;/a&gt;3. 创建gulpfile.js文件&lt;/h4&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var gulp = require(&amp;#x27;gulp&amp;#x27;),&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    minify = require(&amp;#x27;gulp-minify&amp;#x27;),&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    uglify = require(&amp;#x27;gulp-uglify&amp;#x27;),&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    concat = require(&amp;#x27;gulp-concat&amp;#x27;),&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    rename = require(&amp;#x27;gulp-rename&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//获取每个组件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; gulp.task(&amp;#x27;taskName&amp;#x27;,function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    return gulp.src(&amp;#x27;./dst/js/*.js&amp;#x27;)               //返回任务操作路径和文件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        .pipe(concat(&amp;#x27;functions.js&amp;#x27;))              //合并所有的js文件为functions.js&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        .pipe(gulp.dest(&amp;#x27;./src/js/&amp;#x27;))              //输出functions.js文件到根目录下src下js文件夹&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        .pipe(uglify())                            //压缩该文件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        .pipe(rename(&amp;#123;extname:&amp;#x27;.min.js&amp;#x27;&amp;#125;))         //对压缩后的文件进行重命名，修改文件后缀为.min.js&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        .pipe(gulp.dest(&amp;#x27;./src/js/&amp;#x27;));             //输出到与未压缩同目录下&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &amp;#125;);//新建一个名字叫taskName的任务&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;4-文件内容详解：&#34;&gt;&lt;a href=&#34;#4-文件内容详解：&#34; class=&#34;headerlink&#34; title=&#34;4. 文件内容详解：&#34;&gt;&lt;/a&gt;4. 文件内容详解：&lt;/h4&gt;&lt;h5 id=&#34;require-函数：&#34;&gt;&lt;a href=&#34;#require-函数：&#34; class=&#34;headerlink&#34; title=&#34;require()函数：&#34;&gt;&lt;/a&gt;require()函数：&lt;/h5&gt;&lt;p&gt;参数为string&lt;br&gt;&lt;strong&gt;1. 如果string为内置模块&lt;/strong&gt;&lt;br&gt;        返回该模块 不再继续执行&lt;br&gt;&lt;strong&gt;2. 如果string以文件路径形式（如：’.&amp;#x2F;X’、’..&amp;#x2F;X’ 、’&amp;#x2F;X’）&lt;/strong&gt;&lt;br&gt;        根据 X 所在的父模块，确定 X 的绝对路径。 将 X 当成文件，依次查找名称为X的文件，只要其中有一个存在，就返回该文件，不再继续执行。 X X.js X.json X.node 将 X 当成目录，依次查找下面文件，只要其中有一个存在，就返回该文件，不再继续执行。 X&amp;#x2F;package.json X&amp;#x2F;index.js X&amp;#x2F;index.json X&amp;#x2F;index.node&lt;br&gt;&lt;strong&gt;3. 如果string不带路径&lt;/strong&gt;&lt;br&gt;        根据 X 所在的父模块，确定 X 可能的安装目录。 依次在每个目录中，将 X 当成文件名或目录名加载。&lt;br&gt;        &lt;a href=&#34;http://www.ruanyifeng.com/blog/2015/05/require.html&#34;&gt;参考文章1&lt;/a&gt;&lt;br&gt;        &lt;a href=&#34;http://www.jdon.com/idea/nodejs/how-require-actually-works.html&#34;&gt;参考文章2&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;gulp-task&#34;&gt;&lt;a href=&#34;#gulp-task&#34; class=&#34;headerlink&#34; title=&#34;gulp.task()&#34;&gt;&lt;/a&gt;gulp.task()&lt;/h5&gt;&lt;p&gt;用于创建gulp任务，默认任务名称为&lt;code&gt;default task(&amp;#39;a&amp;#39;,b)&lt;/code&gt;; 参数a：指定任务名称 参数b：匿名函数 执行任务时运行 gulp a（默认任务名直接执行 gulp 即可）&lt;/p&gt;
+&lt;h5 id=&#34;gulp-src&#34;&gt;&lt;a href=&#34;#gulp-src&#34; class=&#34;headerlink&#34; title=&#34;gulp.src()&#34;&gt;&lt;/a&gt;gulp.src()&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;    `gulp.src(globs[, options])`
+    1. `globs` 参数是文件匹配模式(类似正则表达式)，用来匹配文件路径(包括文件名)，当然这里也可以直接指定某个具体的文件路径。当有多个匹配模式时，该参数可以为一个数组。
+    2. `options` 为可选参数。通常情况下我们不需要用到。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;pipe&#34;&gt;&lt;a href=&#34;#pipe&#34; class=&#34;headerlink&#34; title=&#34;pipe()&#34;&gt;&lt;/a&gt;pipe()&lt;/h5&gt;&lt;p&gt;&lt;code&gt;node.js&lt;/code&gt; 中 &lt;code&gt;stream&lt;/code&gt;（流）的指示方向&lt;/p&gt;
+&lt;h5 id=&#34;gulp-dest&#34;&gt;&lt;a href=&#34;#gulp-dest&#34; class=&#34;headerlink&#34; title=&#34;gulp.dest()&#34;&gt;&lt;/a&gt;gulp.dest()&lt;/h5&gt;&lt;p&gt;&lt;code&gt;gulp.dest()&lt;/code&gt; 方法是用来写文件的，其语法为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    `gulp.dest(path[,options])`
+    1. path为写入文件的路径
+    2. options为一个可选的参数对象，通常我们不需要用到
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;concat&#34;&gt;&lt;a href=&#34;#concat&#34; class=&#34;headerlink&#34; title=&#34;concat()&#34;&gt;&lt;/a&gt;concat()&lt;/h5&gt;&lt;p&gt;合并文件，指定参数为合并后的文件名称&lt;/p&gt;
+&lt;h5 id=&#34;uglify&#34;&gt;&lt;a href=&#34;#uglify&#34; class=&#34;headerlink&#34; title=&#34;uglify()&#34;&gt;&lt;/a&gt;uglify()&lt;/h5&gt;&lt;p&gt;压缩文件，没有制定参数，直接压缩js文件&lt;/p&gt;
+&lt;h5 id=&#34;rename&#34;&gt;&lt;a href=&#34;#rename&#34; class=&#34;headerlink&#34; title=&#34;rename()&#34;&gt;&lt;/a&gt;rename()&lt;/h5&gt;&lt;p&gt;参数为数组，&lt;code&gt;basename&lt;/code&gt;、&lt;code&gt;prefix/suffix&lt;/code&gt;、&lt;code&gt;extname&lt;/code&gt;、&lt;code&gt;dirname&lt;/code&gt; 常用：prefix: ‘pre-‘ 增加前缀pre- suffix: ‘-suf’ 增加后缀，不改变文件性质 extname:’.min.js’ 修改文件后缀 &lt;a href=&#34;http://www.cnblogs.com/2050/p/4198792.html&#34;&gt;参考文章3&lt;/a&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

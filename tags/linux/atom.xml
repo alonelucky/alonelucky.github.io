@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://qiubo.ink</id>
+    <title>小码农博客 • Posts by &#34;linux&#34; tag</title>
+    <link href="http://qiubo.ink" />
+    <updated>2018-09-25T14:09:08.000Z</updated>
+    <category term="cmder" />
+    <category term="git学习" />
+    <category term="服务器环境配置mysql" />
+    <category term="golang" />
+    <category term="mod" />
+    <category term="module" />
+    <category term="私服" />
+    <category term="测试" />
+    <category term="string" />
+    <category term="linux" />
+    <category term="内存" />
+    <category term="nodejs" />
+    <category term="git" />
+    <category term="git版本管理" />
+    <category term="Vscode" />
+    <category term="常用插件" />
+    <category term="编辑器" />
+    <category term="npm" />
+    <category term="docker" />
+    <category term="frp" />
+    <category term="网络" />
+    <category term="gulp" />
+    <category term="前端自动化" />
+    <category term="虚拟主机" />
+    <category term="mysql" />
+    <category term="数据库" />
+    <category term="node操作数据库" />
+    <category term="josn web token" />
+    <category term="jwt" />
+    <category term="redis" />
+    <category term="并发" />
+    <category term="composer" />
+    <category term="php管理" />
+    <category term="cli" />
+    <category term="openresty" />
+    <category term="nginx" />
+    <category term="lua" />
+    <category term="响应式图片" />
+    <category term="移动端兼容" />
+    <category term="前端" />
+    <category term="wrk" />
+    <category term="web" />
+    <category term="dart" />
+    <entry>
+        <id>http://qiubo.ink/2018/09/25/Linux%E6%89%8B%E5%8A%A8%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98/</id>
+        <title>Linux手动释放内存</title>
+        <link rel="alternate" href="http://qiubo.ink/2018/09/25/Linux%E6%89%8B%E5%8A%A8%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98/"/>
+        <content type="html">&lt;p&gt;正常情况linux 下是不需要手动内存释放的,但是使用图形界面的时候部分程序的确占用较大内存，但又需要释放的时候就需要用到手动释放了．&lt;/p&gt;
+&lt;h3 id=&#34;1-查看内存&#34;&gt;&lt;a href=&#34;#1-查看内存&#34; class=&#34;headerlink&#34; title=&#34;1. 查看内存&#34;&gt;&lt;/a&gt;1. 查看内存&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;cat&lt;/span&gt; /proc/sys/vm/drop_caches&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 0 – 不释放&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 1 – 释放页缓存&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 2 – 释放dentries和inodes&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 3 – 释放所有缓存&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;sync&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# sync 命令运行 sync 子例程。如果必须停止系统，则运行 sync 命令以确保文件系统的完整性。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;$&amp;gt; free -m &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;              total        used        free      shared  buff/cache   available&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; Mem:           7929        5876         502         128        1549        1649&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; Swap:             0           0           0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# total——总物理内存&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# used——已使用内存，一般情况这个值会比较大，因为这个值包括了cache+应用程序使用的内存&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# free——完全未被使用的内存&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# shared——应用程序共享内存&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# buffers——缓存，主要用于目录方面,inode值等（ls大目录可看到这个值增加）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# cached——缓存，用于已打开的文件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;2-释放内存&#34;&gt;&lt;a href=&#34;#2-释放内存&#34; class=&#34;headerlink&#34; title=&#34;2. 释放内存&#34;&gt;&lt;/a&gt;2. 释放内存&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;echo&lt;/span&gt; 1 &amp;gt; /proc/sys/vm/drop_caches&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;#              total        used        free      shared  buff/cache   available&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# Mem:           7929        5902        1375         129         650        1628&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# Swap:             0           0           0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;内存已经释放掉了&lt;/p&gt;
+</content>
+        <category term="linux" />
+        <category term="内存" />
+        <updated>2018-09-25T14:09:08.000Z</updated>
+    </entry>
+    <entry>
+        <id>http://qiubo.ink/2016/12/26/linux%E4%B8%8B%E9%85%8D%E7%BD%AE%E5%AE%89%E8%A3%85nodejs/</id>
+        <title>linux下配置安装nodejs</title>
+        <link rel="alternate" href="http://qiubo.ink/2016/12/26/linux%E4%B8%8B%E9%85%8D%E7%BD%AE%E5%AE%89%E8%A3%85nodejs/"/>
+        <content type="html">&lt;h2 id=&#34;linux下配置安装nodejs&#34;&gt;&lt;a href=&#34;#linux下配置安装nodejs&#34; class=&#34;headerlink&#34; title=&#34;linux下配置安装nodejs&#34;&gt;&lt;/a&gt;linux下配置安装nodejs&lt;/h2&gt;&lt;p&gt;（非广告）virmach 美国VPS主机 &lt;code&gt;7.5刀/年&lt;/code&gt;（折合软妹币52.129；按软妹付款为54多）， 配置如下：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;CPU&lt;/th&gt;
+&lt;th&gt;RAM&lt;/th&gt;
+&lt;th&gt;硬盘&lt;/th&gt;
+&lt;th&gt;带宽&amp;#x2F;流量&lt;/th&gt;
+&lt;th&gt;IP&lt;/th&gt;
+&lt;th&gt;DDoS保护&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;1核&lt;/td&gt;
+&lt;td&gt;128M&lt;/td&gt;
+&lt;td&gt;10G SSD&lt;/td&gt;
+&lt;td&gt;1Gbps&amp;#x2F;250Gbp&lt;/td&gt;
+&lt;td&gt;一个&lt;/td&gt;
+&lt;td&gt;10Gbps&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;个人觉得还可以，就买了一个练习配置，因为内存不大，所以打算配置nodejs练练手，就当学习了。下边是linux配置，非购买使用流程。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;根据提供的IP:22使用putty链接&lt;/li&gt;
+&lt;li&gt;用户名root 密码***** &lt;img src=&#34;http://xiaqiubo.top/wp-content/uploads/2017/02/virmach001-300x188.png&#34;&gt;&lt;/li&gt;
+&lt;li&gt;该主机自带了python2.7.3 &lt;img src=&#34;http://xiaqiubo.top/wp-content/uploads/2017/02/virmach002-300x42.png&#34;&gt;&lt;/li&gt;
+&lt;li&gt;于是安装node就省去了很大一步（注：还得在本地虚拟机从零测试安装） &lt;code&gt;cd /usr/local/&lt;/code&gt; 在这个文件夹下（当然哪个文件夹都可以），下载nodejs资源包 本来想服务器在国外，下载国外的node资源应该不错，&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;于是乎找到下载地址（官网的） &lt;a href=&#34;https://nodejs.org/dist/v6.9.2/node-v6.9.2-linux-x86.tar.xz&#34;&gt;https://nodejs.org/dist/v6.9.2/node-v6.9.2-linux-x86.tar.xz&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;运行 &lt;code&gt;wget --no-check-certificate https://nodejs.org/dist/v6.9.2/node-v6.9.2-linux-x86.tar.xz&lt;/code&gt; no-check-certificate是阻止wget下载前验证 下载成功 ，而且网速还不错&lt;br&gt;&lt;img src=&#34;http://xiaqiubo.top/wp-content/uploads/2017/02/virmach003-300x188.png&#34;&gt; &lt;/li&gt;
+&lt;li&gt;解压 &lt;code&gt;tar node-v6.9.2-linux-x86.tar.xz&lt;/code&gt; (已解决使用xz命令解压缩  2016-12-26) 格式错误。于是只能拐回国内链接 &lt;/li&gt;
+&lt;li&gt;同样运行 &lt;code&gt;wget --no-check-certificate https://nodejs.org/dist/v6.2.0/node-v6.2.0-linux-x86.tar.gz&lt;/code&gt;          &lt;br&gt;&lt;img src=&#34;http://xiaqiubo.top/wp-content/uploads/2017/02/virmach004-300x189.png&#34;&gt; 下载成功，网速依旧。&lt;/li&gt;
+&lt;li&gt;解压 &lt;code&gt;tar node-v6.9.2-linux-x86.tar.xz&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;解压文件包并重命名文件夹（详情搜索mv命令） &lt;code&gt;mv node-v6.9.2-linux-x86 node&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;配置临时环境变量 &lt;code&gt;export PATH=/usr/local/python/bin:/usr/local/node/bin:$PATH&lt;/code&gt; 该环境变量为临时变量，关闭ssh窗口即失效 所以需要配置永久环境变量，修改etc&amp;#x2F;profile文件&lt;/li&gt;
+&lt;li&gt;编辑添加全局环境变量 &lt;code&gt;vim /etc/profile&lt;/code&gt;&lt;br&gt;   &lt;img src=&#34;http://xiaqiubo.top/wp-content/uploads/2017/02/virmach005-300x188.png&#34;&gt; 增加变量路径 &lt;code&gt;:wq&lt;/code&gt;保存退出&lt;/li&gt;
+&lt;li&gt;node环境配置成功&lt;br&gt;   &lt;img src=&#34;http://xiaqiubo.top/wp-content/uploads/2017/02/virmach006-300x48.png&#34;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;剩下的后期继续更新。&lt;/p&gt;
+</content>
+        <category term="linux" />
+        <category term="nodejs" />
+        <category term="虚拟主机" />
+        <updated>2016-12-26T11:29:20.000Z</updated>
+    </entry>
+</feed>

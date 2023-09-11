@@ -1,0 +1,20 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "小码农博客 • All posts by \"node操作数据库\" tag",
+    "description": null,
+    "home_page_url": "http://qiubo.ink",
+    "items": [
+        {
+            "id": "http://qiubo.ink/2017/05/12/node-mysql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/",
+            "url": "http://qiubo.ink/2017/05/12/node-mysql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/",
+            "title": "node-mysql基础操作",
+            "date_published": "2017-05-12T17:47:06.000Z",
+            "content_html": "<h4 id=\"1-安装mysql模块\"><a href=\"#1-安装mysql模块\" class=\"headerlink\" title=\"1. 安装mysql模块\"></a>1. 安装mysql模块</h4><figure class=\"highlight plaintext\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">npm install mysql --save</span><br></pre></td></tr></table></figure>\n<h4 id=\"2-创建mysql-js\"><a href=\"#2-创建mysql-js\" class=\"headerlink\" title=\"2. 创建mysql.js\"></a>2. 创建mysql.js</h4><figure class=\"highlight plaintext\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br><span class=\"line\">5</span><br><span class=\"line\">6</span><br><span class=\"line\">7</span><br><span class=\"line\">8</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">var mysql = require(&#x27;mysql&#x27;);</span><br><span class=\"line\"></span><br><span class=\"line\">var connection = mysql.createConnection(&#123;</span><br><span class=\"line\">    host:&#x27;localhost&#x27;,</span><br><span class=\"line\">    user:&#x27;root&#x27;,</span><br><span class=\"line\">    password:&#x27;root&#x27;,</span><br><span class=\"line\">    database:&#x27;node&#x27;</span><br><span class=\"line\">&#125;);</span><br></pre></td></tr></table></figure>\n<p>利用mysql模块的createConnection函数,配置好相应参数即可连接mysql数据库,</p>\n<figure class=\"highlight plaintext\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">connection.connect();</span><br><span class=\"line\">console.log(&#x27;数据库连接成功&#x27;);</span><br></pre></td></tr></table></figure>\n<p>建立连接</p>\n<figure class=\"highlight plaintext\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br><span class=\"line\">5</span><br><span class=\"line\">6</span><br><span class=\"line\">7</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">connection.query(sql,function(err,res)&#123;</span><br><span class=\"line\">    if(err)&#123;</span><br><span class=\"line\">        console.log(err);</span><br><span class=\"line\">    &#125;else&#123;</span><br><span class=\"line\">        console.log(res);</span><br><span class=\"line\">    &#125;</span><br><span class=\"line\">&#125;);</span><br></pre></td></tr></table></figure>\n<p>运行sql语句,返回数据信息</p>\n<figure class=\"highlight plaintext\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">connection.end();</span><br><span class=\"line\">console.log(&#x27;数据库关闭&#x27;);</span><br></pre></td></tr></table></figure>\n<p>关闭数据库连接</p>\n",
+            "tags": [
+                "nodejs",
+                "mysql",
+                "node操作数据库"
+            ]
+        }
+    ]
+}

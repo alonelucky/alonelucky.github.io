@@ -1,0 +1,19 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "小码农博客 • All posts by \"string\" tag",
+    "description": null,
+    "home_page_url": "http://qiubo.ink",
+    "items": [
+        {
+            "id": "http://qiubo.ink/2019/06/21/Golang%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6/",
+            "url": "http://qiubo.ink/2019/06/21/Golang%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6/",
+            "title": "Golang获取字符串长度",
+            "date_published": "2019-06-21T17:28:41.000Z",
+            "content_html": "<p>尝试通过实际使用逐步了解go源码及发现实用函数</p>\n<span id=\"more\"></span>\n\n<h2 id=\"1-builtin-中的-len-函数\"><a href=\"#1-builtin-中的-len-函数\" class=\"headerlink\" title=\"1. builtin 中的 len 函数\"></a>1. builtin 中的 len 函数</h2><p>builtin 包为Go的预声明标识符提供了文档。无需引包</p>\n<figure class=\"highlight plaintext\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">length := len(&quot;hello world&quot;)</span><br><span class=\"line\">// 11</span><br><span class=\"line\">length = len(&quot;你好, world&quot;)</span><br><span class=\"line\">// 13</span><br></pre></td></tr></table></figure>\n<blockquote>\n<p>优点：无需引包，直接使用<br>缺点：中文占3个字节长度，非实际字符数</p>\n</blockquote>\n<h2 id=\"2-strings-Count-统计字符函数\"><a href=\"#2-strings-Count-统计字符函数\" class=\"headerlink\" title=\"2. strings.Count 统计字符函数\"></a>2. strings.Count 统计字符函数</h2><p>strings 是字符串相关操作的内置库</p>\n<figure class=\"highlight plaintext\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">length := strings.Count(&quot;hello world&quot;,&quot;&quot;) -1 </span><br><span class=\"line\">// 11</span><br><span class=\"line\">length = strings.Count(&quot;你好，世界&quot;,&quot;&quot;) - 1</span><br><span class=\"line\">// 5</span><br></pre></td></tr></table></figure>\n<blockquote>\n<p>优点：中文字符识别<br>缺点：参数冗余，且底层另有实现函数, 见3</p>\n</blockquote>\n<h2 id=\"3-unicode-utf8-RuneCountInString-utf8字符统计\"><a href=\"#3-unicode-utf8-RuneCountInString-utf8字符统计\" class=\"headerlink\" title=\"3. unicode&#x2F;utf8.RuneCountInString utf8字符统计\"></a>3. unicode&#x2F;utf8.RuneCountInString utf8字符统计</h2><figure class=\"highlight plaintext\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">length := utf8.RuneCountInString(&quot;hello world&quot;)</span><br><span class=\"line\">// 11</span><br><span class=\"line\">length = utf8.RuneCountInString(&quot;你好，世界&quot;)</span><br><span class=\"line\">// 5</span><br></pre></td></tr></table></figure>\n<blockquote>\n<p>优点：官方utf8长度统计，无其他函数调用<br>缺点：貌似只有utf8字符集</p>\n</blockquote>\n",
+            "tags": [
+                "golang",
+                "string"
+            ]
+        }
+    ]
+}

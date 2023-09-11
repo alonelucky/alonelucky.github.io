@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://qiubo.ink</id>
+    <title>小码农博客 • Posts by &#34;string&#34; tag</title>
+    <link href="http://qiubo.ink" />
+    <updated>2019-06-21T17:28:41.000Z</updated>
+    <category term="cmder" />
+    <category term="git学习" />
+    <category term="服务器环境配置mysql" />
+    <category term="golang" />
+    <category term="mod" />
+    <category term="module" />
+    <category term="私服" />
+    <category term="测试" />
+    <category term="string" />
+    <category term="linux" />
+    <category term="内存" />
+    <category term="nodejs" />
+    <category term="git" />
+    <category term="git版本管理" />
+    <category term="Vscode" />
+    <category term="常用插件" />
+    <category term="编辑器" />
+    <category term="npm" />
+    <category term="docker" />
+    <category term="frp" />
+    <category term="网络" />
+    <category term="gulp" />
+    <category term="前端自动化" />
+    <category term="虚拟主机" />
+    <category term="mysql" />
+    <category term="数据库" />
+    <category term="node操作数据库" />
+    <category term="josn web token" />
+    <category term="jwt" />
+    <category term="redis" />
+    <category term="并发" />
+    <category term="composer" />
+    <category term="php管理" />
+    <category term="cli" />
+    <category term="openresty" />
+    <category term="nginx" />
+    <category term="lua" />
+    <category term="响应式图片" />
+    <category term="移动端兼容" />
+    <category term="前端" />
+    <category term="wrk" />
+    <category term="web" />
+    <category term="dart" />
+    <entry>
+        <id>http://qiubo.ink/2019/06/21/Golang%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6/</id>
+        <title>Golang获取字符串长度</title>
+        <link rel="alternate" href="http://qiubo.ink/2019/06/21/Golang%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6/"/>
+        <content type="html">&lt;p&gt;尝试通过实际使用逐步了解go源码及发现实用函数&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;1-builtin-中的-len-函数&#34;&gt;&lt;a href=&#34;#1-builtin-中的-len-函数&#34; class=&#34;headerlink&#34; title=&#34;1. builtin 中的 len 函数&#34;&gt;&lt;/a&gt;1. builtin 中的 len 函数&lt;/h2&gt;&lt;p&gt;builtin 包为Go的预声明标识符提供了文档。无需引包&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;length := len(&amp;quot;hello world&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;// 11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;length = len(&amp;quot;你好, world&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;// 13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;优点：无需引包，直接使用&lt;br&gt;缺点：中文占3个字节长度，非实际字符数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;2-strings-Count-统计字符函数&#34;&gt;&lt;a href=&#34;#2-strings-Count-统计字符函数&#34; class=&#34;headerlink&#34; title=&#34;2. strings.Count 统计字符函数&#34;&gt;&lt;/a&gt;2. strings.Count 统计字符函数&lt;/h2&gt;&lt;p&gt;strings 是字符串相关操作的内置库&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;length := strings.Count(&amp;quot;hello world&amp;quot;,&amp;quot;&amp;quot;) -1 &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;// 11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;length = strings.Count(&amp;quot;你好，世界&amp;quot;,&amp;quot;&amp;quot;) - 1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;// 5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;优点：中文字符识别&lt;br&gt;缺点：参数冗余，且底层另有实现函数, 见3&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;3-unicode-utf8-RuneCountInString-utf8字符统计&#34;&gt;&lt;a href=&#34;#3-unicode-utf8-RuneCountInString-utf8字符统计&#34; class=&#34;headerlink&#34; title=&#34;3. unicode&amp;#x2F;utf8.RuneCountInString utf8字符统计&#34;&gt;&lt;/a&gt;3. unicode&amp;#x2F;utf8.RuneCountInString utf8字符统计&lt;/h2&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;length := utf8.RuneCountInString(&amp;quot;hello world&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;// 11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;length = utf8.RuneCountInString(&amp;quot;你好，世界&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;// 5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;优点：官方utf8长度统计，无其他函数调用&lt;br&gt;缺点：貌似只有utf8字符集&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+        <category term="golang" />
+        <category term="string" />
+        <updated>2019-06-21T17:28:41.000Z</updated>
+    </entry>
+</feed>

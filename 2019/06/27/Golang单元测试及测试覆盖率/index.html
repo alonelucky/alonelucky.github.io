@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang=zh-CN><head><meta charset=utf-8><meta name=author content="萧逸雨, xiaqiubo123@gmail.com"><link rel=alternate type=application/rss+xml title=小码农博客 href=http://qiubo.ink/rss.xml><link rel=alternate type=application/atom+xml title=小码农博客 href=http://qiubo.ink/atom.xml><link rel=alternate type=application/json title=小码农博客 href=http://qiubo.ink/feed.json><title>Golang单元测试及测试覆盖率 | 小码农博客</title><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=keywords content=笔记,golang,golang,测试,><script src=//cdn.bootcss.com/jquery/3.3.1/jquery.min.js></script><script>console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n', 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');</script><link rel=icon href=/images/favicon.ico><link rel=apple-touch-icon href=/images/touch-icon.png><link href=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css rel=stylesheet><link rel=stylesheet href=/css/base.css><link rel=stylesheet href=/icon/iconfont.css><link rel=stylesheet href=/css/github-markdown.css><link rel=stylesheet href=/css/highlight.css><script src=/js/util.js></script><script src=/js/valine.min.js></script><link rel=stylesheet href=/css/custom.css><link href=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css rel=stylesheet><script src=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js async></script><meta name=generator content="Hexo 7.0.0-rc2"></head><body><div id=app><div class=header-wrap><header><div class=site-brand><div class=site-title><a href=/ >小码农博客</a></div></div><nav class=site-navigation><ul class=nav-menu><li class=nav-item data-path=/ ><a href=/ target=_self>主页</a></li><li class=nav-item data-path=/archives/ ><a href=/archives/ target=_self>归档</a></li><li class=nav-item data-path=/categories/ ><a href=/categories/ target=_self>分类</a></li><li class=nav-item data-path=/tags/ ><a href=/tags/ target=_self>标签</a></li><li class=nav-item data-path=""><a href=javascript:void(0); v-else>抓到我</a><ul class=nav-menu--dropdown><li><a href=https://github.com/alonelucky target=_blank>Github</a></li></ul></li></ul></nav><i class="iconfont icon-menu"></i></header></div><script>let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
+
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked 
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })</script><div class="container post-index"><div class=post><h1 class=article-title><span>Golang单元测试及测试覆盖率</span></h1><div class=article-top-meta><span>发布 : 2019-06-27 </span><span>分类 : <a href=/categories/%E7%AC%94%E8%AE%B0/ >笔记</a></span></div><div class=article-content><div class=markdown-body><p>本文 go 版本 1.12.5, 在 <code>go mod</code> 下 当前项目名称 <code>goshop</code></p><h3 id=1-书写代码><a href=#1-书写代码 class=headerlink title="1. 书写代码"></a>1. 书写代码</h3><ol><li>自定义库代码 <code>goshop/app/lib</code> 下 utils.go<figure class="highlight go"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br><span class=line>10</span><br><span class=line>11</span><br><span class=line>12</span><br><span class=line>13</span><br><span class=line>14</span><br><span class=line>15</span><br><span class=line>16</span><br></pre></td><td class=code><pre><span class=line><span class=keyword>package</span> tools</span><br><span class=line></span><br><span class=line><span class=comment>// CheckPhoneNumber 校验手机号</span></span><br><span class=line><span class=function><span class=keyword>func</span> <span class=title>CheckPhoneNumber</span><span class=params>(phone <span class=type>string</span>)</span></span> <span class=type>bool</span> &#123;</span><br><span class=line>  <span class=comment>// 手机号长度11位</span></span><br><span class=line>  <span class=keyword>if</span> StringLength(phone) != <span class=number>11</span> &#123;</span><br><span class=line>    <span class=keyword>return</span> <span class=literal>false</span></span><br><span class=line>  &#125;</span><br><span class=line>  reg := regexp.MustCompile(<span class=string>`^1[3,4,5,6,7,8,9]&#123;1&#125;[0-9]&#123;9&#125;$`</span>)</span><br><span class=line>  <span class=keyword>return</span> reg.MatchString(phone)</span><br><span class=line>&#125;</span><br><span class=line></span><br><span class=line><span class=comment>// StringLength 获取字符串长度</span></span><br><span class=line><span class=function><span class=keyword>func</span> <span class=title>StringLength</span><span class=params>(str <span class=type>string</span>)</span></span> <span class=type>int</span> &#123;</span><br><span class=line>  <span class=keyword>return</span> strings.Count(str, <span class=string>&quot;&quot;</span>) - <span class=number>1</span></span><br><span class=line>&#125;</span><br></pre></td></tr></table></figure></li><li>测试代码 <code>goshop/app/lib</code> 下 utils_test.go<figure class="highlight go"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br><span class=line>10</span><br><span class=line>11</span><br><span class=line>12</span><br><span class=line>13</span><br><span class=line>14</span><br><span class=line>15</span><br><span class=line>16</span><br><span class=line>17</span><br><span class=line>18</span><br><span class=line>19</span><br><span class=line>20</span><br><span class=line>21</span><br><span class=line>22</span><br><span class=line>23</span><br><span class=line>24</span><br><span class=line>25</span><br><span class=line>26</span><br><span class=line>27</span><br><span class=line>28</span><br><span class=line>29</span><br><span class=line>30</span><br><span class=line>31</span><br><span class=line>32</span><br><span class=line>33</span><br><span class=line>34</span><br><span class=line>35</span><br><span class=line>36</span><br><span class=line>37</span><br><span class=line>38</span><br><span class=line>39</span><br><span class=line>40</span><br><span class=line>41</span><br><span class=line>42</span><br><span class=line>43</span><br><span class=line>44</span><br><span class=line>45</span><br><span class=line>46</span><br><span class=line>47</span><br><span class=line>48</span><br><span class=line>49</span><br><span class=line>50</span><br><span class=line>51</span><br></pre></td><td class=code><pre><span class=line><span class=keyword>package</span> tools</span><br><span class=line></span><br><span class=line><span class=keyword>import</span> (</span><br><span class=line>  <span class=string>&quot;testing&quot;</span></span><br><span class=line>)</span><br><span class=line></span><br><span class=line></span><br><span class=line><span class=function><span class=keyword>func</span> <span class=title>TestCheckPhoneNumber</span><span class=params>(t *testing.T)</span></span> &#123;</span><br><span class=line>  <span class=keyword>type</span> suite <span class=keyword>struct</span> &#123;</span><br><span class=line>    data   <span class=type>string</span></span><br><span class=line>    result <span class=type>bool</span></span><br><span class=line>  &#125;</span><br><span class=line></span><br><span class=line>  phoneExample := []suite&#123;</span><br><span class=line>    suite&#123;<span class=string>&quot;&quot;</span>, <span class=literal>false</span>&#125;,</span><br><span class=line>    suite&#123;<span class=string>&quot;12345678901&quot;</span>, <span class=literal>false</span>&#125;,</span><br><span class=line>    suite&#123;<span class=string>&quot;1020&quot;</span>, <span class=literal>false</span>&#125;,</span><br><span class=line>    ...</span><br><span class=line>    suite&#123;<span class=string>&quot;19456782901&quot;</span>, <span class=literal>true</span>&#125;,</span><br><span class=line>  &#125;</span><br><span class=line></span><br><span class=line>  <span class=keyword>for</span> _, v := <span class=keyword>range</span> phoneExample &#123;</span><br><span class=line>    <span class=keyword>if</span> result := CheckPhoneNumber(v.data); result != v.result &#123;</span><br><span class=line>      t.Errorf(<span class=string>&quot;测试用例 %s : 测试结构 %t , 与期望不符合 %t&quot;</span>, v.data, result, v.result)</span><br><span class=line>    &#125;</span><br><span class=line>  &#125;</span><br><span class=line>&#125;</span><br><span class=line></span><br><span class=line><span class=function><span class=keyword>func</span> <span class=title>TestStringLength</span><span class=params>(t *testing.T)</span></span> &#123;</span><br><span class=line>  <span class=keyword>type</span> suite <span class=keyword>struct</span> &#123;</span><br><span class=line>    data   <span class=type>string</span></span><br><span class=line>    result <span class=type>int</span></span><br><span class=line>  &#125;</span><br><span class=line></span><br><span class=line>  strExample := []suite&#123;</span><br><span class=line>    suite&#123;<span class=string>&quot;1&quot;</span>, <span class=number>1</span>&#125;,</span><br><span class=line>    suite&#123;<span class=string>&quot;&quot;</span>, <span class=number>0</span>&#125;,</span><br><span class=line>    suite&#123;<span class=string>&quot;1678&quot;</span>, <span class=number>4</span>&#125;,</span><br><span class=line>    suite&#123;<span class=string>&quot;13456789301&quot;</span>, <span class=number>11</span>&#125;,</span><br><span class=line>    suite&#123;<span class=string>&quot;abcd&quot;</span>, <span class=number>4</span>&#125;,</span><br><span class=line>    suite&#123;<span class=string>&quot;hello world&quot;</span>, <span class=number>11</span>&#125;,</span><br><span class=line>    suite&#123;<span class=string>&quot;我在这&quot;</span>, <span class=number>3</span>&#125;,</span><br><span class=line>    suite&#123;<span class=string>&quot;你是谁?Who are you?&quot;</span>, <span class=number>16</span>&#125;,</span><br><span class=line>  &#125;</span><br><span class=line></span><br><span class=line>  <span class=keyword>for</span> _, v := <span class=keyword>range</span> strExample &#123;</span><br><span class=line>    <span class=keyword>if</span> result := StringLength(v.data); result != v.result &#123;</span><br><span class=line>      t.Errorf(<span class=string>&quot;测试用例 %s : 测试结构 %d , 与期望不符合 %d&quot;</span>, v.data, result, v.result)</span><br><span class=line>    &#125;</span><br><span class=line>  &#125;</span><br><span class=line>&#125;</span><br></pre></td></tr></table></figure></li></ol><h3 id=2-查看覆盖率><a href=#2-查看覆盖率 class=headerlink title="2. 查看覆盖率"></a>2. 查看覆盖率</h3><blockquote><p><code>go test</code> 常用命令解释<br>用法 <code>go test [build/_test flags] [packages] [build/test flags &amp; test binary flags]</code><br><code>go test [file.go / mod_dir | main_test.go]</code> &#x2F; <code>go test 文件名/包名(main_test.go)</code></p></blockquote><ol><li><p>普通展示<br></p><figure class="highlight javascript"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br><span class=line>10</span><br><span class=line>11</span><br><span class=line>12</span><br><span class=line>13</span><br><span class=line>14</span><br></pre></td><td class=code><pre><span class=line><span class=comment>// 普通测试,只展示测试结果及时间</span></span><br><span class=line>➜  go test goshop/app/lib</span><br><span class=line><span class=comment>// ok      goshop/app/lib  0.007s</span></span><br><span class=line></span><br><span class=line><span class=comment>// 展示测试明细, 此时仍没有覆盖率</span></span><br><span class=line>➜  go test goshop/app/lib -v</span><br><span class=line><span class=comment>// === RUN   TestCheckEmail</span></span><br><span class=line><span class=comment>// --- PASS: TestCheckEmail (0.00s)</span></span><br><span class=line><span class=comment>// === RUN   TestStringLength</span></span><br><span class=line><span class=comment>// --- PASS: TestStringLength (0.00s)</span></span><br><span class=line><span class=comment>// === RUN   TestCheckPhoneNumber</span></span><br><span class=line><span class=comment>// --- PASS: TestCheckPhoneNumber (0.00s)</span></span><br><span class=line><span class=comment>// PASS</span></span><br><span class=line><span class=comment>// ok      goshop/app/lib  (cached)</span></span><br></pre></td></tr></table></figure><p></p></li><li><p>展示测试明细及覆盖率,<br>展示的是当前库的所有文件的覆盖率,<br>此时已经知道覆盖率了,<br>但是不知道测试到底覆盖的是哪部分代码,<br>哪部分没有覆盖<br></p><figure class="highlight javascript"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br></pre></td><td class=code><pre><span class=line>➜ go test goshop/app/lib -v -covermode=count </span><br><span class=line><span class=comment>// === RUN   TestCheckEmail</span></span><br><span class=line><span class=comment>// ...</span></span><br><span class=line><span class=comment>// PASS</span></span><br><span class=line><span class=comment>// coverage: 19.2% of statements</span></span><br><span class=line><span class=comment>// ok      goshop/app/lib  0.007s  coverage: 19.2% of statements</span></span><br></pre></td></tr></table></figure><p></p></li><li><p>展示测试覆盖率,并生成覆盖统计文件到 count.out,<br>count.out 文件中详细展示了每个文件测试时某一行,执行的次数及其他信息(暂时只能用到次数)</p></li></ol><pre><code><figure class="highlight javascript"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br></pre></td><td class=code><pre><span class=line>➜ go test goshop/app/lib -v -coverprofile=count.<span class=property>out</span></span><br><span class=line><span class=comment>// === RUN   TestCheckEmail</span></span><br><span class=line><span class=comment>// ...</span></span><br><span class=line><span class=comment>// PASS</span></span><br><span class=line><span class=comment>// coverage: 19.2% of statements</span></span><br><span class=line><span class=comment>// ok      goshop/app/lib  0.007s  coverage: 19.2% of statements</span></span><br></pre></td></tr></table></figure>
+</code></pre><ol start=4><li>分析 count.out 文件生成想要的结果<br>-func 生成每个函数的覆盖率<br>-html 生成 html 文件,已图形形式展示每个函数,每一行代码的覆盖率<br>生成测试运行,函数覆盖率,展示每一个函数单元测试的覆盖率,100% 则测试完整,0 则没有测试<br><figure class="highlight javascript"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br></pre></td><td class=code><pre><span class=line>➜ go tool cover -func=count.<span class=property>out</span></span><br><span class=line><span class=comment>// goshop/app/lib/jwt.go:31:       signHeader              0.0%</span></span><br><span class=line><span class=comment>// ....</span></span><br><span class=line><span class=comment>// goshop/app/lib/utils.go:11:     CheckEmail              100.0%</span></span><br><span class=line><span class=comment>// goshop/app/lib/utils.go:21:     CheckPhoneNumber        100.0%</span></span><br><span class=line><span class=comment>// ...</span></span><br><span class=line><span class=comment>// total:                          (statements)            19.2%</span></span><br></pre></td></tr></table></figure></li></ol><pre><code>`➜ go tool cover -html=count.out` 会打开默认浏览器,展示测试覆盖率的图形化,
+可以切换,当前库下每个文件,看到每一行代码是否测试执行,没有执行的显示为红色, 灰色是不需要测试的, 亮绿色是测试通过的
+![](go-tool-cover-html.png)
+</code></pre></div></div><div class=copy-right><div class=markdown-body><blockquote>本文作者 : 萧逸雨<br>原文链接 : <a href="">http://qiubo.ink/2019/06/27/Golang单元测试及测试覆盖率/</a><br>版权声明 : 本博客所有文章除特别声明外，均采用 <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/ >CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</blockquote></div></div><div class=article-footer><div class="article-meta pull-left"><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/golang/ >#golang </a></span><span class=span--tag><a href=/tags/%E6%B5%8B%E8%AF%95/ >#测试</a></span></span></div><div class="article-meta pull-right"></div></div></div><aside id=sidebar><p id=sidebar-header></p><ol id=sidebar-toc></ol></aside><script async>setTimeout(generateToc, 10);</script><nav class=post-navigation><div class=nav-pre><i class="iconfont icon-prev"></i> 上一篇: <a href=/2019/06/21/Golang%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6/ target=_self>Golang获取字符串长度</a></div><div class=nav-next>下一篇: <a href=/2020/03/26/docker%E5%85%8D%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE/ target=_self>docker免删除容器修改配置</a> <i class="iconfont icon-next"></i></div></nav></div><footer><p class=site-info>博客已萌萌哒运行<span id=time-to-now></span><span class=my-face>(●'◡'●)ﾉ♥</span><br>Theme - <a href=https://github.com/dongyuanxin/theme-bmw>BMW</a> | Made With 💗 | Powered by <a href=https://godbmw.com/ >GodBMW</a><br><a href=https://letsencrypt.org/ target=_blank>Let&#180;s Encrypt</a> 签发SSL证书</p></footer><script>const timeToNowDOM = document.querySelector("#time-to-now");
+  const startTimestamp = new Date(2016, 8, 10).getTime();
+
+  const updateTimeStr = () => {
+    let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+      day = Math.floor(offset / 86400),
+      hour = Math.floor((offset % 86400) / 3600),
+      minute = Math.floor(((offset % 86400) % 3600) / 60),
+      second = Math.floor(((offset % 86400) % 3600) % 60);
+    timeToNowDOM.innerHTML =
+      day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+    setTimeout(updateTimeStr, 500);
+  }
+
+  setTimeout(updateTimeStr, 500);</script><script>var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?db150be7214fe869c6daac9d53405523";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();</script><div class="back-to-top hidden"><span><i class="iconfont icon-60"></i><span></span>%</span></div><script>const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
+
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
+    });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);</script></div><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script>(() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()</script><script src=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js async></script><script async>let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);</script></body></html>

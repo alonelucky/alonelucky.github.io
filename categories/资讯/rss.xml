@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>小码农博客 • Posts by &#34;资讯&#34; category</title>
+        <link>http://qiubo.ink</link>
+        <description></description>
+        <language>ZH-cn</language>
+        <pubDate>Thu, 16 Mar 2023 10:45:34 +0000</pubDate>
+        <lastBuildDate>Thu, 16 Mar 2023 10:45:34 +0000</lastBuildDate>
+        <category>cmder</category>
+        <category>git学习</category>
+        <category>服务器环境配置mysql</category>
+        <category>golang</category>
+        <category>mod</category>
+        <category>module</category>
+        <category>私服</category>
+        <category>测试</category>
+        <category>string</category>
+        <category>linux</category>
+        <category>内存</category>
+        <category>nodejs</category>
+        <category>git</category>
+        <category>git版本管理</category>
+        <category>Vscode</category>
+        <category>常用插件</category>
+        <category>编辑器</category>
+        <category>npm</category>
+        <category>docker</category>
+        <category>frp</category>
+        <category>网络</category>
+        <category>gulp</category>
+        <category>前端自动化</category>
+        <category>虚拟主机</category>
+        <category>mysql</category>
+        <category>数据库</category>
+        <category>node操作数据库</category>
+        <category>josn web token</category>
+        <category>jwt</category>
+        <category>redis</category>
+        <category>并发</category>
+        <category>composer</category>
+        <category>php管理</category>
+        <category>cli</category>
+        <category>openresty</category>
+        <category>nginx</category>
+        <category>lua</category>
+        <category>响应式图片</category>
+        <category>移动端兼容</category>
+        <category>前端</category>
+        <category>wrk</category>
+        <category>web</category>
+        <category>dart</category>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2023/03/16/Nodejs-v19-x-%E6%94%AF%E6%8C%81%E6%89%93%E5%8C%85%E5%8F%AF%E6%89%A7%E8%A1%8C%E5%8D%95%E6%96%87%E4%BB%B6/</guid>
+            <title>Nodejs v19.x 支持打包可执行单文件</title>
+            <link>http://qiubo.ink/2023/03/16/Nodejs-v19-x-%E6%94%AF%E6%8C%81%E6%89%93%E5%8C%85%E5%8F%AF%E6%89%A7%E8%A1%8C%E5%8D%95%E6%96%87%E4%BB%B6/</link>
+            <category>nodejs</category>
+            <pubDate>Thu, 16 Mar 2023 10:45:34 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;官方文档：&lt;a href=&#34;https://nodejs.org/dist/latest-v19.x/docs/api/single-executable-applications.html&#34;&gt;Single executable applications&lt;/a&gt;&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;特性介绍：&#34;&gt;&lt;a href=&#34;#特性介绍：&#34; class=&#34;headerlink&#34; title=&#34;特性介绍：&#34;&gt;&lt;/a&gt;特性介绍：&lt;/h2&gt;&lt;p&gt;有的语言原生工具链就支持打包单独可执行文件，如：&lt;code&gt;go build&lt;/code&gt; &lt;code&gt;dart complite exe&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;有的有社区解决方案，如：&lt;code&gt;PyInstaller&lt;/code&gt; nodejs社区的：&lt;a href=&#34;https://github.com/vercel/ncc&#34;&gt;&lt;code&gt;ncc&lt;/code&gt;&lt;/a&gt;&amp;#x2F;&lt;a href=&#34;https://github.com/vercel/pkg&#34;&gt;&lt;code&gt;pkg&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;如今，nodejs 在 v19.x 引入实验性单独可执行文件，提供了官方打包工具链。&lt;/p&gt;
+&lt;h2 id=&#34;使用&#34;&gt;&lt;a href=&#34;#使用&#34; class=&#34;headerlink&#34; title=&#34;使用&#34;&gt;&lt;/a&gt;使用&lt;/h2&gt;&lt;p&gt;基础环境：安装 Nodejs v19.x 及以上，只有最新版本支持&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;#  1.创建 js 文件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;#x27;console.log(`Hello, $&amp;#123;process.argv[2]&amp;#125;!`);&amp;#x27;&lt;/span&gt; &amp;gt; hello.js&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 2. 复制当前版本的 node 二进制文件到当前目录，并重命名为想要的二进制名称&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;cp&lt;/span&gt; $(&lt;span class=&#34;built_in&#34;&gt;which&lt;/span&gt; node) hello&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 3. 进行打包&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;npx postject hello NODE_JS_CODE hello.js \&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    --sentinel-fuse NODE_JS_FUSE_fce680ab2cc467b6e072b8b5df1996b2 \&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    --macho-segment-name NODE_JS &lt;span class=&#34;comment&#34;&gt;# 最后一行只有 macos 需要&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 4. 运行可执行文件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;./hello world&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Hello, world!&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;以上是官方示例，通过第三步可以看出，实际上是 &lt;a href=&#34;https://github.com/nodejs/postject&#34;&gt;&lt;code&gt;postject&lt;/code&gt;&lt;/a&gt; 在起作用, 可以自行安装使用&lt;/p&gt;
+&lt;h2 id=&#34;应用&#34;&gt;&lt;a href=&#34;#应用&#34; class=&#34;headerlink&#34; title=&#34;应用&#34;&gt;&lt;/a&gt;应用&lt;/h2&gt;&lt;p&gt;目前只能打包一个 js 文件， 与 pkg 是打包一整个文件夹不同，是否就不能应用了呢？顺势可以想到把整个项目打包为单独的 js 文件不就解决了这个问题了吗？这便是 ncc（Compile a Node.js project into a single file. Supports TypeScript, binary addons, dynamic requires.）, 尝试一下。&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;mkdir&lt;/span&gt; singleapp&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 初始化项目&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;npm init&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 安装依赖&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;npm i -S express&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# ...创建多文件文件夹及相互依赖&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 使用 ncc 打包单文件， dist/index.js&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ncc build app.js -o dist&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 复制当前版本的 node 二进制文件到当前目录，并重命名为想要的二进制名称&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;cp&lt;/span&gt; $(&lt;span class=&#34;built_in&#34;&gt;which&lt;/span&gt; node) singleapp&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 3. 进行打包&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;npx postject singleapp NODE_JS_CODE dist/index.js \&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    --sentinel-fuse NODE_JS_FUSE_fce680ab2cc467b6e072b8b5df1996b2 \&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    --macho-segment-name NODE_JS &lt;span class=&#34;comment&#34;&gt;# 最后一行只有 macos 需要&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 4. 运行可执行文件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;./singleapp&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;server is running at 127.0.0.1:3000&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;由于打包了 nodevm 所以生成的二进制文件会比较大，单文件打包结果是 83Mb，但是 node 二进制原包是 90MB，应该是有压缩，可以使用 &lt;code&gt;upx&lt;/code&gt; 进行二进制加壳压缩。&lt;/p&gt;
+&lt;h2 id=&#34;结言&#34;&gt;&lt;a href=&#34;#结言&#34; class=&#34;headerlink&#34; title=&#34;结言&#34;&gt;&lt;/a&gt;结言&lt;/h2&gt;&lt;p&gt;Nodejs 多年呼吁的打包功能官方终于开始启动了，还有一些瑕疵，而且实验性功能改动到后边会比较大，可以多多跟进，目前的官方讨论区在&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/nodejs/single-executable/discussions&#34;&gt;讨论区&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/nodejs/node/issues/43432&#34;&gt;Initiative: Single Executable Application #43432&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以前社区百花齐放提供了很多的打包方案，&lt;code&gt;pkg&lt;/code&gt;, &lt;code&gt;jsexe&lt;/code&gt;, &lt;code&gt;ncc&lt;/code&gt;, &lt;code&gt;bytecode&lt;/code&gt; 等等，其实 &lt;code&gt;webpack&lt;/code&gt; 这些也是可以支持后端项目打包的，也可以打包合并为单独 js 文件，复用 js 打包生态，源码混淆，sourcemap 支持等等&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

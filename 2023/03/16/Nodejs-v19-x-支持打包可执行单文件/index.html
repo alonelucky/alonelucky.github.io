@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang=zh-CN><head><meta charset=utf-8><meta name=author content="萧逸雨, xiaqiubo123@gmail.com"><link rel=alternate type=application/rss+xml title=小码农博客 href=http://qiubo.ink/rss.xml><link rel=alternate type=application/atom+xml title=小码农博客 href=http://qiubo.ink/atom.xml><link rel=alternate type=application/json title=小码农博客 href=http://qiubo.ink/feed.json><title>Nodejs v19.x 支持打包可执行单文件 | 小码农博客</title><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=keywords content=资讯,nodejs,nodejs,><script src=//cdn.bootcss.com/jquery/3.3.1/jquery.min.js></script><script>console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n', 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');</script><link rel=icon href=/images/favicon.ico><link rel=apple-touch-icon href=/images/touch-icon.png><link href=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css rel=stylesheet><link rel=stylesheet href=/css/base.css><link rel=stylesheet href=/icon/iconfont.css><link rel=stylesheet href=/css/github-markdown.css><link rel=stylesheet href=/css/highlight.css><script src=/js/util.js></script><script src=/js/valine.min.js></script><link rel=stylesheet href=/css/custom.css><link href=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css rel=stylesheet><script src=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js async></script><meta name=generator content="Hexo 7.0.0-rc2"></head><body><div id=app><div class=header-wrap><header><div class=site-brand><div class=site-title><a href=/ >小码农博客</a></div></div><nav class=site-navigation><ul class=nav-menu><li class=nav-item data-path=/ ><a href=/ target=_self>主页</a></li><li class=nav-item data-path=/archives/ ><a href=/archives/ target=_self>归档</a></li><li class=nav-item data-path=/categories/ ><a href=/categories/ target=_self>分类</a></li><li class=nav-item data-path=/tags/ ><a href=/tags/ target=_self>标签</a></li><li class=nav-item data-path=""><a href=javascript:void(0); v-else>抓到我</a><ul class=nav-menu--dropdown><li><a href=https://github.com/alonelucky target=_blank>Github</a></li></ul></li></ul></nav><i class="iconfont icon-menu"></i></header></div><script>let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
+
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked 
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })</script><div class="container post-index"><div class=post><h1 class=article-title><span>Nodejs v19.x 支持打包可执行单文件</span></h1><div class=article-top-meta><span>发布 : 2023-03-16 </span><span>分类 : <a href=/categories/%E8%B5%84%E8%AE%AF/ >资讯</a></span></div><div class=article-content><div class=markdown-body><h2 id=特性介绍：><a href=#特性介绍： class=headerlink title=特性介绍：></a>特性介绍：</h2><p>有的语言原生工具链就支持打包单独可执行文件，如：<code>go build</code> <code>dart complite exe</code></p><p>有的有社区解决方案，如：<code>PyInstaller</code> nodejs社区的：<a href=https://github.com/vercel/ncc><code>ncc</code></a>&#x2F;<a href=https://github.com/vercel/pkg><code>pkg</code></a></p><p>如今，nodejs 在 v19.x 引入实验性单独可执行文件，提供了官方打包工具链。</p><h2 id=使用><a href=#使用 class=headerlink title=使用></a>使用</h2><p>基础环境：安装 Nodejs v19.x 及以上，只有最新版本支持</p><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br><span class=line>10</span><br><span class=line>11</span><br></pre></td><td class=code><pre><span class=line><span class=comment>#  1.创建 js 文件</span></span><br><span class=line><span class=built_in>echo</span> <span class=string>&#x27;console.log(`Hello, $&#123;process.argv[2]&#125;!`);&#x27;</span> &gt; hello.js</span><br><span class=line><span class=comment># 2. 复制当前版本的 node 二进制文件到当前目录，并重命名为想要的二进制名称</span></span><br><span class=line><span class=built_in>cp</span> $(<span class=built_in>which</span> node) hello</span><br><span class=line><span class=comment># 3. 进行打包</span></span><br><span class=line>npx postject hello NODE_JS_CODE hello.js \</span><br><span class=line>    --sentinel-fuse NODE_JS_FUSE_fce680ab2cc467b6e072b8b5df1996b2 \</span><br><span class=line>    --macho-segment-name NODE_JS <span class=comment># 最后一行只有 macos 需要</span></span><br><span class=line><span class=comment># 4. 运行可执行文件</span></span><br><span class=line>./hello world</span><br><span class=line>Hello, world!</span><br></pre></td></tr></table></figure><p>以上是官方示例，通过第三步可以看出，实际上是 <a href=https://github.com/nodejs/postject><code>postject</code></a> 在起作用, 可以自行安装使用</p><h2 id=应用><a href=#应用 class=headerlink title=应用></a>应用</h2><p>目前只能打包一个 js 文件， 与 pkg 是打包一整个文件夹不同，是否就不能应用了呢？顺势可以想到把整个项目打包为单独的 js 文件不就解决了这个问题了吗？这便是 ncc（Compile a Node.js project into a single file. Supports TypeScript, binary addons, dynamic requires.）, 尝试一下。</p><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br><span class=line>10</span><br><span class=line>11</span><br><span class=line>12</span><br><span class=line>13</span><br><span class=line>14</span><br><span class=line>15</span><br><span class=line>16</span><br><span class=line>17</span><br><span class=line>18</span><br></pre></td><td class=code><pre><span class=line><span class=built_in>mkdir</span> singleapp</span><br><span class=line><span class=comment># 初始化项目</span></span><br><span class=line>npm init</span><br><span class=line><span class=comment># 安装依赖</span></span><br><span class=line>npm i -S express</span><br><span class=line><span class=comment># ...创建多文件文件夹及相互依赖</span></span><br><span class=line></span><br><span class=line><span class=comment># 使用 ncc 打包单文件， dist/index.js</span></span><br><span class=line>ncc build app.js -o dist</span><br><span class=line><span class=comment># 复制当前版本的 node 二进制文件到当前目录，并重命名为想要的二进制名称</span></span><br><span class=line><span class=built_in>cp</span> $(<span class=built_in>which</span> node) singleapp</span><br><span class=line><span class=comment># 3. 进行打包</span></span><br><span class=line>npx postject singleapp NODE_JS_CODE dist/index.js \</span><br><span class=line>    --sentinel-fuse NODE_JS_FUSE_fce680ab2cc467b6e072b8b5df1996b2 \</span><br><span class=line>    --macho-segment-name NODE_JS <span class=comment># 最后一行只有 macos 需要</span></span><br><span class=line><span class=comment># 4. 运行可执行文件</span></span><br><span class=line>./singleapp</span><br><span class=line>server is running at 127.0.0.1:3000</span><br></pre></td></tr></table></figure><p>由于打包了 nodevm 所以生成的二进制文件会比较大，单文件打包结果是 83Mb，但是 node 二进制原包是 90MB，应该是有压缩，可以使用 <code>upx</code> 进行二进制加壳压缩。</p><h2 id=结言><a href=#结言 class=headerlink title=结言></a>结言</h2><p>Nodejs 多年呼吁的打包功能官方终于开始启动了，还有一些瑕疵，而且实验性功能改动到后边会比较大，可以多多跟进，目前的官方讨论区在</p><ul><li><a href=https://github.com/nodejs/single-executable/discussions>讨论区</a></li><li><a href=https://github.com/nodejs/node/issues/43432>Initiative: Single Executable Application #43432</a></li></ul><p>以前社区百花齐放提供了很多的打包方案，<code>pkg</code>, <code>jsexe</code>, <code>ncc</code>, <code>bytecode</code> 等等，其实 <code>webpack</code> 这些也是可以支持后端项目打包的，也可以打包合并为单独 js 文件，复用 js 打包生态，源码混淆，sourcemap 支持等等</p></div></div><div class=copy-right><div class=markdown-body><blockquote>本文作者 : 萧逸雨<br>原文链接 : <a href="">http://qiubo.ink/2023/03/16/Nodejs-v19-x-支持打包可执行单文件/</a><br>版权声明 : 本博客所有文章除特别声明外，均采用 <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/ >CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</blockquote></div></div><div class=article-footer><div class="article-meta pull-left"><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/nodejs/ >#nodejs</a></span></span></div><div class="article-meta pull-right"></div></div></div><aside id=sidebar><p id=sidebar-header></p><ol id=sidebar-toc></ol></aside><script async>setTimeout(generateToc, 10);</script><nav class=post-navigation><div class=nav-pre><i class="iconfont icon-prev"></i> 上一篇: <a href=/2021/11/11/%E6%AC%A1%E5%B8%B8%E7%94%A8git%E5%91%BD%E4%BB%A4/ target=_self>次常用git命令</a></div><div class=nav-next>下一篇: <a href=/2023/08/30/%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8wrk%E8%BF%9B%E8%A1%8C%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/ target=_self>学习使用wrk进行压力测试</a> <i class="iconfont icon-next"></i></div></nav></div><footer><p class=site-info>博客已萌萌哒运行<span id=time-to-now></span><span class=my-face>(●'◡'●)ﾉ♥</span><br>Theme - <a href=https://github.com/dongyuanxin/theme-bmw>BMW</a> | Made With 💗 | Powered by <a href=https://godbmw.com/ >GodBMW</a><br><a href=https://letsencrypt.org/ target=_blank>Let&#180;s Encrypt</a> 签发SSL证书</p></footer><script>const timeToNowDOM = document.querySelector("#time-to-now");
+  const startTimestamp = new Date(2016, 8, 10).getTime();
+
+  const updateTimeStr = () => {
+    let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+      day = Math.floor(offset / 86400),
+      hour = Math.floor((offset % 86400) / 3600),
+      minute = Math.floor(((offset % 86400) % 3600) / 60),
+      second = Math.floor(((offset % 86400) % 3600) % 60);
+    timeToNowDOM.innerHTML =
+      day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+    setTimeout(updateTimeStr, 500);
+  }
+
+  setTimeout(updateTimeStr, 500);</script><script>var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?db150be7214fe869c6daac9d53405523";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();</script><div class="back-to-top hidden"><span><i class="iconfont icon-60"></i><span></span>%</span></div><script>const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
+
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
+    });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);</script></div><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script>(() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()</script><script src=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js async></script><script async>let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);</script></body></html>

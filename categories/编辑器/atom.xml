@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://qiubo.ink</id>
+    <title>小码农博客 • Posts by &#34;编辑器&#34; category</title>
+    <link href="http://qiubo.ink" />
+    <updated>2017-02-17T11:12:27.000Z</updated>
+    <category term="cmder" />
+    <category term="git学习" />
+    <category term="服务器环境配置mysql" />
+    <category term="golang" />
+    <category term="mod" />
+    <category term="module" />
+    <category term="私服" />
+    <category term="测试" />
+    <category term="string" />
+    <category term="linux" />
+    <category term="内存" />
+    <category term="nodejs" />
+    <category term="git" />
+    <category term="git版本管理" />
+    <category term="Vscode" />
+    <category term="常用插件" />
+    <category term="编辑器" />
+    <category term="npm" />
+    <category term="docker" />
+    <category term="frp" />
+    <category term="网络" />
+    <category term="gulp" />
+    <category term="前端自动化" />
+    <category term="虚拟主机" />
+    <category term="mysql" />
+    <category term="数据库" />
+    <category term="node操作数据库" />
+    <category term="josn web token" />
+    <category term="jwt" />
+    <category term="redis" />
+    <category term="并发" />
+    <category term="composer" />
+    <category term="php管理" />
+    <category term="cli" />
+    <category term="openresty" />
+    <category term="nginx" />
+    <category term="lua" />
+    <category term="响应式图片" />
+    <category term="移动端兼容" />
+    <category term="前端" />
+    <category term="wrk" />
+    <category term="web" />
+    <category term="dart" />
+    <entry>
+        <id>http://qiubo.ink/2017/02/17/VS%20Code%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</id>
+        <title>VS Code前端开发常用插件</title>
+        <link rel="alternate" href="http://qiubo.ink/2017/02/17/VS%20Code%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/"/>
+        <content type="html">&lt;blockquote&gt;
+&lt;p&gt;前言: Visual Studio Code (简称 VS Code &amp;#x2F; VSC) 是一款免费开源的现代化轻量级代码编辑器，支持几乎所有主流的开发语言的语法高亮、智能代码补全、自定义热键、括号匹配、代码片段、代码对比 Diff、GIT 等特性，支持插件扩展，并针对网页开发和云端应用开发做了优化。软件跨平台支持 Win、Mac 以及 Linux，运行流畅，可谓是微软的良心之作……&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;VS code 开发个人常用插件:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Path Intellisense&lt;/code&gt; 自动补全路径提示&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;npm intellisense&lt;/code&gt; npm自动补全&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;c/c++&lt;/code&gt; c&amp;#x2F;c++开发&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ESLint&lt;/code&gt; js代码风格&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GitLens&lt;/code&gt; git可视化控制&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Go&lt;/code&gt; golang 开发&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hexdump for VSCode&lt;/code&gt; 16进制文件查看&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Settings Sync&lt;/code&gt; VSCode 配置同步&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;VS Live Share&lt;/code&gt; visual studio 实时代码协作&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vscode-icons&lt;/code&gt; vscode图标主题&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        <category term="Vscode" />
+        <category term="常用插件" />
+        <category term="编辑器" />
+        <updated>2017-02-17T11:12:27.000Z</updated>
+    </entry>
+</feed>
