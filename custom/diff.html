@@ -1,0 +1,38 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><title>Monaco Diff</title><link rel=stylesheet href=/css/base.css><link rel=stylesheet data-name=vs/editor/editor.main href=https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/editor/editor.main.min.css><style>html,
+		body {
+			padding: 0;
+			margin: 0;
+		}
+
+		#app {
+			margin-top: 14px;
+		}</style></head><body><div id=app><div class=header-wrap><header><div class=site-brand><div class=site-title><a href=/ >小码农博客</a></div></div><nav class=site-navigation><ul class=nav-menu><li class="nav-item hover" data-path=/ ><a href=/ target=_self>主页</a></li><li class=nav-item data-path=/archives/ ><a href=/archives/ target=_self>归档</a></li><li class=nav-item data-path=/categories/ ><a href=/categories/ target=_self>分类</a></li><li class=nav-item data-path=/tags/ ><a href=/tags/ target=_self>标签</a></li></ul></nav><i class="iconfont icon-menu"></i></header></div></div><div id=container style=height:100vh></div><script src=https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/loader.min.js></script><script>require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs' } });
+		require(["vs/editor/editor.main"], () => {
+			var originalModel = monaco.editor.createModel(
+				"This line is removed on the right.\njust some text\nabcd\nefgh\nSome more text",
+				"text/go"
+			);
+			var modifiedModel = monaco.editor.createModel(
+				"just some text\nabcz\nzzzzefgh\nSome more text.\nThis line is removed on the left.",
+				"text/go"
+			);
+
+			var diffEditor = monaco.editor.createDiffEditor(
+				document.getElementById("container"),
+				{
+					originalEditable: true,
+					isInEmbeddedEditor: true,
+				}
+			);
+			diffEditor.setModel({
+				original: originalModel,
+				modified: modifiedModel,
+			});
+
+		});</script></body><script>var _hmt = _hmt || [];
+	(function () {
+		var hm = document.createElement("script");
+		hm.src = "https://hm.baidu.com/hm.js?db150be7214fe869c6daac9d53405523";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();</script></html>
