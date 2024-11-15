@@ -4,7 +4,7 @@
   <url>
     <loc>http://qiubo.ink/tags/index.html</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,7 +13,7 @@
   <url>
     <loc>http://qiubo.ink/2019/06/21/Golang%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -22,7 +22,16 @@
   <url>
     <loc>http://qiubo.ink/2018/09/25/Linux%E6%89%8B%E5%8A%A8%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/2023/12/29/Nats%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/</loc>
+    
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -31,7 +40,7 @@
   <url>
     <loc>http://qiubo.ink/2023/03/16/Nodejs-v19-x-%E6%94%AF%E6%8C%81%E6%89%93%E5%8C%85%E5%8F%AF%E6%89%A7%E8%A1%8C%E5%8D%95%E6%96%87%E4%BB%B6/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -40,7 +49,7 @@
   <url>
     <loc>http://qiubo.ink/2017/05/05/Push%E6%9C%AC%E5%9C%B0%E5%8E%9F%E6%9C%89%E6%96%87%E4%BB%B6%E5%88%B0github%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -49,7 +58,7 @@
   <url>
     <loc>http://qiubo.ink/2017/02/17/VS%20Code%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -58,7 +67,7 @@
   <url>
     <loc>http://qiubo.ink/2017/09/14/Verdaccio%E6%90%AD%E5%BB%BAnpm%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -67,7 +76,7 @@
   <url>
     <loc>http://qiubo.ink/2020/03/26/docker%E5%85%8D%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -76,7 +85,16 @@
   <url>
     <loc>http://qiubo.ink/2018/09/14/frp%E7%BD%91%E7%BB%9C%E6%98%A0%E5%B0%84%E8%AE%B0%E5%BD%95/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/2024/11/15/github-pages-%E4%B8%8D%E8%83%BD%E8%AF%86%E5%88%AB%E4%B8%8B%E5%88%92%E7%BA%BF%E5%BC%80%E5%A4%B4%E7%9A%84%E6%96%87%E4%BB%B6/</loc>
+    
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -85,7 +103,7 @@
   <url>
     <loc>http://qiubo.ink/2016/11/19/git%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -94,7 +112,7 @@
   <url>
     <loc>http://qiubo.ink/2016/12/08/gulp%E5%88%9D%E4%BD%93%E9%AA%8C/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -103,7 +121,7 @@
   <url>
     <loc>http://qiubo.ink/2016/12/26/linux%E4%B8%8B%E9%85%8D%E7%BD%AE%E5%AE%89%E8%A3%85nodejs/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -112,7 +130,7 @@
   <url>
     <loc>http://qiubo.ink/2017/05/12/mysql%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%8F%8A%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -121,7 +139,7 @@
   <url>
     <loc>http://qiubo.ink/2017/05/05/mysql%E5%AD%A6%E4%B9%A0(%E4%B8%80)/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -130,7 +148,7 @@
   <url>
     <loc>http://qiubo.ink/2017/05/05/mysql%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -139,7 +157,7 @@
   <url>
     <loc>http://qiubo.ink/2017/05/12/node-mysql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -148,7 +166,7 @@
   <url>
     <loc>http://qiubo.ink/2018/09/14/nodejs%E5%AE%9E%E7%8E%B0%E5%9F%BA%E7%A1%80%E7%9A%84jwt/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -157,7 +175,7 @@
   <url>
     <loc>http://qiubo.ink/2020/12/25/redis%E9%98%B2%E6%AD%A2%E8%B6%85%E5%94%AE/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -166,7 +184,7 @@
   <url>
     <loc>http://qiubo.ink/2021/03/04/redis%E9%99%90%E6%B5%81%E6%96%B9%E6%B3%95/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -175,7 +193,7 @@
   <url>
     <loc>http://qiubo.ink/2016/11/12/windows%E4%B8%8B%E9%85%8D%E7%BD%AEcomposer/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -184,7 +202,7 @@
   <url>
     <loc>http://qiubo.ink/2018/09/14/%E4%BD%BF%E7%94%A8nodejs%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -193,7 +211,16 @@
   <url>
     <loc>http://qiubo.ink/2023/09/05/%E4%BD%BF%E7%94%A8openresty%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E7%81%B0%E5%BA%A6%E5%88%87%E6%8D%A2/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/2024/11/16/%E5%88%A4%E6%96%AD%E9%A1%B5%E9%9D%A2%E5%86%85%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E5%8F%AF%E8%A7%81/</loc>
+    
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -202,7 +229,7 @@
   <url>
     <loc>http://qiubo.ink/2017/05/12/%E5%88%A9%E7%94%A8fs%E9%81%8D%E5%8E%86%E5%9B%BE%E7%89%87,%E4%BD%BF%E7%94%A8tinify%E5%8E%8B%E7%BC%A9/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -211,7 +238,7 @@
   <url>
     <loc>http://qiubo.ink/2016/12/08/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -220,7 +247,7 @@
   <url>
     <loc>http://qiubo.ink/2023/08/30/%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8wrk%E8%BF%9B%E8%A1%8C%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -229,7 +256,7 @@
   <url>
     <loc>http://qiubo.ink/2021/11/11/%E6%AC%A1%E5%B8%B8%E7%94%A8git%E5%91%BD%E4%BB%A4/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -238,7 +265,16 @@
   <url>
     <loc>http://qiubo.ink/2021/02/20/%E7%94%A8200%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0web%E6%A1%86%E6%9E%B6/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/2024/11/14/%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%AF%B9%E6%AF%94/</loc>
+    
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -247,7 +283,7 @@
   <url>
     <loc>http://qiubo.ink/about/index.html</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -256,7 +292,7 @@
   <url>
     <loc>http://qiubo.ink/categories/index.html</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -265,7 +301,7 @@
   <url>
     <loc>http://qiubo.ink/friends/index.html</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -274,7 +310,7 @@
   <url>
     <loc>http://qiubo.ink/2016/12/15/Cmder%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8F%8Agit%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA%E4%B8%8D%E5%AE%8C%E6%95%B4%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -283,7 +319,7 @@
   <url>
     <loc>http://qiubo.ink/2017/03/28/Debian%E4%B8%8B%E5%AE%89%E8%A3%85mysql,%E5%8F%8A%E8%AE%BF%E9%97%AE%E9%85%8D%E7%BD%AE/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -292,7 +328,7 @@
   <url>
     <loc>http://qiubo.ink/2019/03/19/Go%20module%E7%A7%81%E6%9C%8D/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -301,7 +337,7 @@
   <url>
     <loc>http://qiubo.ink/2019/06/27/Golang%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%8F%8A%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%8E%87/</loc>
     
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -310,7 +346,7 @@
 
   <url>
     <loc>http://qiubo.ink/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -318,301 +354,364 @@
   
   <url>
     <loc>http://qiubo.ink/tags/cmder/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/git%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEmysql/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/golang/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/mod/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/module/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/%E7%A7%81%E6%9C%8D/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/string/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/linux/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/%E5%86%85%E5%AD%98/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/tags/queue/</loc>
+    <lastmod>2024-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/tags/%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2024-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/tags/nats/</loc>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/nodejs/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/git/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/git%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/Vscode/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/%E7%BC%96%E8%BE%91%E5%99%A8/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/npm/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/docker/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/frp/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/gulp/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/mysql/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/node%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/josn-web-token/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/jwt/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/redis/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/%E5%B9%B6%E5%8F%91/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/composer/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/php%E7%AE%A1%E7%90%86/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/cli/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/openresty/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/nginx/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/lua/</loc>
-    <lastmod>2023-10-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://qiubo.ink/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87/</loc>
-    <lastmod>2023-10-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://qiubo.ink/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%BC%E5%AE%B9/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/%E5%89%8D%E7%AB%AF/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87/</loc>
+    <lastmod>2024-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%BC%E5%AE%B9/</loc>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/wrk/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/web/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/tags/dart/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2024-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/tags/JSON/</loc>
+    <lastmod>2024-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/tags/XML/</loc>
+    <lastmod>2024-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/tags/Protobuf/</loc>
+    <lastmod>2024-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/tags/Msgpack/</loc>
+    <lastmod>2024-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/tags/CBOR/</loc>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -621,126 +720,126 @@
   
   <url>
     <loc>http://qiubo.ink/categories/%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E7%AC%94%E8%AE%B0/golang/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E7%AC%94%E8%AE%B0/linux/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E7%AC%94%E8%AE%B0/mysql/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E8%B5%84%E8%AE%AF/</loc>
-    <lastmod>2023-10-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://qiubo.ink/categories/%E7%AC%94%E8%AE%B0/git/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E6%95%99%E7%A8%8B/golang/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qiubo.ink/categories/%E7%AC%94%E8%AE%B0/git/</loc>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E7%AC%94%E8%AE%B0/%E7%BC%96%E8%BE%91%E5%99%A8/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E7%AC%94%E8%AE%B0/nodejs/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E7%AC%94%E8%AE%B0/docker/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E6%95%99%E7%A8%8B/mysql/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E8%B5%84%E8%AE%AF/nodejs/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E7%AC%94%E8%AE%B0/redis/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E7%AC%94%E8%AE%B0/php/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E6%95%99%E7%A8%8B/nodejs/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://qiubo.ink/categories/%E6%8A%80%E5%B7%A7/nodejs/</loc>
-    <lastmod>2023-10-25</lastmod>
+    <lastmod>2024-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

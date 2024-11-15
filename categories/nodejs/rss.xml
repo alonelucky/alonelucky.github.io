@@ -18,6 +18,9 @@
         <category>string</category>
         <category>linux</category>
         <category>内存</category>
+        <category>queue</category>
+        <category>笔记</category>
+        <category>nats</category>
         <category>nodejs</category>
         <category>git</category>
         <category>git版本管理</category>
@@ -44,12 +47,18 @@
         <category>openresty</category>
         <category>nginx</category>
         <category>lua</category>
+        <category>前端</category>
         <category>响应式图片</category>
         <category>移动端兼容</category>
-        <category>前端</category>
         <category>wrk</category>
         <category>web</category>
         <category>dart</category>
+        <category>算法</category>
+        <category>JSON</category>
+        <category>XML</category>
+        <category>Protobuf</category>
+        <category>Msgpack</category>
+        <category>CBOR</category>
         <item>
             <guid isPermalink="true">http://qiubo.ink/2023/03/16/Nodejs-v19-x-%E6%94%AF%E6%8C%81%E6%89%93%E5%8C%85%E5%8F%AF%E6%89%A7%E8%A1%8C%E5%8D%95%E6%96%87%E4%BB%B6/</guid>
             <title>Nodejs v19.x 支持打包可执行单文件</title>

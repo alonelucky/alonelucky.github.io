@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang=zh-CN><head><meta charset=utf-8><meta name=baidu-site-verification content=codeva-Y5hZEtHVbL><meta name=author content="萧逸雨, xiaqiubo123@gmail.com"><link rel=alternate type=application/rss+xml title=小码农博客 href=http://qiubo.ink/rss.xml><link rel=alternate type=application/atom+xml title=小码农博客 href=http://qiubo.ink/atom.xml><link rel=alternate type=application/json title=小码农博客 href=http://qiubo.ink/feed.json><title>编码格式对比 | 小码农博客</title><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=keywords content=算法,JSON,XML,Protobuf,Msgpack,CBOR,><script src=//cdn.bootcss.com/jquery/3.3.1/jquery.min.js></script><script>console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n', 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');</script><link rel=icon href=/images/favicon.ico><link rel=apple-touch-icon href=/images/touch-icon.png><link href=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css rel=stylesheet><link rel=stylesheet href=/css/base.css><link rel=stylesheet href=/icon/iconfont.css><link rel=stylesheet href=/css/github-markdown.css><link rel=stylesheet href=/css/highlight.css><script src=/js/util.js></script><script src=/js/valine.min.js></script><link rel=stylesheet href=/css/custom.css><link href=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css rel=stylesheet><script src=https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js async></script><meta name=generator content="Hexo 7.0.0-rc2"></head><body><div id=app><div class=header-wrap><header><div class=site-brand><div class=site-title><a href=/ >小码农博客</a></div></div><nav class=site-navigation><ul class=nav-menu><li class=nav-item data-path=/ ><a href=/ target=_self>主页</a></li><li class=nav-item data-path=/archives/ ><a href=/archives/ target=_self>归档</a></li><li class=nav-item data-path=/categories/ ><a href=/categories/ target=_self>分类</a></li><li class=nav-item data-path=/tags/ ><a href=/tags/ target=_self>标签</a></li><li class=nav-item data-path=""><a href=javascript:void(0); v-else>工具</a><ul class=nav-menu--dropdown><li><a href=/custom/diff.html target=_blank>Diff</a></li><li><a href=/tinymd target=_blank>TinyMD</a></li></ul></li><li class=nav-item data-path=""><a href=javascript:void(0); v-else>抓到我</a><ul class=nav-menu--dropdown><li><a href=https://github.com/alonelucky target=_blank>Github</a></li></ul></li></ul></nav><i class="iconfont icon-menu"></i></header></div><script>let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
+
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked 
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })</script><div class="container post-index"><div class=post><h1 class=article-title><span>编码格式对比</span></h1><div class=article-top-meta><span>发布 : 2024-11-14</span></div><div class=article-content><div class=markdown-body><h2 id=包含自描述信息><a href=#包含自描述信息 class=headerlink title=包含自描述信息></a>包含自描述信息</h2><h3 id=1-JSON-JavaScript-Object-Notation><a href=#1-JSON-JavaScript-Object-Notation class=headerlink title="1. JSON (JavaScript Object Notation)"></a>1. JSON (JavaScript Object Notation)</h3><p>JSON格式是1999年ECMA-262的子集合，由 Douglas Crockford 提出。</p><p><img src=https://fastly.jsdelivr.net/gh/bucketio/img16@main/2024/11/14/1731572575398-16d7bc4a-8714-46b4-b47a-0762fb9f7aac.png></p><p>基本数据类型：</p><ul><li><strong>数值</strong>：符合IEEE754的十进制数，不能有前导0，可以为负数，可以有小数部分。还可以用e或者E表示指数部分。不能包含非数，如<code>NaN</code>。不区分整数与浮点数。JavaScript用双精度浮点数表示所有数值。</li><li><strong>字符串</strong>：以双引号<code>&quot;&quot;</code>括起来的零个或多个Unicode码位。支持反斜杠开始的转义字符序列。</li><li><strong>布尔值</strong>：表示为 <code>true</code> 或者 <code>false</code>。</li><li><strong>数组</strong>：有序的零个或者多个值。每个值可以为任意类型。数组使用方括号 <code>[]</code> 包裹。多个数组元素之间用逗号 <code>,</code> 分隔，形如：<code>[value, value]</code>。</li><li><strong>对象</strong>：若干无序的“键-值对”，其中键只能是字符串。建议但不强制要求对象中的键是独一无二的。对象以花括号 <code>&#123;&#125;</code> 包裹。多个键-值对之间使用逗号,分隔。键与值之间用冒号 <code>:</code> 分隔。</li><li><strong>空值</strong>：值写为 <code>null</code></li></ul><h5 id=优点><a href=#优点 class=headerlink title=优点></a>优点</h5><ol><li>自描述，人类可阅读性高</li><li>几乎所有与网络开发相关的语言都有JSON函数库。</li></ol><h5 id=缺点><a href=#缺点 class=headerlink title=缺点></a>缺点</h5><ol><li>整型最大，浮点型最大</li><li>不支持二进制数据</li></ol><h3 id=2-MessagePack><a href=#2-MessagePack class=headerlink title="2. MessagePack"></a>2. MessagePack</h3><p><img src=https://fastly.jsdelivr.net/gh/bucketio/img4@main/2024/11/14/1731572437513-5bb35a10-69ed-432f-9cfe-b5fe36c35b31.png></p><p>基本数据类型：</p><ul><li><strong>空值</strong>：<code>nil</code></li><li><strong>布尔值</strong>, 表示为 <code>true</code> 或者 <code>false</code>。</li><li><strong>整型</strong>, 最大64位有符号或无符号整数</li><li><strong>浮点型</strong>, IEEE单双精度浮点</li><li><strong>字符串</strong>, UTF-8 字符串</li><li><strong>二进制</strong>, 最大 ($2^{32}-1$)<code>4294967295</code> 字节</li><li><strong>数组</strong></li><li><strong>对象</strong>, 关系数组</li><li><strong>扩展类型</strong> <code>ext type</code></li><li><strong>时间</strong> ext type &#x3D; -1</li></ul><p>以二进制形式，用于表示简单的数据结构，如数组和关系数组。旨在尽可能紧凑和简单。</p><h5 id=优点-1><a href=#优点-1 class=headerlink title=优点></a>优点</h5><ol><li>编解码自描述</li><li>体积小</li><li>速度快</li><li>支持二进制编码</li></ol><h5 id=缺点-1><a href=#缺点-1 class=headerlink title=缺点></a>缺点</h5><ol><li>人类可阅读性差</li><li>额外引包 (msgpack 官方提供了多种语言)</li></ol><h3 id=3-CBOR-Concise-Binary-Object-Representation><a href=#3-CBOR-Concise-Binary-Object-Representation class=headerlink title="3. CBOR (Concise Binary Object Representation)"></a>3. CBOR (Concise Binary Object Representation)</h3><p>CBOR的灵感来自Message Pack。<br>一种简洁二进制对象表示格式，其设计目标包括极小的代码体积、相当小的消息体积以及无需版本协商的可扩展性。</p><p><img src=https://fastly.jsdelivr.net/gh/bucketio/img11@main/2024/11/14/1731572810388-4cac6a0f-2324-4486-996b-47b19a8161b6.png></p><p><img src=https://fastly.jsdelivr.net/gh/bucketio/img14@main/2024/11/14/1731573013926-d2c3b287-41a6-4f8c-9bb4-1628a2af4aeb.png></p><h5 id=优点-2><a href=#优点-2 class=headerlink title=优点></a>优点</h5><ol><li>编解码自描述</li><li>体积小</li><li>速度快</li><li>支持二进制编码</li><li>占用资源少</li></ol><h5 id=缺点-2><a href=#缺点-2 class=headerlink title=缺点></a>缺点</h5><ol><li>人类可阅读性很差</li><li>大部分语言需要依靠第三方实现</li></ol><h3 id=4-XML-Extensible-Markup-Language><a href=#4-XML-Extensible-Markup-Language class=headerlink title="4. XML (Extensible Markup Language)"></a>4. XML (Extensible Markup Language)</h3><p><img src=https://fastly.jsdelivr.net/gh/bucketio/img3@main/2024/11/14/1731573326634-766518bc-3694-4183-afe0-f8c611905753.png></p><p>可扩展标记语言是一种标记语言和用于存储、传输和重构松散数据的文件格式。它定义了一系列编码文档的规则以使其在人类可读的同时机器可读。万维网联盟于1998年发布的 XML 1.0 规范和其他相关开源标准共同定义了 XML。</p><p>关键术语</p><ul><li><strong>字符（ Character ）</strong></li><li><strong>处理器（ Processor ）与应用（ Application ）</strong></li><li><strong>标记（ Markup ）与内容（ Content ）</strong></li><li><strong>标签（ Tag ）</strong></li><li><strong>元素（ Element ）</strong></li><li><strong>属性（ Attribute ）</strong></li><li><strong>XML 声明（ Declaration ）</strong></li></ul><h5 id=优点-3><a href=#优点-3 class=headerlink title=优点></a>优点</h5><ol><li>编解码自描述，可阅读性高</li><li>易于编写，作为配置文件</li></ol><h5 id=缺点-3><a href=#缺点-3 class=headerlink title=缺点></a>缺点</h5><ol><li>占用空间大，重复字符多</li><li>结构不灵活</li></ol><h2 id=不包含自描述信息><a href=#不包含自描述信息 class=headerlink title=不包含自描述信息></a>不包含自描述信息</h2><h3 id=1-Protobuf-Protocol-Buffers><a href=#1-Protobuf-Protocol-Buffers class=headerlink title="1. Protobuf (Protocol Buffers)"></a>1. Protobuf (Protocol Buffers)</h3><p>像JSON一样，只是它更小、更快，并且需要生成本地语言绑定。</p><p><img src=https://fastly.jsdelivr.net/gh/bucketio/img6@main/2024/11/14/1731574814079-682b9cce-4658-44b6-ade2-b65541f03b7f.png></p><h5 id=优点-4><a href=#优点-4 class=headerlink title=优点></a>优点</h5><ol><li>编解码速度快</li><li>占用体积小</li><li>支持二进制编码</li></ol><h5 id=缺点-4><a href=#缺点-4 class=headerlink title=缺点></a>缺点</h5><ol><li>接发双方均需要预定义结构</li></ol><p>基本数据类型：</p><ul><li><strong>double</strong>：双精度浮点</li><li><strong>float</strong>：单精度浮点</li><li><strong>int32</strong>：32位整型，可变长度编码</li><li><strong>int64</strong>：64 位整型，可变长度编码</li><li><strong>uint32</strong>：32位整型，可变长度编码</li><li><strong>uint64</strong>：64 位整型，可变长度编码</li><li><strong>sint32</strong>：比常规 <strong>int32</strong> 更有效地编码负值。</li><li><strong>sint64</strong>：比常规 <strong>int64</strong> 更有效地编码负值。</li><li><strong>fixed32</strong>：固定4字节。如果值通常大于$2^{28}$，则比<strong>uint32</strong>更有效。</li><li><strong>fixed64</strong>：固定8字节。如果值通常大于$2^{56}$，则比<strong>uint32</strong>更有效。</li><li><strong>sfixed32</strong>：固定4字节。</li><li><strong>sfixed64</strong>：固定8字节。</li><li><strong>bool</strong>：布尔值</li><li><strong>string</strong>：字符串</li><li><strong>bytes</strong>：二进制数据</li></ul><h3 id=其他类似的格式><a href=#其他类似的格式 class=headerlink title=其他类似的格式></a>其他类似的格式</h3><h5 id=1-Apache-Thrift><a href=#1-Apache-Thrift class=headerlink title="1. Apache Thrift"></a>1. Apache Thrift</h5><h5 id=2-Apache-Avro><a href=#2-Apache-Avro class=headerlink title="2. Apache Avro"></a>2. Apache Avro</h5><h2 id=优缺点><a href=#优缺点 class=headerlink title=优缺点></a>优缺点</h2><table><thead><tr><th>格式</th><th>标准</th><th>阅读性(0-9)</th><th>易用性(0-9)</th><th>速度(0-9)</th><th>大小(0-9)</th></tr></thead><tbody><tr><td><a href=https://www.json.org/json-zh.html>JSON</a></td><td><a href=https://www.ecma-international.org/publications-and-standards/standards/ecma-404/ >ECMA-404</a></td><td>高</td><td>高</td><td>一般</td><td>大</td></tr><tr><td><a href=https://msgpack.org/ >MessagePack</a></td><td>-</td><td>中</td><td>高</td><td>快</td><td>中</td></tr><tr><td><a href=https://cbor.io/ >CBOR</a></td><td>RFC 8949</td><td>中</td><td>高</td><td>快</td><td>中</td></tr><tr><td><a href=https://www.w3.org/XML/ >XML</a></td><td>RFC 7303</td><td>高</td><td>高</td><td>慢</td><td>大</td></tr><tr><td><a href=https://protobuf.dev/programming-guides/proto3/ >Protobuf</a></td><td>RFC 7303</td><td>不可阅读</td><td>中</td><td>快</td><td>小</td></tr></tbody></table><hr><center><img src=https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/gh/doocs/md/images/1648303220922-7e14aefa-816e-44c1-8604-ade709ca1c69.png style="width: 100px"></center></div></div><div class=copy-right><div class=markdown-body><blockquote>本文作者 : 萧逸雨<br>原文链接 : <a href="">http://qiubo.ink/2024/11/14/编码格式对比/</a><br>版权声明 : 本博客所有文章除特别声明外，均采用 <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/ >CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</blockquote></div></div><div class=article-footer><div class="article-meta pull-left"><span><i class="iconfont icon-06tags"></i>标签: <span class=span--tag><a href=/tags/%E7%AE%97%E6%B3%95/ >#算法 </a></span><span class=span--tag><a href=/tags/JSON/ >#JSON </a></span><span class=span--tag><a href=/tags/XML/ >#XML </a></span><span class=span--tag><a href=/tags/Protobuf/ >#Protobuf </a></span><span class=span--tag><a href=/tags/Msgpack/ >#Msgpack </a></span><span class=span--tag><a href=/tags/CBOR/ >#CBOR</a></span></span></div><div class="article-meta pull-right"></div></div></div><aside id=sidebar><p id=sidebar-header></p><ol id=sidebar-toc></ol></aside><script async>setTimeout(generateToc, 10);</script><nav class=post-navigation><div class=nav-pre><i class="iconfont icon-prev"></i> 上一篇: <a href=/2023/12/29/Nats%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/ target=_self>Nats服务部署记录</a></div><div class=nav-next>下一篇: <a href=/2024/11/15/github-pages-%E4%B8%8D%E8%83%BD%E8%AF%86%E5%88%AB%E4%B8%8B%E5%88%92%E7%BA%BF%E5%BC%80%E5%A4%B4%E7%9A%84%E6%96%87%E4%BB%B6/ target=_self>github pages 不能识别下划线开头的文件</a> <i class="iconfont icon-next"></i></div></nav></div><footer><p class=site-info>博客已萌萌哒运行<span id=time-to-now></span><span class=my-face>(●'◡'●)ﾉ♥</span><br>Theme - <a href=https://github.com/dongyuanxin/theme-bmw>BMW</a> | Made With 💗 | Powered by <a href=https://godbmw.com/ >GodBMW</a><br><a href=https://letsencrypt.org/ target=_blank>Let&#180;s Encrypt</a> 签发SSL证书</p></footer><script>const timeToNowDOM = document.querySelector("#time-to-now");
+  const startTimestamp = new Date(2016, 8, 10).getTime();
+
+  const updateTimeStr = () => {
+    let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+      day = Math.floor(offset / 86400),
+      hour = Math.floor((offset % 86400) / 3600),
+      minute = Math.floor(((offset % 86400) % 3600) / 60),
+      second = Math.floor(((offset % 86400) % 3600) % 60);
+    timeToNowDOM.innerHTML =
+      day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+    setTimeout(updateTimeStr, 500);
+  }
+
+  setTimeout(updateTimeStr, 500);</script><script>var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?db150be7214fe869c6daac9d53405523";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();</script><div class="back-to-top hidden"><span><i class="iconfont icon-60"></i><span></span>%</span></div><script>const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
+
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
+    });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);</script></div><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script>(() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()</script><script src=https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js async></script><script async>let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);</script></body></html>

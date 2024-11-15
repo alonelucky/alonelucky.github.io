@@ -15,6 +15,9 @@
     <category term="string" />
     <category term="linux" />
     <category term="内存" />
+    <category term="queue" />
+    <category term="笔记" />
+    <category term="nats" />
     <category term="nodejs" />
     <category term="git" />
     <category term="git版本管理" />
@@ -41,12 +44,18 @@
     <category term="openresty" />
     <category term="nginx" />
     <category term="lua" />
+    <category term="前端" />
     <category term="响应式图片" />
     <category term="移动端兼容" />
-    <category term="前端" />
     <category term="wrk" />
     <category term="web" />
     <category term="dart" />
+    <category term="算法" />
+    <category term="JSON" />
+    <category term="XML" />
+    <category term="Protobuf" />
+    <category term="Msgpack" />
+    <category term="CBOR" />
     <entry>
         <id>http://qiubo.ink/2018/09/25/Linux%E6%89%8B%E5%8A%A8%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98/</id>
         <title>Linux手动释放内存</title>

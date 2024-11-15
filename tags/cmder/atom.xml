@@ -15,6 +15,9 @@
     <category term="string" />
     <category term="linux" />
     <category term="内存" />
+    <category term="queue" />
+    <category term="笔记" />
+    <category term="nats" />
     <category term="nodejs" />
     <category term="git" />
     <category term="git版本管理" />
@@ -41,12 +44,18 @@
     <category term="openresty" />
     <category term="nginx" />
     <category term="lua" />
+    <category term="前端" />
     <category term="响应式图片" />
     <category term="移动端兼容" />
-    <category term="前端" />
     <category term="wrk" />
     <category term="web" />
     <category term="dart" />
+    <category term="算法" />
+    <category term="JSON" />
+    <category term="XML" />
+    <category term="Protobuf" />
+    <category term="Msgpack" />
+    <category term="CBOR" />
     <entry>
         <id>http://qiubo.ink/2016/12/15/Cmder%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8F%8Agit%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA%E4%B8%8D%E5%AE%8C%E6%95%B4%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
         <title>Cmder中文乱码及git中文显示不完整解决方法</title>

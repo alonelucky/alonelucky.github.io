@@ -18,6 +18,9 @@
         <category>string</category>
         <category>linux</category>
         <category>内存</category>
+        <category>queue</category>
+        <category>笔记</category>
+        <category>nats</category>
         <category>nodejs</category>
         <category>git</category>
         <category>git版本管理</category>
@@ -44,19 +47,25 @@
         <category>openresty</category>
         <category>nginx</category>
         <category>lua</category>
+        <category>前端</category>
         <category>响应式图片</category>
         <category>移动端兼容</category>
-        <category>前端</category>
         <category>wrk</category>
         <category>web</category>
         <category>dart</category>
+        <category>算法</category>
+        <category>JSON</category>
+        <category>XML</category>
+        <category>Protobuf</category>
+        <category>Msgpack</category>
+        <category>CBOR</category>
         <item>
             <guid isPermalink="true">http://qiubo.ink/2016/12/08/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87/</guid>
             <title>响应式图片</title>
             <link>http://qiubo.ink/2016/12/08/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87/</link>
+            <category>前端</category>
             <category>响应式图片</category>
             <category>移动端兼容</category>
-            <category>前端</category>
             <pubDate>Thu, 08 Dec 2016 19:18:03 +0000</pubDate>
             <description><![CDATA[ &lt;p&gt;在当前响应式设计和自适应设计的流行下，大部分web页面往往都兼容多终端设备，其中一个比较麻烦的问题就是图片的加载了。不同平台显然不可能用同一张大的图片，这样子不但浪费手机流量、影响网站载入速度并且在小屏幕下会很不清晰。让浏览器根据分辨率自动识别图片是最好的方法。&lt;/p&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;

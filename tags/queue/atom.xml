@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://qiubo.ink</id>
+    <title>小码农博客 • Posts by &#34;queue&#34; tag</title>
+    <link href="http://qiubo.ink" />
+    <updated>2023-12-29T17:19:02.000Z</updated>
+    <category term="cmder" />
+    <category term="git学习" />
+    <category term="服务器环境配置mysql" />
+    <category term="golang" />
+    <category term="mod" />
+    <category term="module" />
+    <category term="私服" />
+    <category term="测试" />
+    <category term="string" />
+    <category term="linux" />
+    <category term="内存" />
+    <category term="queue" />
+    <category term="笔记" />
+    <category term="nats" />
+    <category term="nodejs" />
+    <category term="git" />
+    <category term="git版本管理" />
+    <category term="Vscode" />
+    <category term="常用插件" />
+    <category term="编辑器" />
+    <category term="npm" />
+    <category term="docker" />
+    <category term="frp" />
+    <category term="网络" />
+    <category term="gulp" />
+    <category term="前端自动化" />
+    <category term="虚拟主机" />
+    <category term="mysql" />
+    <category term="数据库" />
+    <category term="node操作数据库" />
+    <category term="josn web token" />
+    <category term="jwt" />
+    <category term="redis" />
+    <category term="并发" />
+    <category term="composer" />
+    <category term="php管理" />
+    <category term="cli" />
+    <category term="openresty" />
+    <category term="nginx" />
+    <category term="lua" />
+    <category term="前端" />
+    <category term="响应式图片" />
+    <category term="移动端兼容" />
+    <category term="wrk" />
+    <category term="web" />
+    <category term="dart" />
+    <category term="算法" />
+    <category term="JSON" />
+    <category term="XML" />
+    <category term="Protobuf" />
+    <category term="Msgpack" />
+    <category term="CBOR" />
+    <entry>
+        <id>http://qiubo.ink/2023/12/29/Nats%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/</id>
+        <title>Nats服务部署记录</title>
+        <link rel="alternate" href="http://qiubo.ink/2023/12/29/Nats%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/"/>
+        <content type="html">&lt;p&gt;为了学习和了解 &lt;code&gt;systemctl&lt;/code&gt; 采用手动部署 &lt;code&gt;Nats&lt;/code&gt;.&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h3 id=&#34;1-Service-配置&#34;&gt;&lt;a href=&#34;#1-Service-配置&#34; class=&#34;headerlink&#34; title=&#34;1. Service 配置&#34;&gt;&lt;/a&gt;1. Service 配置&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 在网络启动后启动&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[Unit]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Description=Nats Server Custom Process&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;After=network.target&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 使用完整路径&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[Service]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ExecStart=pathto/nats-server -l pathto/nats.log -c /etc/nats-server/nats-server.conf -pid pathto/nats-server.pid&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ExecStop=/bin/kill $(&lt;span class=&#34;built_in&#34;&gt;cat&lt;/span&gt; pathto/nats-server.pid) &lt;span class=&#34;comment&#34;&gt;# 找到 pid 终止进程&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Type=simple&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;KillMode=process&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Restart=on-failure &lt;span class=&#34;comment&#34;&gt;# 在失败时重启&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;RestartSec=42s&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[Install]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;WantedBy=multi-user.target &lt;span class=&#34;comment&#34;&gt;# 默认开机随用户启动&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;2-Nats-配置&#34;&gt;&lt;a href=&#34;#2-Nats-配置&#34; class=&#34;headerlink&#34; title=&#34;2. Nats 配置&#34;&gt;&lt;/a&gt;2. Nats 配置&lt;/h3&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;http_port: 8222&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;jetstream: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	# 持久化存储&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    store_dir: /usr/local/nats-server-v2.10.7-linux-amd64/data/&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	# 最大内存消息&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    max_mem: 128MB&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	# 最大本地存储&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    max_file: 1G&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;authorization: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    users = [&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;			# 使用 nkey 作为登录&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            nkey: UBFE2GTSYNUPELVDQO5N2Q56EMGD7HZ6MGX32XRTK3CWENYK6PM3RW7O&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;			# 拥有全部权限&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            permissions: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                publish: &amp;quot;&amp;gt;&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                subscribe: &amp;quot;&amp;gt;&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    ]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;3-参考文章&#34;&gt;&lt;a href=&#34;#3-参考文章&#34; class=&#34;headerlink&#34; title=&#34;3. 参考文章&#34;&gt;&lt;/a&gt;3. 参考文章&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;https://yoshiera.gitee.io/posts/nats/nats-keys/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;https://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;https://natsbyexample.com/&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        <category term="golang" />
+        <category term="linux" />
+        <category term="queue" />
+        <category term="笔记" />
+        <category term="nats" />
+        <updated>2023-12-29T17:19:02.000Z</updated>
+    </entry>
+</feed>

@@ -5,8 +5,8 @@
         <link>http://qiubo.ink</link>
         <description></description>
         <language>ZH-cn</language>
-        <pubDate>Thu, 08 Dec 2016 19:18:03 +0000</pubDate>
-        <lastBuildDate>Thu, 08 Dec 2016 19:18:03 +0000</lastBuildDate>
+        <pubDate>Sat, 16 Nov 2024 07:46:42 +0000</pubDate>
+        <lastBuildDate>Sat, 16 Nov 2024 07:46:42 +0000</lastBuildDate>
         <category>cmder</category>
         <category>git学习</category>
         <category>服务器环境配置mysql</category>
@@ -18,6 +18,9 @@
         <category>string</category>
         <category>linux</category>
         <category>内存</category>
+        <category>queue</category>
+        <category>笔记</category>
+        <category>nats</category>
         <category>nodejs</category>
         <category>git</category>
         <category>git版本管理</category>
@@ -44,19 +47,44 @@
         <category>openresty</category>
         <category>nginx</category>
         <category>lua</category>
+        <category>前端</category>
         <category>响应式图片</category>
         <category>移动端兼容</category>
-        <category>前端</category>
         <category>wrk</category>
         <category>web</category>
         <category>dart</category>
+        <category>算法</category>
+        <category>JSON</category>
+        <category>XML</category>
+        <category>Protobuf</category>
+        <category>Msgpack</category>
+        <category>CBOR</category>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2024/11/16/%E5%88%A4%E6%96%AD%E9%A1%B5%E9%9D%A2%E5%86%85%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E5%8F%AF%E8%A7%81/</guid>
+            <title>判断页面内元素是否可见</title>
+            <link>http://qiubo.ink/2024/11/16/%E5%88%A4%E6%96%AD%E9%A1%B5%E9%9D%A2%E5%86%85%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E5%8F%AF%E8%A7%81/</link>
+            <category>前端</category>
+            <pubDate>Sat, 16 Nov 2024 07:46:42 +0000</pubDate>
+            <description><![CDATA[ &lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 目前观测只支持非占位隐藏， dispaly:none; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 占位隐藏可以通过 ele.style 去判断对应的 css&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;dom_visibility&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;ele&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt;(!ele) &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;literal&#34;&gt;false&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt;(ele.&lt;span class=&#34;property&#34;&gt;checkVisibility&lt;/span&gt;) &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; ele.&lt;span class=&#34;title function_&#34;&gt;checkVisibility&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; (ele.&lt;span class=&#34;property&#34;&gt;offsetWidth&lt;/span&gt; &amp;gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt; || ele.&lt;span class=&#34;property&#34;&gt;offsetHeight&lt;/span&gt; &amp;gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;) || !!ele.&lt;span class=&#34;property&#34;&gt;offsetParent&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;&lt;code&gt;var ele = document.getElementById(&amp;#39;someId&amp;#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;判断网页中的Element元素是否可见&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;ele.&lt;span class=&#34;title function_&#34;&gt;checkVisibility&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+此方法目前只有 谷歌 105 版本 和 Firefox 106版本 以后的浏览器支持，Safari全系不支持。&lt;/li&gt;
+&lt;li&gt;判断 ele.offsetParent 是否为null。&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (d.&lt;span class=&#34;property&#34;&gt;offsetParent&lt;/span&gt; === &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;) &amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;variable language_&#34;&gt;console&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;log&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27; the element currently is invisible&amp;#x27;&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+原文链接：&lt;a href=&#34;https://stackoverflow.com/questions/19669786/check-if-element-is-visible-in-dom&#34;&gt;https://stackoverflow.com/questions/19669786/check-if-element-is-visible-in-dom&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;判断 offsetWidth 和 offsetHeight 同时等于0&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;isvisible&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;ele&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; ele.&lt;span class=&#34;property&#34;&gt;offsetWidth&lt;/span&gt; &amp;gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt; || ele.&lt;span class=&#34;property&#34;&gt;offsetHeight&lt;/span&gt; &amp;gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;总结&#34;&gt;&lt;a href=&#34;#总结&#34; class=&#34;headerlink&#34; title=&#34;总结&#34;&gt;&lt;/a&gt;总结&lt;/h4&gt;&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 目前观测只支持非占位隐藏， dispaly:none; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 占位隐藏可以通过 ele.style 去判断对应的 css&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;dom_visibility&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;ele&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt;(!ele) &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;literal&#34;&gt;false&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt;(ele.&lt;span class=&#34;property&#34;&gt;checkVisibility&lt;/span&gt;) &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; ele.&lt;span class=&#34;title function_&#34;&gt;checkVisibility&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; (ele.&lt;span class=&#34;property&#34;&gt;offsetWidth&lt;/span&gt; &amp;gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt; || ele.&lt;span class=&#34;property&#34;&gt;offsetHeight&lt;/span&gt; &amp;gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;) || !!ele.&lt;span class=&#34;property&#34;&gt;offsetParent&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://qiubo.ink/2016/12/08/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87/</guid>
             <title>响应式图片</title>
             <link>http://qiubo.ink/2016/12/08/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87/</link>
+            <category>前端</category>
             <category>响应式图片</category>
             <category>移动端兼容</category>
-            <category>前端</category>
             <pubDate>Thu, 08 Dec 2016 19:18:03 +0000</pubDate>
             <description><![CDATA[ &lt;p&gt;在当前响应式设计和自适应设计的流行下，大部分web页面往往都兼容多终端设备，其中一个比较麻烦的问题就是图片的加载了。不同平台显然不可能用同一张大的图片，这样子不但浪费手机流量、影响网站载入速度并且在小屏幕下会很不清晰。让浏览器根据分辨率自动识别图片是最好的方法。&lt;/p&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;

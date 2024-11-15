@@ -18,6 +18,9 @@
         <category>string</category>
         <category>linux</category>
         <category>内存</category>
+        <category>queue</category>
+        <category>笔记</category>
+        <category>nats</category>
         <category>nodejs</category>
         <category>git</category>
         <category>git版本管理</category>
@@ -44,12 +47,18 @@
         <category>openresty</category>
         <category>nginx</category>
         <category>lua</category>
+        <category>前端</category>
         <category>响应式图片</category>
         <category>移动端兼容</category>
-        <category>前端</category>
         <category>wrk</category>
         <category>web</category>
         <category>dart</category>
+        <category>算法</category>
+        <category>JSON</category>
+        <category>XML</category>
+        <category>Protobuf</category>
+        <category>Msgpack</category>
+        <category>CBOR</category>
         <item>
             <guid isPermalink="true">http://qiubo.ink/2018/09/14/nodejs%E5%AE%9E%E7%8E%B0%E5%9F%BA%E7%A1%80%E7%9A%84jwt/</guid>
             <title>nodejs实现基础的jwt</title>

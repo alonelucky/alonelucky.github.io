@@ -5,8 +5,8 @@
         <link>http://qiubo.ink</link>
         <description></description>
         <language>ZH-cn</language>
-        <pubDate>Tue, 05 Sep 2023 09:24:33 +0000</pubDate>
-        <lastBuildDate>Tue, 05 Sep 2023 09:24:33 +0000</lastBuildDate>
+        <pubDate>Sat, 16 Nov 2024 07:46:42 +0000</pubDate>
+        <lastBuildDate>Sat, 16 Nov 2024 07:46:42 +0000</lastBuildDate>
         <category>cmder</category>
         <category>git学习</category>
         <category>服务器环境配置mysql</category>
@@ -18,6 +18,9 @@
         <category>string</category>
         <category>linux</category>
         <category>内存</category>
+        <category>queue</category>
+        <category>笔记</category>
+        <category>nats</category>
         <category>nodejs</category>
         <category>git</category>
         <category>git版本管理</category>
@@ -44,12 +47,278 @@
         <category>openresty</category>
         <category>nginx</category>
         <category>lua</category>
+        <category>前端</category>
         <category>响应式图片</category>
         <category>移动端兼容</category>
-        <category>前端</category>
         <category>wrk</category>
         <category>web</category>
         <category>dart</category>
+        <category>算法</category>
+        <category>JSON</category>
+        <category>XML</category>
+        <category>Protobuf</category>
+        <category>Msgpack</category>
+        <category>CBOR</category>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2024/11/16/%E5%88%A4%E6%96%AD%E9%A1%B5%E9%9D%A2%E5%86%85%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E5%8F%AF%E8%A7%81/</guid>
+            <title>判断页面内元素是否可见</title>
+            <link>http://qiubo.ink/2024/11/16/%E5%88%A4%E6%96%AD%E9%A1%B5%E9%9D%A2%E5%86%85%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E5%8F%AF%E8%A7%81/</link>
+            <category>前端</category>
+            <pubDate>Sat, 16 Nov 2024 07:46:42 +0000</pubDate>
+            <description><![CDATA[ &lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 目前观测只支持非占位隐藏， dispaly:none; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 占位隐藏可以通过 ele.style 去判断对应的 css&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;dom_visibility&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;ele&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt;(!ele) &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;literal&#34;&gt;false&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt;(ele.&lt;span class=&#34;property&#34;&gt;checkVisibility&lt;/span&gt;) &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; ele.&lt;span class=&#34;title function_&#34;&gt;checkVisibility&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; (ele.&lt;span class=&#34;property&#34;&gt;offsetWidth&lt;/span&gt; &amp;gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt; || ele.&lt;span class=&#34;property&#34;&gt;offsetHeight&lt;/span&gt; &amp;gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;) || !!ele.&lt;span class=&#34;property&#34;&gt;offsetParent&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;&lt;code&gt;var ele = document.getElementById(&amp;#39;someId&amp;#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;判断网页中的Element元素是否可见&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;ele.&lt;span class=&#34;title function_&#34;&gt;checkVisibility&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+此方法目前只有 谷歌 105 版本 和 Firefox 106版本 以后的浏览器支持，Safari全系不支持。&lt;/li&gt;
+&lt;li&gt;判断 ele.offsetParent 是否为null。&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (d.&lt;span class=&#34;property&#34;&gt;offsetParent&lt;/span&gt; === &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;) &amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;variable language_&#34;&gt;console&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;log&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27; the element currently is invisible&amp;#x27;&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+原文链接：&lt;a href=&#34;https://stackoverflow.com/questions/19669786/check-if-element-is-visible-in-dom&#34;&gt;https://stackoverflow.com/questions/19669786/check-if-element-is-visible-in-dom&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;判断 offsetWidth 和 offsetHeight 同时等于0&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;isvisible&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;ele&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; ele.&lt;span class=&#34;property&#34;&gt;offsetWidth&lt;/span&gt; &amp;gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt; || ele.&lt;span class=&#34;property&#34;&gt;offsetHeight&lt;/span&gt; &amp;gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;总结&#34;&gt;&lt;a href=&#34;#总结&#34; class=&#34;headerlink&#34; title=&#34;总结&#34;&gt;&lt;/a&gt;总结&lt;/h4&gt;&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 目前观测只支持非占位隐藏， dispaly:none; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 占位隐藏可以通过 ele.style 去判断对应的 css&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;dom_visibility&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;ele&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt;(!ele) &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;literal&#34;&gt;false&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt;(ele.&lt;span class=&#34;property&#34;&gt;checkVisibility&lt;/span&gt;) &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; ele.&lt;span class=&#34;title function_&#34;&gt;checkVisibility&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; (ele.&lt;span class=&#34;property&#34;&gt;offsetWidth&lt;/span&gt; &amp;gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt; || ele.&lt;span class=&#34;property&#34;&gt;offsetHeight&lt;/span&gt; &amp;gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;) || !!ele.&lt;span class=&#34;property&#34;&gt;offsetParent&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2024/11/15/github-pages-%E4%B8%8D%E8%83%BD%E8%AF%86%E5%88%AB%E4%B8%8B%E5%88%92%E7%BA%BF%E5%BC%80%E5%A4%B4%E7%9A%84%E6%96%87%E4%BB%B6/</guid>
+            <title>github pages 不能识别下划线开头的文件</title>
+            <link>http://qiubo.ink/2024/11/15/github-pages-%E4%B8%8D%E8%83%BD%E8%AF%86%E5%88%AB%E4%B8%8B%E5%88%92%E7%BA%BF%E5%BC%80%E5%A4%B4%E7%9A%84%E6%96%87%E4%BB%B6/</link>
+            <category>笔记</category>
+            <pubDate>Fri, 15 Nov 2024 16:41:59 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;github 默认使用 jekyll ，下划线是配置文件，默认是不展示的。&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;github pages 不能识别下划线开头的文件。&lt;/p&gt;
+&lt;p&gt;网络上可以找到对应的原因：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;github 默认使用 jekyll ，下划线是配置文件，默认是不展示的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;但是前端打包时不可避免不同框架输出的打包结果中，包含下划线开头的文件。解决方案如下&lt;/p&gt;
+&lt;p&gt;在部署根目录下: &lt;/p&gt;
+&lt;p&gt;1.不需要使用 jekyll &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; 使用 .nojekyll 关闭 jekyll 主题&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://fastly.jsdelivr.net/gh/bucketio/img19@main/2024/11/15/1731653357224-54407df6-7ee8-428f-8472-170e14afe872.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;2.还需要使用 jekyll &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在 _config.yml 中显式包含文件 &lt;a href=&#34;https://jekyllrb.com/docs/configuration/options/&#34;&gt;include&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight yml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;attr&#34;&gt;incldes:&lt;/span&gt; [&lt;span class=&#34;string&#34;&gt;&amp;quot;assets/&amp;quot;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2024/11/14/%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%AF%B9%E6%AF%94/</guid>
+            <title>编码格式对比</title>
+            <link>http://qiubo.ink/2024/11/14/%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%AF%B9%E6%AF%94/</link>
+            <category>算法</category>
+            <category>JSON</category>
+            <category>XML</category>
+            <category>Protobuf</category>
+            <category>Msgpack</category>
+            <category>CBOR</category>
+            <pubDate>Thu, 14 Nov 2024 14:22:01 +0000</pubDate>
+            <description><![CDATA[ &lt;ul&gt;
+&lt;li&gt;包含自描述信息 &lt;ul&gt;
+&lt;li&gt;JSON &lt;/li&gt;
+&lt;li&gt;MessagePack &lt;/li&gt;
+&lt;li&gt;CBOR&lt;/li&gt;
+&lt;li&gt;XML&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;不包含自描述信息&lt;ul&gt;
+&lt;li&gt;Protobuf&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;包含自描述信息&#34;&gt;&lt;a href=&#34;#包含自描述信息&#34; class=&#34;headerlink&#34; title=&#34;包含自描述信息&#34;&gt;&lt;/a&gt;包含自描述信息&lt;/h2&gt;&lt;h3 id=&#34;1-JSON-JavaScript-Object-Notation&#34;&gt;&lt;a href=&#34;#1-JSON-JavaScript-Object-Notation&#34; class=&#34;headerlink&#34; title=&#34;1. JSON (JavaScript Object Notation)&#34;&gt;&lt;/a&gt;1. JSON (JavaScript Object Notation)&lt;/h3&gt;&lt;p&gt;JSON格式是1999年ECMA-262的子集合，由 Douglas Crockford 提出。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://fastly.jsdelivr.net/gh/bucketio/img16@main/2024/11/14/1731572575398-16d7bc4a-8714-46b4-b47a-0762fb9f7aac.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;基本数据类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数值&lt;/strong&gt;：符合IEEE754的十进制数，不能有前导0，可以为负数，可以有小数部分。还可以用e或者E表示指数部分。不能包含非数，如&lt;code&gt;NaN&lt;/code&gt;。不区分整数与浮点数。JavaScript用双精度浮点数表示所有数值。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;字符串&lt;/strong&gt;：以双引号&lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt;括起来的零个或多个Unicode码位。支持反斜杠开始的转义字符序列。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;布尔值&lt;/strong&gt;：表示为 &lt;code&gt;true&lt;/code&gt; 或者 &lt;code&gt;false&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数组&lt;/strong&gt;：有序的零个或者多个值。每个值可以为任意类型。数组使用方括号 &lt;code&gt;[]&lt;/code&gt; 包裹。多个数组元素之间用逗号 &lt;code&gt;,&lt;/code&gt; 分隔，形如：&lt;code&gt;[value, value]&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对象&lt;/strong&gt;：若干无序的“键-值对”，其中键只能是字符串。建议但不强制要求对象中的键是独一无二的。对象以花括号 &lt;code&gt;&amp;#123;&amp;#125;&lt;/code&gt; 包裹。多个键-值对之间使用逗号,分隔。键与值之间用冒号 &lt;code&gt;:&lt;/code&gt; 分隔。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;空值&lt;/strong&gt;：值写为 &lt;code&gt;null&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;优点&#34;&gt;&lt;a href=&#34;#优点&#34; class=&#34;headerlink&#34; title=&#34;优点&#34;&gt;&lt;/a&gt;优点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;自描述，人类可阅读性高&lt;/li&gt;
+&lt;li&gt;几乎所有与网络开发相关的语言都有JSON函数库。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;缺点&#34;&gt;&lt;a href=&#34;#缺点&#34; class=&#34;headerlink&#34; title=&#34;缺点&#34;&gt;&lt;/a&gt;缺点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;整型最大，浮点型最大&lt;/li&gt;
+&lt;li&gt;不支持二进制数据&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2-MessagePack&#34;&gt;&lt;a href=&#34;#2-MessagePack&#34; class=&#34;headerlink&#34; title=&#34;2. MessagePack&#34;&gt;&lt;/a&gt;2. MessagePack&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://fastly.jsdelivr.net/gh/bucketio/img4@main/2024/11/14/1731572437513-5bb35a10-69ed-432f-9cfe-b5fe36c35b31.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;基本数据类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;空值&lt;/strong&gt;：&lt;code&gt;nil&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;布尔值&lt;/strong&gt;, 表示为 &lt;code&gt;true&lt;/code&gt; 或者 &lt;code&gt;false&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;整型&lt;/strong&gt;, 最大64位有符号或无符号整数&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;浮点型&lt;/strong&gt;, IEEE单双精度浮点&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;字符串&lt;/strong&gt;, UTF-8 字符串&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;二进制&lt;/strong&gt;, 最大 ($2^{32}-1$)&lt;code&gt;4294967295&lt;/code&gt;  字节 &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数组&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对象&lt;/strong&gt;, 关系数组&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;扩展类型&lt;/strong&gt; &lt;code&gt;ext type&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;时间&lt;/strong&gt; ext type &amp;#x3D; -1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以二进制形式，用于表示简单的数据结构，如数组和关系数组。旨在尽可能紧凑和简单。&lt;/p&gt;
+&lt;h5 id=&#34;优点-1&#34;&gt;&lt;a href=&#34;#优点-1&#34; class=&#34;headerlink&#34; title=&#34;优点&#34;&gt;&lt;/a&gt;优点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;编解码自描述&lt;/li&gt;
+&lt;li&gt;体积小&lt;/li&gt;
+&lt;li&gt;速度快&lt;/li&gt;
+&lt;li&gt;支持二进制编码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;缺点-1&#34;&gt;&lt;a href=&#34;#缺点-1&#34; class=&#34;headerlink&#34; title=&#34;缺点&#34;&gt;&lt;/a&gt;缺点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;人类可阅读性差&lt;/li&gt;
+&lt;li&gt;额外引包 (msgpack 官方提供了多种语言)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;3-CBOR-Concise-Binary-Object-Representation&#34;&gt;&lt;a href=&#34;#3-CBOR-Concise-Binary-Object-Representation&#34; class=&#34;headerlink&#34; title=&#34;3. CBOR (Concise Binary Object Representation)&#34;&gt;&lt;/a&gt;3. CBOR (Concise Binary Object Representation)&lt;/h3&gt;&lt;p&gt;CBOR的灵感来自Message Pack。&lt;br&gt;一种简洁二进制对象表示格式，其设计目标包括极小的代码体积、相当小的消息体积以及无需版本协商的可扩展性。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://fastly.jsdelivr.net/gh/bucketio/img11@main/2024/11/14/1731572810388-4cac6a0f-2324-4486-996b-47b19a8161b6.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://fastly.jsdelivr.net/gh/bucketio/img14@main/2024/11/14/1731573013926-d2c3b287-41a6-4f8c-9bb4-1628a2af4aeb.png&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;优点-2&#34;&gt;&lt;a href=&#34;#优点-2&#34; class=&#34;headerlink&#34; title=&#34;优点&#34;&gt;&lt;/a&gt;优点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;编解码自描述&lt;/li&gt;
+&lt;li&gt;体积小&lt;/li&gt;
+&lt;li&gt;速度快&lt;/li&gt;
+&lt;li&gt;支持二进制编码&lt;/li&gt;
+&lt;li&gt;占用资源少&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;缺点-2&#34;&gt;&lt;a href=&#34;#缺点-2&#34; class=&#34;headerlink&#34; title=&#34;缺点&#34;&gt;&lt;/a&gt;缺点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;人类可阅读性很差&lt;/li&gt;
+&lt;li&gt;大部分语言需要依靠第三方实现&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;4-XML-Extensible-Markup-Language&#34;&gt;&lt;a href=&#34;#4-XML-Extensible-Markup-Language&#34; class=&#34;headerlink&#34; title=&#34;4. XML (Extensible Markup Language)&#34;&gt;&lt;/a&gt;4. XML (Extensible Markup Language)&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://fastly.jsdelivr.net/gh/bucketio/img3@main/2024/11/14/1731573326634-766518bc-3694-4183-afe0-f8c611905753.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;可扩展标记语言是一种标记语言和用于存储、传输和重构松散数据的文件格式。它定义了一系列编码文档的规则以使其在人类可读的同时机器可读。万维网联盟于1998年发布的 XML 1.0 规范和其他相关开源标准共同定义了 XML。&lt;/p&gt;
+&lt;p&gt;关键术语&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;字符（ Character ）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;处理器（ Processor ）与应用（ Application ）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;标记（ Markup ）与内容（ Content ）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;标签（ Tag ）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;元素（ Element ）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;属性（ Attribute ）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;XML 声明（ Declaration ）&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;优点-3&#34;&gt;&lt;a href=&#34;#优点-3&#34; class=&#34;headerlink&#34; title=&#34;优点&#34;&gt;&lt;/a&gt;优点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;编解码自描述，可阅读性高&lt;/li&gt;
+&lt;li&gt;易于编写，作为配置文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;缺点-3&#34;&gt;&lt;a href=&#34;#缺点-3&#34; class=&#34;headerlink&#34; title=&#34;缺点&#34;&gt;&lt;/a&gt;缺点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;占用空间大，重复字符多&lt;/li&gt;
+&lt;li&gt;结构不灵活&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;不包含自描述信息&#34;&gt;&lt;a href=&#34;#不包含自描述信息&#34; class=&#34;headerlink&#34; title=&#34;不包含自描述信息&#34;&gt;&lt;/a&gt;不包含自描述信息&lt;/h2&gt;&lt;h3 id=&#34;1-Protobuf-Protocol-Buffers&#34;&gt;&lt;a href=&#34;#1-Protobuf-Protocol-Buffers&#34; class=&#34;headerlink&#34; title=&#34;1. Protobuf (Protocol Buffers)&#34;&gt;&lt;/a&gt;1. Protobuf (Protocol Buffers)&lt;/h3&gt;&lt;p&gt;像JSON一样，只是它更小、更快，并且需要生成本地语言绑定。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://fastly.jsdelivr.net/gh/bucketio/img6@main/2024/11/14/1731574814079-682b9cce-4658-44b6-ade2-b65541f03b7f.png&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;优点-4&#34;&gt;&lt;a href=&#34;#优点-4&#34; class=&#34;headerlink&#34; title=&#34;优点&#34;&gt;&lt;/a&gt;优点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;编解码速度快&lt;/li&gt;
+&lt;li&gt;占用体积小&lt;/li&gt;
+&lt;li&gt;支持二进制编码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;缺点-4&#34;&gt;&lt;a href=&#34;#缺点-4&#34; class=&#34;headerlink&#34; title=&#34;缺点&#34;&gt;&lt;/a&gt;缺点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;接发双方均需要预定义结构&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;基本数据类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;double&lt;/strong&gt;：双精度浮点&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;float&lt;/strong&gt;：单精度浮点&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;int32&lt;/strong&gt;：32位整型，可变长度编码&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;int64&lt;/strong&gt;：64 位整型，可变长度编码&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;uint32&lt;/strong&gt;：32位整型，可变长度编码&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;uint64&lt;/strong&gt;：64 位整型，可变长度编码&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sint32&lt;/strong&gt;：比常规 &lt;strong&gt;int32&lt;/strong&gt; 更有效地编码负值。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sint64&lt;/strong&gt;：比常规 &lt;strong&gt;int64&lt;/strong&gt; 更有效地编码负值。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;fixed32&lt;/strong&gt;：固定4字节。如果值通常大于$2^{28}$，则比&lt;strong&gt;uint32&lt;/strong&gt;更有效。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;fixed64&lt;/strong&gt;：固定8字节。如果值通常大于$2^{56}$，则比&lt;strong&gt;uint32&lt;/strong&gt;更有效。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sfixed32&lt;/strong&gt;：固定4字节。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sfixed64&lt;/strong&gt;：固定8字节。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;bool&lt;/strong&gt;：布尔值&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;string&lt;/strong&gt;：字符串&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;bytes&lt;/strong&gt;：二进制数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;其他类似的格式&#34;&gt;&lt;a href=&#34;#其他类似的格式&#34; class=&#34;headerlink&#34; title=&#34;其他类似的格式&#34;&gt;&lt;/a&gt;其他类似的格式&lt;/h3&gt;&lt;h5 id=&#34;1-Apache-Thrift&#34;&gt;&lt;a href=&#34;#1-Apache-Thrift&#34; class=&#34;headerlink&#34; title=&#34;1. Apache Thrift&#34;&gt;&lt;/a&gt;1. Apache Thrift&lt;/h5&gt;&lt;h5 id=&#34;2-Apache-Avro&#34;&gt;&lt;a href=&#34;#2-Apache-Avro&#34; class=&#34;headerlink&#34; title=&#34;2. Apache Avro&#34;&gt;&lt;/a&gt;2. Apache Avro&lt;/h5&gt;&lt;h2 id=&#34;优缺点&#34;&gt;&lt;a href=&#34;#优缺点&#34; class=&#34;headerlink&#34; title=&#34;优缺点&#34;&gt;&lt;/a&gt;优缺点&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;格式&lt;/th&gt;
+&lt;th&gt;标准&lt;/th&gt;
+&lt;th&gt;阅读性(0-9)&lt;/th&gt;
+&lt;th&gt;易用性(0-9)&lt;/th&gt;
+&lt;th&gt;速度(0-9)&lt;/th&gt;
+&lt;th&gt;大小(0-9)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.json.org/json-zh.html&#34;&gt;JSON&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.ecma-international.org/publications-and-standards/standards/ecma-404/&#34;&gt;ECMA-404&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;高&lt;/td&gt;
+&lt;td&gt;高&lt;/td&gt;
+&lt;td&gt;一般&lt;/td&gt;
+&lt;td&gt;大&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://msgpack.org/&#34;&gt;MessagePack&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;中&lt;/td&gt;
+&lt;td&gt;高&lt;/td&gt;
+&lt;td&gt;快&lt;/td&gt;
+&lt;td&gt;中&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cbor.io/&#34;&gt;CBOR&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;RFC 8949&lt;/td&gt;
+&lt;td&gt;中&lt;/td&gt;
+&lt;td&gt;高&lt;/td&gt;
+&lt;td&gt;快&lt;/td&gt;
+&lt;td&gt;中&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.w3.org/XML/&#34;&gt;XML&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;RFC 7303&lt;/td&gt;
+&lt;td&gt;高&lt;/td&gt;
+&lt;td&gt;高&lt;/td&gt;
+&lt;td&gt;慢&lt;/td&gt;
+&lt;td&gt;大&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://protobuf.dev/programming-guides/proto3/&#34;&gt;Protobuf&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;RFC 7303&lt;/td&gt;
+&lt;td&gt;不可阅读&lt;/td&gt;
+&lt;td&gt;中&lt;/td&gt;
+&lt;td&gt;快&lt;/td&gt;
+&lt;td&gt;小&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;hr&gt;
+&lt;center&gt;
+    &lt;img src=&#34;https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/gh/doocs/md/images/1648303220922-7e14aefa-816e-44c1-8604-ade709ca1c69.png&#34; style=&#34;width: 100px;&#34;&gt;
+&lt;/center&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2023/12/29/Nats%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/</guid>
+            <title>Nats服务部署记录</title>
+            <link>http://qiubo.ink/2023/12/29/Nats%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/</link>
+            <category>golang</category>
+            <category>linux</category>
+            <category>queue</category>
+            <category>笔记</category>
+            <category>nats</category>
+            <pubDate>Fri, 29 Dec 2023 17:19:02 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;为了学习和了解 &lt;code&gt;systemctl&lt;/code&gt; 采用手动部署 &lt;code&gt;Nats&lt;/code&gt;.&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h3 id=&#34;1-Service-配置&#34;&gt;&lt;a href=&#34;#1-Service-配置&#34; class=&#34;headerlink&#34; title=&#34;1. Service 配置&#34;&gt;&lt;/a&gt;1. Service 配置&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 在网络启动后启动&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[Unit]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Description=Nats Server Custom Process&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;After=network.target&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 使用完整路径&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[Service]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ExecStart=pathto/nats-server -l pathto/nats.log -c /etc/nats-server/nats-server.conf -pid pathto/nats-server.pid&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ExecStop=/bin/kill $(&lt;span class=&#34;built_in&#34;&gt;cat&lt;/span&gt; pathto/nats-server.pid) &lt;span class=&#34;comment&#34;&gt;# 找到 pid 终止进程&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Type=simple&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;KillMode=process&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Restart=on-failure &lt;span class=&#34;comment&#34;&gt;# 在失败时重启&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;RestartSec=42s&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[Install]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;WantedBy=multi-user.target &lt;span class=&#34;comment&#34;&gt;# 默认开机随用户启动&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;2-Nats-配置&#34;&gt;&lt;a href=&#34;#2-Nats-配置&#34; class=&#34;headerlink&#34; title=&#34;2. Nats 配置&#34;&gt;&lt;/a&gt;2. Nats 配置&lt;/h3&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;http_port: 8222&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;jetstream: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	# 持久化存储&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    store_dir: /usr/local/nats-server-v2.10.7-linux-amd64/data/&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	# 最大内存消息&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    max_mem: 128MB&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	# 最大本地存储&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    max_file: 1G&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;authorization: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    users = [&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;			# 使用 nkey 作为登录&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            nkey: UBFE2GTSYNUPELVDQO5N2Q56EMGD7HZ6MGX32XRTK3CWENYK6PM3RW7O&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;			# 拥有全部权限&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            permissions: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                publish: &amp;quot;&amp;gt;&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                subscribe: &amp;quot;&amp;gt;&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    ]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;3-参考文章&#34;&gt;&lt;a href=&#34;#3-参考文章&#34; class=&#34;headerlink&#34; title=&#34;3. 参考文章&#34;&gt;&lt;/a&gt;3. 参考文章&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;https://yoshiera.gitee.io/posts/nats/nats-keys/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;https://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;https://natsbyexample.com/&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://qiubo.ink/2023/09/05/%E4%BD%BF%E7%94%A8openresty%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E7%81%B0%E5%BA%A6%E5%88%87%E6%8D%A2/</guid>
             <title>使用openresty实现简单的灰度切换</title>
@@ -600,99 +869,6 @@
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;nrm use nl&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;浏览 nrm 源&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;nrm ls&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">http://qiubo.ink/2017/05/12/%E5%88%A9%E7%94%A8fs%E9%81%8D%E5%8E%86%E5%9B%BE%E7%89%87,%E4%BD%BF%E7%94%A8tinify%E5%8E%8B%E7%BC%A9/</guid>
-            <title>利用fs遍历图片,使用tinify压缩</title>
-            <link>http://qiubo.ink/2017/05/12/%E5%88%A9%E7%94%A8fs%E9%81%8D%E5%8E%86%E5%9B%BE%E7%89%87,%E4%BD%BF%E7%94%A8tinify%E5%8E%8B%E7%BC%A9/</link>
-            <pubDate>Fri, 12 May 2017 17:47:57 +0000</pubDate>
-            <description><![CDATA[ &lt;p&gt;gulp前端自动化中有压缩图片的工具gulp-imagemin等,但是压缩效果并不很理想,之前发现的tinypng.com网站提供许多压缩接口(puby,java,python,php,nodejs等)和插件(photo,wordpress等),当然这个是付费的.免费配额为500张图片&amp;#x2F;每月。个人觉得轻度使用是足够的。&lt;/p&gt;
-&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
-
-&lt;h4 id=&#34;1-官方站点提供了常规调用方法&#34;&gt;&lt;a href=&#34;#1-官方站点提供了常规调用方法&#34; class=&#34;headerlink&#34; title=&#34;1. 官方站点提供了常规调用方法&#34;&gt;&lt;/a&gt;1. 官方站点提供了常规调用方法&lt;/h4&gt;&lt;p&gt;安装:&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;npm install --save tinify&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;调用:&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var tinify = require(&amp;#x27;tinify&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;tinify.key=&amp;#x27;your key &amp;#x27;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;这个是提供邮箱即可获得秘钥,在此我就不贴出来了,秘钥链接:&lt;a href=&#34;https://tinypng.com/developers&#34;&gt;https://tinypng.com/developers&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;收到邮件后,点击即可获取(可能在垃圾邮件中)&lt;/p&gt;
-&lt;p&gt;压缩操作:&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var source = tinify.fromFile(&amp;quot;unoptimized.jpg&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;source.toFile(&amp;quot;optimized.jpg&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&#34;2-利用fs获得文件数组&#34;&gt;&lt;a href=&#34;#2-利用fs获得文件数组&#34; class=&#34;headerlink&#34; title=&#34;2. 利用fs获得文件数组&#34;&gt;&lt;/a&gt;2. 利用fs获得文件数组&lt;/h4&gt;&lt;p&gt;但是,只提供一次操作一个文件,比较繁复.于是利用node自带的fs文件系统模块,获取到文件,并遍历操作&lt;/p&gt;
-&lt;p&gt;fs.readdir() 异步获取&lt;br&gt;fs.readdirSync() 同步获取&lt;br&gt;该函数传参数为文件夹名,返回值均为文件名数组,因为在本地操作,而且是需要获取到图片后才操作,所以选择同步获取&lt;/p&gt;
-&lt;p&gt;代码如下:&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;fileNameArr = fs.readdirSync(&amp;#x27;img&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;fileNameArr.forEach(function(fileName)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    source = tinify.fromFile(&amp;quot;img/&amp;quot;+fileName);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    source.toFile(&amp;quot;a/&amp;quot;+fileName);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;这样就好了.&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">http://qiubo.ink/2017/05/12/node-mysql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid>
-            <title>node-mysql基础操作</title>
-            <link>http://qiubo.ink/2017/05/12/node-mysql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link>
-            <category>nodejs</category>
-            <category>mysql</category>
-            <category>node操作数据库</category>
-            <pubDate>Fri, 12 May 2017 17:47:06 +0000</pubDate>
-            <description><![CDATA[ &lt;h4 id=&#34;1-安装mysql模块&#34;&gt;&lt;a href=&#34;#1-安装mysql模块&#34; class=&#34;headerlink&#34; title=&#34;1. 安装mysql模块&#34;&gt;&lt;/a&gt;1. 安装mysql模块&lt;/h4&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;npm install mysql --save&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&#34;2-创建mysql-js&#34;&gt;&lt;a href=&#34;#2-创建mysql-js&#34; class=&#34;headerlink&#34; title=&#34;2. 创建mysql.js&#34;&gt;&lt;/a&gt;2. 创建mysql.js&lt;/h4&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var mysql = require(&amp;#x27;mysql&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var connection = mysql.createConnection(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    host:&amp;#x27;localhost&amp;#x27;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    user:&amp;#x27;root&amp;#x27;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    password:&amp;#x27;root&amp;#x27;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    database:&amp;#x27;node&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;利用mysql模块的createConnection函数,配置好相应参数即可连接mysql数据库,&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;connection.connect();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(&amp;#x27;数据库连接成功&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;建立连接&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;connection.query(sql,function(err,res)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    if(err)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        console.log(err);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        console.log(res);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;运行sql语句,返回数据信息&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;connection.end();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(&amp;#x27;数据库关闭&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;关闭数据库连接&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">http://qiubo.ink/2017/05/12/mysql%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%8F%8A%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE/</guid>
-            <title>mysql创建用户及权限设置</title>
-            <link>http://qiubo.ink/2017/05/12/mysql%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%8F%8A%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE/</link>
-            <category>mysql</category>
-            <pubDate>Fri, 12 May 2017 17:46:19 +0000</pubDate>
-            <description><![CDATA[ &lt;h4 id=&#34;1-grant&#34;&gt;&lt;a href=&#34;#1-grant&#34; class=&#34;headerlink&#34; title=&#34;1. grant&#34;&gt;&lt;/a&gt;1. grant&lt;/h4&gt;&lt;p&gt;查看用户权限:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;show grants;&lt;/code&gt; &amp;#x2F;&amp;#x2F; 查看当前用户权限&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;show grants for username@localhost;&lt;/code&gt; &amp;#x2F;&amp;#x2F; 查看已知用户权限&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h6 id=&#34;普通权限&#34;&gt;&lt;a href=&#34;#普通权限&#34; class=&#34;headerlink&#34; title=&#34;普通权限:&#34;&gt;&lt;/a&gt;普通权限:&lt;/h6&gt;&lt;p&gt;grant 权限 on 数据库对象 to 用户@访问地址 by密码&lt;/p&gt;
-&lt;p&gt;权限:&lt;br&gt;    1. select&lt;br&gt;    2. instert&lt;br&gt;    3. update&lt;br&gt;    4. delete&lt;/p&gt;
-&lt;h6 id=&#34;数据库操作权限&#34;&gt;&lt;a href=&#34;#数据库操作权限&#34; class=&#34;headerlink&#34; title=&#34;数据库操作权限&#34;&gt;&lt;/a&gt;数据库操作权限&lt;/h6&gt;&lt;p&gt;grant 创建、修改、删除 MySQL 数据表结构权限。&lt;/p&gt;
-&lt;p&gt;权限;&lt;br&gt;    1. create&lt;br&gt;    2. alter&lt;br&gt;    3. drop&lt;br&gt;    4. references&lt;br&gt;    5. index&lt;/p&gt;
-&lt;h6 id=&#34;常见数据库命令操作&#34;&gt;&lt;a href=&#34;#常见数据库命令操作&#34; class=&#34;headerlink&#34; title=&#34;常见数据库命令操作&#34;&gt;&lt;/a&gt;常见数据库命令操作&lt;/h6&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1. grant all on *.* to username@&amp;quot;%&amp;quot; by password&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2. flush privileges&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;创建远程连接的用户,可以访问操作所有数据库&lt;/p&gt;
-&lt;p&gt;去除已设定的权限:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;在mysql下的user表中去除或更新表内容&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;gt; use mysql;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;gt; select user,host from user;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;gt; delete from user where user=&amp;quot;username&amp;quot; and host=&amp;quot;localhost&amp;quot;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;gt; update user set host=&amp;quot;&amp;quot; where user=&amp;quot;username&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;revoke&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;gt; revoke all on _._ from username@localhost;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
-&lt;/ol&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">http://qiubo.ink/2017/05/05/Push%E6%9C%AC%E5%9C%B0%E5%8E%9F%E6%9C%89%E6%96%87%E4%BB%B6%E5%88%B0github%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/</guid>
-            <title>Push 本地原有文件到github新建项目</title>
-            <link>http://qiubo.ink/2017/05/05/Push%E6%9C%AC%E5%9C%B0%E5%8E%9F%E6%9C%89%E6%96%87%E4%BB%B6%E5%88%B0github%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/</link>
-            <category>git</category>
-            <category>git版本管理</category>
-            <pubDate>Fri, 05 May 2017 08:55:51 +0000</pubDate>
-            <description><![CDATA[ &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;本地项目已经完成，此时想同步至github上。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;方法一：创建文件夹 clone github项目至本地 ，拷贝项目并上传&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;方法二：在项目文件夹下git init 创建git本地版本库，再上传&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;方法二显然更合适，不过在方法二进行时出现&lt;code&gt;failed to push some refs to git&lt;/code&gt;错误提示,(不经常研究git工作原理，只是作为版本同步工具使用)，于是网上搜索。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;是因为远程文件不在本地文件夹中所致，运行命令&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;     git pull --rebase ogigin master&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;4.本地出现远程文件，此时运行git push则无报错。&lt;/p&gt;
- ]]></description>
         </item>
     </channel>
 </rss>

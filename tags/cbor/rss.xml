@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>小码农博客 • Posts by &#34;cbor&#34; tag</title>
+        <link>http://qiubo.ink</link>
+        <description></description>
+        <language>ZH-cn</language>
+        <pubDate>Thu, 14 Nov 2024 14:22:01 +0000</pubDate>
+        <lastBuildDate>Thu, 14 Nov 2024 14:22:01 +0000</lastBuildDate>
+        <category>cmder</category>
+        <category>git学习</category>
+        <category>服务器环境配置mysql</category>
+        <category>golang</category>
+        <category>mod</category>
+        <category>module</category>
+        <category>私服</category>
+        <category>测试</category>
+        <category>string</category>
+        <category>linux</category>
+        <category>内存</category>
+        <category>queue</category>
+        <category>笔记</category>
+        <category>nats</category>
+        <category>nodejs</category>
+        <category>git</category>
+        <category>git版本管理</category>
+        <category>Vscode</category>
+        <category>常用插件</category>
+        <category>编辑器</category>
+        <category>npm</category>
+        <category>docker</category>
+        <category>frp</category>
+        <category>网络</category>
+        <category>gulp</category>
+        <category>前端自动化</category>
+        <category>虚拟主机</category>
+        <category>mysql</category>
+        <category>数据库</category>
+        <category>node操作数据库</category>
+        <category>josn web token</category>
+        <category>jwt</category>
+        <category>redis</category>
+        <category>并发</category>
+        <category>composer</category>
+        <category>php管理</category>
+        <category>cli</category>
+        <category>openresty</category>
+        <category>nginx</category>
+        <category>lua</category>
+        <category>前端</category>
+        <category>响应式图片</category>
+        <category>移动端兼容</category>
+        <category>wrk</category>
+        <category>web</category>
+        <category>dart</category>
+        <category>算法</category>
+        <category>JSON</category>
+        <category>XML</category>
+        <category>Protobuf</category>
+        <category>Msgpack</category>
+        <category>CBOR</category>
+        <item>
+            <guid isPermalink="true">http://qiubo.ink/2024/11/14/%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%AF%B9%E6%AF%94/</guid>
+            <title>编码格式对比</title>
+            <link>http://qiubo.ink/2024/11/14/%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%AF%B9%E6%AF%94/</link>
+            <category>算法</category>
+            <category>JSON</category>
+            <category>XML</category>
+            <category>Protobuf</category>
+            <category>Msgpack</category>
+            <category>CBOR</category>
+            <pubDate>Thu, 14 Nov 2024 14:22:01 +0000</pubDate>
+            <description><![CDATA[ &lt;ul&gt;
+&lt;li&gt;包含自描述信息 &lt;ul&gt;
+&lt;li&gt;JSON &lt;/li&gt;
+&lt;li&gt;MessagePack &lt;/li&gt;
+&lt;li&gt;CBOR&lt;/li&gt;
+&lt;li&gt;XML&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;不包含自描述信息&lt;ul&gt;
+&lt;li&gt;Protobuf&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;包含自描述信息&#34;&gt;&lt;a href=&#34;#包含自描述信息&#34; class=&#34;headerlink&#34; title=&#34;包含自描述信息&#34;&gt;&lt;/a&gt;包含自描述信息&lt;/h2&gt;&lt;h3 id=&#34;1-JSON-JavaScript-Object-Notation&#34;&gt;&lt;a href=&#34;#1-JSON-JavaScript-Object-Notation&#34; class=&#34;headerlink&#34; title=&#34;1. JSON (JavaScript Object Notation)&#34;&gt;&lt;/a&gt;1. JSON (JavaScript Object Notation)&lt;/h3&gt;&lt;p&gt;JSON格式是1999年ECMA-262的子集合，由 Douglas Crockford 提出。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://fastly.jsdelivr.net/gh/bucketio/img16@main/2024/11/14/1731572575398-16d7bc4a-8714-46b4-b47a-0762fb9f7aac.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;基本数据类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数值&lt;/strong&gt;：符合IEEE754的十进制数，不能有前导0，可以为负数，可以有小数部分。还可以用e或者E表示指数部分。不能包含非数，如&lt;code&gt;NaN&lt;/code&gt;。不区分整数与浮点数。JavaScript用双精度浮点数表示所有数值。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;字符串&lt;/strong&gt;：以双引号&lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt;括起来的零个或多个Unicode码位。支持反斜杠开始的转义字符序列。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;布尔值&lt;/strong&gt;：表示为 &lt;code&gt;true&lt;/code&gt; 或者 &lt;code&gt;false&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数组&lt;/strong&gt;：有序的零个或者多个值。每个值可以为任意类型。数组使用方括号 &lt;code&gt;[]&lt;/code&gt; 包裹。多个数组元素之间用逗号 &lt;code&gt;,&lt;/code&gt; 分隔，形如：&lt;code&gt;[value, value]&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对象&lt;/strong&gt;：若干无序的“键-值对”，其中键只能是字符串。建议但不强制要求对象中的键是独一无二的。对象以花括号 &lt;code&gt;&amp;#123;&amp;#125;&lt;/code&gt; 包裹。多个键-值对之间使用逗号,分隔。键与值之间用冒号 &lt;code&gt;:&lt;/code&gt; 分隔。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;空值&lt;/strong&gt;：值写为 &lt;code&gt;null&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;优点&#34;&gt;&lt;a href=&#34;#优点&#34; class=&#34;headerlink&#34; title=&#34;优点&#34;&gt;&lt;/a&gt;优点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;自描述，人类可阅读性高&lt;/li&gt;
+&lt;li&gt;几乎所有与网络开发相关的语言都有JSON函数库。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;缺点&#34;&gt;&lt;a href=&#34;#缺点&#34; class=&#34;headerlink&#34; title=&#34;缺点&#34;&gt;&lt;/a&gt;缺点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;整型最大，浮点型最大&lt;/li&gt;
+&lt;li&gt;不支持二进制数据&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2-MessagePack&#34;&gt;&lt;a href=&#34;#2-MessagePack&#34; class=&#34;headerlink&#34; title=&#34;2. MessagePack&#34;&gt;&lt;/a&gt;2. MessagePack&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://fastly.jsdelivr.net/gh/bucketio/img4@main/2024/11/14/1731572437513-5bb35a10-69ed-432f-9cfe-b5fe36c35b31.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;基本数据类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;空值&lt;/strong&gt;：&lt;code&gt;nil&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;布尔值&lt;/strong&gt;, 表示为 &lt;code&gt;true&lt;/code&gt; 或者 &lt;code&gt;false&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;整型&lt;/strong&gt;, 最大64位有符号或无符号整数&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;浮点型&lt;/strong&gt;, IEEE单双精度浮点&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;字符串&lt;/strong&gt;, UTF-8 字符串&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;二进制&lt;/strong&gt;, 最大 ($2^{32}-1$)&lt;code&gt;4294967295&lt;/code&gt;  字节 &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数组&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对象&lt;/strong&gt;, 关系数组&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;扩展类型&lt;/strong&gt; &lt;code&gt;ext type&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;时间&lt;/strong&gt; ext type &amp;#x3D; -1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以二进制形式，用于表示简单的数据结构，如数组和关系数组。旨在尽可能紧凑和简单。&lt;/p&gt;
+&lt;h5 id=&#34;优点-1&#34;&gt;&lt;a href=&#34;#优点-1&#34; class=&#34;headerlink&#34; title=&#34;优点&#34;&gt;&lt;/a&gt;优点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;编解码自描述&lt;/li&gt;
+&lt;li&gt;体积小&lt;/li&gt;
+&lt;li&gt;速度快&lt;/li&gt;
+&lt;li&gt;支持二进制编码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;缺点-1&#34;&gt;&lt;a href=&#34;#缺点-1&#34; class=&#34;headerlink&#34; title=&#34;缺点&#34;&gt;&lt;/a&gt;缺点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;人类可阅读性差&lt;/li&gt;
+&lt;li&gt;额外引包 (msgpack 官方提供了多种语言)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;3-CBOR-Concise-Binary-Object-Representation&#34;&gt;&lt;a href=&#34;#3-CBOR-Concise-Binary-Object-Representation&#34; class=&#34;headerlink&#34; title=&#34;3. CBOR (Concise Binary Object Representation)&#34;&gt;&lt;/a&gt;3. CBOR (Concise Binary Object Representation)&lt;/h3&gt;&lt;p&gt;CBOR的灵感来自Message Pack。&lt;br&gt;一种简洁二进制对象表示格式，其设计目标包括极小的代码体积、相当小的消息体积以及无需版本协商的可扩展性。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://fastly.jsdelivr.net/gh/bucketio/img11@main/2024/11/14/1731572810388-4cac6a0f-2324-4486-996b-47b19a8161b6.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://fastly.jsdelivr.net/gh/bucketio/img14@main/2024/11/14/1731573013926-d2c3b287-41a6-4f8c-9bb4-1628a2af4aeb.png&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;优点-2&#34;&gt;&lt;a href=&#34;#优点-2&#34; class=&#34;headerlink&#34; title=&#34;优点&#34;&gt;&lt;/a&gt;优点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;编解码自描述&lt;/li&gt;
+&lt;li&gt;体积小&lt;/li&gt;
+&lt;li&gt;速度快&lt;/li&gt;
+&lt;li&gt;支持二进制编码&lt;/li&gt;
+&lt;li&gt;占用资源少&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;缺点-2&#34;&gt;&lt;a href=&#34;#缺点-2&#34; class=&#34;headerlink&#34; title=&#34;缺点&#34;&gt;&lt;/a&gt;缺点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;人类可阅读性很差&lt;/li&gt;
+&lt;li&gt;大部分语言需要依靠第三方实现&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;4-XML-Extensible-Markup-Language&#34;&gt;&lt;a href=&#34;#4-XML-Extensible-Markup-Language&#34; class=&#34;headerlink&#34; title=&#34;4. XML (Extensible Markup Language)&#34;&gt;&lt;/a&gt;4. XML (Extensible Markup Language)&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://fastly.jsdelivr.net/gh/bucketio/img3@main/2024/11/14/1731573326634-766518bc-3694-4183-afe0-f8c611905753.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;可扩展标记语言是一种标记语言和用于存储、传输和重构松散数据的文件格式。它定义了一系列编码文档的规则以使其在人类可读的同时机器可读。万维网联盟于1998年发布的 XML 1.0 规范和其他相关开源标准共同定义了 XML。&lt;/p&gt;
+&lt;p&gt;关键术语&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;字符（ Character ）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;处理器（ Processor ）与应用（ Application ）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;标记（ Markup ）与内容（ Content ）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;标签（ Tag ）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;元素（ Element ）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;属性（ Attribute ）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;XML 声明（ Declaration ）&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;优点-3&#34;&gt;&lt;a href=&#34;#优点-3&#34; class=&#34;headerlink&#34; title=&#34;优点&#34;&gt;&lt;/a&gt;优点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;编解码自描述，可阅读性高&lt;/li&gt;
+&lt;li&gt;易于编写，作为配置文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;缺点-3&#34;&gt;&lt;a href=&#34;#缺点-3&#34; class=&#34;headerlink&#34; title=&#34;缺点&#34;&gt;&lt;/a&gt;缺点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;占用空间大，重复字符多&lt;/li&gt;
+&lt;li&gt;结构不灵活&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;不包含自描述信息&#34;&gt;&lt;a href=&#34;#不包含自描述信息&#34; class=&#34;headerlink&#34; title=&#34;不包含自描述信息&#34;&gt;&lt;/a&gt;不包含自描述信息&lt;/h2&gt;&lt;h3 id=&#34;1-Protobuf-Protocol-Buffers&#34;&gt;&lt;a href=&#34;#1-Protobuf-Protocol-Buffers&#34; class=&#34;headerlink&#34; title=&#34;1. Protobuf (Protocol Buffers)&#34;&gt;&lt;/a&gt;1. Protobuf (Protocol Buffers)&lt;/h3&gt;&lt;p&gt;像JSON一样，只是它更小、更快，并且需要生成本地语言绑定。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://fastly.jsdelivr.net/gh/bucketio/img6@main/2024/11/14/1731574814079-682b9cce-4658-44b6-ade2-b65541f03b7f.png&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;优点-4&#34;&gt;&lt;a href=&#34;#优点-4&#34; class=&#34;headerlink&#34; title=&#34;优点&#34;&gt;&lt;/a&gt;优点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;编解码速度快&lt;/li&gt;
+&lt;li&gt;占用体积小&lt;/li&gt;
+&lt;li&gt;支持二进制编码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;缺点-4&#34;&gt;&lt;a href=&#34;#缺点-4&#34; class=&#34;headerlink&#34; title=&#34;缺点&#34;&gt;&lt;/a&gt;缺点&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;接发双方均需要预定义结构&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;基本数据类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;double&lt;/strong&gt;：双精度浮点&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;float&lt;/strong&gt;：单精度浮点&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;int32&lt;/strong&gt;：32位整型，可变长度编码&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;int64&lt;/strong&gt;：64 位整型，可变长度编码&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;uint32&lt;/strong&gt;：32位整型，可变长度编码&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;uint64&lt;/strong&gt;：64 位整型，可变长度编码&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sint32&lt;/strong&gt;：比常规 &lt;strong&gt;int32&lt;/strong&gt; 更有效地编码负值。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sint64&lt;/strong&gt;：比常规 &lt;strong&gt;int64&lt;/strong&gt; 更有效地编码负值。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;fixed32&lt;/strong&gt;：固定4字节。如果值通常大于$2^{28}$，则比&lt;strong&gt;uint32&lt;/strong&gt;更有效。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;fixed64&lt;/strong&gt;：固定8字节。如果值通常大于$2^{56}$，则比&lt;strong&gt;uint32&lt;/strong&gt;更有效。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sfixed32&lt;/strong&gt;：固定4字节。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sfixed64&lt;/strong&gt;：固定8字节。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;bool&lt;/strong&gt;：布尔值&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;string&lt;/strong&gt;：字符串&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;bytes&lt;/strong&gt;：二进制数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;其他类似的格式&#34;&gt;&lt;a href=&#34;#其他类似的格式&#34; class=&#34;headerlink&#34; title=&#34;其他类似的格式&#34;&gt;&lt;/a&gt;其他类似的格式&lt;/h3&gt;&lt;h5 id=&#34;1-Apache-Thrift&#34;&gt;&lt;a href=&#34;#1-Apache-Thrift&#34; class=&#34;headerlink&#34; title=&#34;1. Apache Thrift&#34;&gt;&lt;/a&gt;1. Apache Thrift&lt;/h5&gt;&lt;h5 id=&#34;2-Apache-Avro&#34;&gt;&lt;a href=&#34;#2-Apache-Avro&#34; class=&#34;headerlink&#34; title=&#34;2. Apache Avro&#34;&gt;&lt;/a&gt;2. Apache Avro&lt;/h5&gt;&lt;h2 id=&#34;优缺点&#34;&gt;&lt;a href=&#34;#优缺点&#34; class=&#34;headerlink&#34; title=&#34;优缺点&#34;&gt;&lt;/a&gt;优缺点&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;格式&lt;/th&gt;
+&lt;th&gt;标准&lt;/th&gt;
+&lt;th&gt;阅读性(0-9)&lt;/th&gt;
+&lt;th&gt;易用性(0-9)&lt;/th&gt;
+&lt;th&gt;速度(0-9)&lt;/th&gt;
+&lt;th&gt;大小(0-9)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.json.org/json-zh.html&#34;&gt;JSON&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.ecma-international.org/publications-and-standards/standards/ecma-404/&#34;&gt;ECMA-404&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;高&lt;/td&gt;
+&lt;td&gt;高&lt;/td&gt;
+&lt;td&gt;一般&lt;/td&gt;
+&lt;td&gt;大&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://msgpack.org/&#34;&gt;MessagePack&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;中&lt;/td&gt;
+&lt;td&gt;高&lt;/td&gt;
+&lt;td&gt;快&lt;/td&gt;
+&lt;td&gt;中&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cbor.io/&#34;&gt;CBOR&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;RFC 8949&lt;/td&gt;
+&lt;td&gt;中&lt;/td&gt;
+&lt;td&gt;高&lt;/td&gt;
+&lt;td&gt;快&lt;/td&gt;
+&lt;td&gt;中&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.w3.org/XML/&#34;&gt;XML&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;RFC 7303&lt;/td&gt;
+&lt;td&gt;高&lt;/td&gt;
+&lt;td&gt;高&lt;/td&gt;
+&lt;td&gt;慢&lt;/td&gt;
+&lt;td&gt;大&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://protobuf.dev/programming-guides/proto3/&#34;&gt;Protobuf&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;RFC 7303&lt;/td&gt;
+&lt;td&gt;不可阅读&lt;/td&gt;
+&lt;td&gt;中&lt;/td&gt;
+&lt;td&gt;快&lt;/td&gt;
+&lt;td&gt;小&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;hr&gt;
+&lt;center&gt;
+    &lt;img src=&#34;https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/gh/doocs/md/images/1648303220922-7e14aefa-816e-44c1-8604-ade709ca1c69.png&#34; style=&#34;width: 100px;&#34;&gt;
+&lt;/center&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

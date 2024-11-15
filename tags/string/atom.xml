@@ -15,6 +15,9 @@
     <category term="string" />
     <category term="linux" />
     <category term="内存" />
+    <category term="queue" />
+    <category term="笔记" />
+    <category term="nats" />
     <category term="nodejs" />
     <category term="git" />
     <category term="git版本管理" />
@@ -41,12 +44,18 @@
     <category term="openresty" />
     <category term="nginx" />
     <category term="lua" />
+    <category term="前端" />
     <category term="响应式图片" />
     <category term="移动端兼容" />
-    <category term="前端" />
     <category term="wrk" />
     <category term="web" />
     <category term="dart" />
+    <category term="算法" />
+    <category term="JSON" />
+    <category term="XML" />
+    <category term="Protobuf" />
+    <category term="Msgpack" />
+    <category term="CBOR" />
     <entry>
         <id>http://qiubo.ink/2019/06/21/Golang%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6/</id>
         <title>Golang获取字符串长度</title>
