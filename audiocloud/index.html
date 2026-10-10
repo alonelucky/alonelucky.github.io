@@ -1,0 +1,41 @@
+<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="AudioCloud 是一款将本地目录与个人云盘音乐整合到同一资料库的音乐播放器。"><meta name=theme-color content=#087f5b><title>AudioCloud｜你的个人云音乐库</title><style>:root { color-scheme: light dark; --bg:#f4fbf7; --surface:rgba(255,255,255,.82); --text:#132019; --muted:#5d6d64; --brand:#087f5b; --brand2:#10b981; --line:rgba(8,127,91,.16); --shadow:0 24px 70px rgba(14,74,54,.12); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:Inter,"PingFang SC","Microsoft YaHei",system-ui,sans-serif; color:var(--text); background:radial-gradient(circle at 85% -10%,rgba(16,185,129,.2),transparent 32rem),var(--bg); line-height:1.7; }
+    a { color:inherit; }
+    .wrap { width:min(1120px,calc(100% - 40px)); margin:auto; }
+    header { position:sticky; top:0; z-index:10; backdrop-filter:blur(18px); background:color-mix(in srgb,var(--bg) 82%,transparent); border-bottom:1px solid var(--line); }
+    nav { height:68px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; text-decoration:none; letter-spacing:-.02em; }
+    .brand img { width:38px; height:38px; border-radius:10px; }
+    .links { display:flex; gap:22px; color:var(--muted); font-size:14px; }
+    .links a { text-decoration:none; }
+    .links a:hover { color:var(--brand); }
+    .hero { padding:96px 0 70px; display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:72px; }
+    .eyebrow { color:var(--brand); font-weight:750; letter-spacing:.12em; font-size:13px; }
+    h1 { margin:14px 0 22px; max-width:760px; font-size:clamp(44px,7vw,78px); line-height:1.05; letter-spacing:-.055em; }
+    .lead { max-width:700px; margin:0; color:var(--muted); font-size:clamp(17px,2vw,21px); }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:34px; }
+    .button { display:inline-flex; padding:12px 20px; border-radius:999px; text-decoration:none; font-weight:700; border:1px solid var(--line); }
+    .primary { color:white; background:linear-gradient(135deg,var(--brand),var(--brand2)); box-shadow:0 12px 30px rgba(8,127,91,.24); border:0; }
+    .hero-art { position:relative; aspect-ratio:1; display:grid; place-items:center; }
+    .hero-art::before { content:""; position:absolute; inset:8%; border-radius:35%; background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(214,250,231,.7)); box-shadow:var(--shadow); transform:rotate(6deg); }
+    .hero-art img { position:relative; width:76%; filter:drop-shadow(0 22px 24px rgba(4,78,55,.14)); }
+    section { padding:62px 0; }
+    h2 { margin:0 0 12px; font-size:clamp(30px,4vw,46px); letter-spacing:-.035em; line-height:1.2; }
+    .section-lead { margin:0 0 30px; color:var(--muted); max-width:720px; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .card { padding:26px; border:1px solid var(--line); border-radius:24px; background:var(--surface); box-shadow:0 10px 34px rgba(21,64,47,.05); }
+    .card b { display:block; margin-bottom:8px; font-size:18px; }
+    .card p { margin:0; color:var(--muted); }
+    .number { display:grid; place-items:center; width:34px; height:34px; margin-bottom:18px; color:white; background:var(--brand); border-radius:12px; font-weight:800; }
+    .clouds { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+    .pill { padding:8px 14px; border:1px solid var(--line); border-radius:999px; background:var(--surface); font-size:14px; }
+    .notice { margin:58px 0 80px; padding:30px; border-radius:28px; color:white; background:linear-gradient(120deg,#075f48,#0aa574); display:flex; align-items:center; justify-content:space-between; gap:26px; }
+    .notice h2 { font-size:30px; }
+    .notice p { margin:8px 0 0; color:rgba(255,255,255,.78); }
+    .notice .button { border-color:rgba(255,255,255,.35); white-space:nowrap; }
+    footer { padding:28px 0 42px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+    footer .wrap { display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; }
+    @media (max-width:760px) { .wrap{width:min(100% - 28px,1120px)} .links{gap:12px}.links a:first-child{display:none}.hero{grid-template-columns:1fr;padding-top:64px;gap:28px}.hero-art{max-width:420px;margin:auto}.grid{grid-template-columns:1fr}.notice{align-items:flex-start;flex-direction:column} }
+    @media (prefers-color-scheme:dark) { :root{--bg:#0d1712;--surface:rgba(22,35,28,.82);--text:#edf8f1;--muted:#a6b7ad;--line:rgba(113,220,166,.16);--shadow:0 24px 70px rgba(0,0,0,.3)} .hero-art::before{background:linear-gradient(145deg,#1a2c22,#112019)} }</style></head><body><header><nav class=wrap aria-label=主导航><a class=brand href=audiocloud.html><img src=../assets/prod/personal_music.256.png alt=""><span>AudioCloud</span></a><div class=links><a href=#features>功能</a><a href=audiocloud.service.html>服务信息</a><a href=audiocloud.personal.html>隐私政策</a></div></nav></header><main><div class="hero wrap"><div><div class=eyebrow>YOUR MUSIC, YOUR CLOUD</div><h1>让散落的音乐，回到一个资料库。</h1><p class=lead>AudioCloud 将本地目录与个人云盘中的音乐集中整理、播放与管理。你的文件仍在你的设备和云盘中，音乐体验由你掌控。</p><div class=actions><a class="button primary" href=#features>了解核心功能</a><a class=button href=audiocloud.service.html>查看服务说明</a></div></div><div class=hero-art><img src=../assets/prod/personal_music.icon.png alt="AudioCloud 应用图标"></div></div><section id=features class=wrap><h2>一个播放器，连接你的音乐世界</h2><p class=section-lead>从扫描、整理到播放，AudioCloud 围绕个人音乐收藏提供完整而克制的体验。</p><div class=grid><article class=card><div class=number>01</div><b>统一音乐资料库</b><p>递归扫描本地目录，连接个人云盘文件夹，并按账户、文件夹、播放列表与收藏快速筛选。</p></article><article class=card><div class=number>02</div><b>流畅播放与缓存</b><p>支持在线播放、边播边缓存与主动离线缓存，并提供后台播放、锁屏和系统媒体控制。</p></article><article class=card><div class=number>03</div><b>属于你的整理方式</b><p>编辑歌曲信息、维护封面和歌词，创建播放列表，选择顺序、循环、单曲或随机播放。</p></article></div></section><section class=wrap><h2>连接常用存储服务</h2><p class=section-lead>通过服务商官方授权访问你选择的目录。具体可用服务取决于应用版本及其配置。</p><div class=clouds><span class=pill>本地目录</span><span class=pill>百度网盘</span><span class=pill>阿里云盘</span><span class=pill>夸克网盘</span><span class=pill>WebDAV</span><span class=pill>Google Drive</span><span class=pill>OneDrive</span><span class=pill>Dropbox</span></div></section><section class=wrap><h2>认真听，也自由掌控</h2><div class=grid><article class=card><b>丰富格式</b><p>支持 MP3、FLAC、M4A、AAC、WAV、OGG、OPUS、APE、ALAC 等常见音频格式。</p></article><article class=card><b>播放更自在</b><p>支持播放队列、逐行歌词、倍速播放、耳机事件、音频焦点，以及最近进度恢复。</p></article><article class=card><b>本地优先</b><p>资料库、播放记录、设置和授权信息保存在本机；卸载应用或清除数据即可移除。</p></article></div></section><div class="notice wrap"><div><h2>只播放你有权访问的内容</h2><p>请遵守音乐版权规定及各云存储服务商的使用条款。</p></div><a class=button href=audiocloud.personal.html>阅读隐私政策</a></div></main><footer><div class=wrap><span>© 2026 AudioCloud</span><span>个人音乐库播放器 · 本地优先</span></div></footer></body></html>

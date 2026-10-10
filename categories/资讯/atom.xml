@@ -3,7 +3,7 @@
     <id>http://qiubo.ink</id>
     <title>小码农博客 • Posts by &#34;资讯&#34; category</title>
     <link href="http://qiubo.ink" />
-    <updated>2023-03-16T10:45:34.000Z</updated>
+    <updated>2023-03-16T02:45:34.000Z</updated>
     <category term="cmder" />
     <category term="git学习" />
     <category term="服务器环境配置mysql" />
@@ -12,50 +12,51 @@
     <category term="module" />
     <category term="私服" />
     <category term="测试" />
-    <category term="string" />
-    <category term="linux" />
-    <category term="内存" />
-    <category term="queue" />
-    <category term="笔记" />
-    <category term="nats" />
-    <category term="nodejs" />
     <category term="git" />
     <category term="git版本管理" />
+    <category term="string" />
     <category term="Vscode" />
     <category term="常用插件" />
     <category term="编辑器" />
     <category term="npm" />
+    <category term="linux" />
+    <category term="内存" />
     <category term="docker" />
     <category term="frp" />
     <category term="网络" />
     <category term="gulp" />
+    <category term="nodejs" />
     <category term="前端自动化" />
     <category term="虚拟主机" />
     <category term="mysql" />
     <category term="数据库" />
     <category term="node操作数据库" />
-    <category term="josn web token" />
-    <category term="jwt" />
     <category term="redis" />
     <category term="并发" />
+    <category term="josn web token" />
+    <category term="jwt" />
     <category term="composer" />
     <category term="php管理" />
     <category term="cli" />
-    <category term="openresty" />
-    <category term="nginx" />
-    <category term="lua" />
-    <category term="前端" />
     <category term="响应式图片" />
     <category term="移动端兼容" />
-    <category term="wrk" />
+    <category term="前端" />
     <category term="web" />
     <category term="dart" />
+    <category term="wrk" />
+    <category term="lua" />
+    <category term="openresty" />
+    <category term="nginx" />
+    <category term="queue" />
+    <category term="笔记" />
+    <category term="nats" />
     <category term="算法" />
     <category term="JSON" />
     <category term="XML" />
     <category term="Protobuf" />
     <category term="Msgpack" />
     <category term="CBOR" />
+    <category term="vscode" />
     <entry>
         <id>http://qiubo.ink/2023/03/16/Nodejs-v19-x-%E6%94%AF%E6%8C%81%E6%89%93%E5%8C%85%E5%8F%AF%E6%89%A7%E8%A1%8C%E5%8D%95%E6%96%87%E4%BB%B6/</id>
         <title>Nodejs v19.x 支持打包可执行单文件</title>
@@ -80,6 +81,6 @@
 &lt;p&gt;以前社区百花齐放提供了很多的打包方案，&lt;code&gt;pkg&lt;/code&gt;, &lt;code&gt;jsexe&lt;/code&gt;, &lt;code&gt;ncc&lt;/code&gt;, &lt;code&gt;bytecode&lt;/code&gt; 等等，其实 &lt;code&gt;webpack&lt;/code&gt; 这些也是可以支持后端项目打包的，也可以打包合并为单独 js 文件，复用 js 打包生态，源码混淆，sourcemap 支持等等&lt;/p&gt;
 </content>
         <category term="nodejs" />
-        <updated>2023-03-16T10:45:34.000Z</updated>
+        <updated>2023-03-16T02:45:34.000Z</updated>
     </entry>
 </feed>

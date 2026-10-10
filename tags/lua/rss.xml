@@ -5,8 +5,8 @@
         <link>http://qiubo.ink</link>
         <description></description>
         <language>ZH-cn</language>
-        <pubDate>Tue, 05 Sep 2023 09:24:33 +0000</pubDate>
-        <lastBuildDate>Tue, 05 Sep 2023 09:24:33 +0000</lastBuildDate>
+        <pubDate>Tue, 05 Sep 2023 09:24:33 +0800</pubDate>
+        <lastBuildDate>Tue, 05 Sep 2023 09:24:33 +0800</lastBuildDate>
         <category>cmder</category>
         <category>git学习</category>
         <category>服务器环境配置mysql</category>
@@ -15,58 +15,59 @@
         <category>module</category>
         <category>私服</category>
         <category>测试</category>
-        <category>string</category>
-        <category>linux</category>
-        <category>内存</category>
-        <category>queue</category>
-        <category>笔记</category>
-        <category>nats</category>
-        <category>nodejs</category>
         <category>git</category>
         <category>git版本管理</category>
+        <category>string</category>
         <category>Vscode</category>
         <category>常用插件</category>
         <category>编辑器</category>
         <category>npm</category>
+        <category>linux</category>
+        <category>内存</category>
         <category>docker</category>
         <category>frp</category>
         <category>网络</category>
         <category>gulp</category>
+        <category>nodejs</category>
         <category>前端自动化</category>
         <category>虚拟主机</category>
         <category>mysql</category>
         <category>数据库</category>
         <category>node操作数据库</category>
-        <category>josn web token</category>
-        <category>jwt</category>
         <category>redis</category>
         <category>并发</category>
+        <category>josn web token</category>
+        <category>jwt</category>
         <category>composer</category>
         <category>php管理</category>
         <category>cli</category>
-        <category>openresty</category>
-        <category>nginx</category>
-        <category>lua</category>
-        <category>前端</category>
         <category>响应式图片</category>
         <category>移动端兼容</category>
-        <category>wrk</category>
+        <category>前端</category>
         <category>web</category>
         <category>dart</category>
+        <category>wrk</category>
+        <category>lua</category>
+        <category>openresty</category>
+        <category>nginx</category>
+        <category>queue</category>
+        <category>笔记</category>
+        <category>nats</category>
         <category>算法</category>
         <category>JSON</category>
         <category>XML</category>
         <category>Protobuf</category>
         <category>Msgpack</category>
         <category>CBOR</category>
+        <category>vscode</category>
         <item>
             <guid isPermalink="true">http://qiubo.ink/2023/09/05/%E4%BD%BF%E7%94%A8openresty%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E7%81%B0%E5%BA%A6%E5%88%87%E6%8D%A2/</guid>
             <title>使用openresty实现简单的灰度切换</title>
             <link>http://qiubo.ink/2023/09/05/%E4%BD%BF%E7%94%A8openresty%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E7%81%B0%E5%BA%A6%E5%88%87%E6%8D%A2/</link>
+            <category>lua</category>
             <category>openresty</category>
             <category>nginx</category>
-            <category>lua</category>
-            <pubDate>Tue, 05 Sep 2023 09:24:33 +0000</pubDate>
+            <pubDate>Tue, 05 Sep 2023 09:24:33 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;通过了解 &lt;code&gt;C10K&lt;/code&gt; 了解到了 &lt;a href=&#34;https://openresty.org/&#34;&gt;openresty&lt;/a&gt;。OpenResty® 是一个基于 Nginx 与 Lua 的高性能 Web 平台，其内部集成了大量精良的 Lua 库、第三方模块以及大多数的依赖项。用于方便地搭建能够处理超高并发、扩展性极高的动态 Web 应用、Web 服务和动态网关。&lt;/p&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
 
@@ -108,9 +109,9 @@
             <title>学习使用wrk进行压力测试</title>
             <link>http://qiubo.ink/2023/08/30/%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8wrk%E8%BF%9B%E8%A1%8C%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</link>
             <category>测试</category>
-            <category>lua</category>
             <category>wrk</category>
-            <pubDate>Wed, 30 Aug 2023 13:13:08 +0000</pubDate>
+            <category>lua</category>
+            <pubDate>Wed, 30 Aug 2023 13:13:08 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;最近发现了一个新的 HTTP 压力测试工具 &lt;code&gt;wrk&lt;/code&gt;，非常容易上手和使用。&lt;code&gt;wrk&lt;/code&gt; 使用非常简单，对应的命令行参数也不多，但是足够自己简单压测一些 &lt;code&gt;http&lt;/code&gt; 服务了。官方下载地址为 &lt;code&gt;https://github.com/wg/wrk&lt;/code&gt;。&lt;/p&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
 

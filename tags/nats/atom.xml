@@ -3,7 +3,7 @@
     <id>http://qiubo.ink</id>
     <title>小码农博客 • Posts by &#34;nats&#34; tag</title>
     <link href="http://qiubo.ink" />
-    <updated>2023-12-29T17:19:02.000Z</updated>
+    <updated>2023-12-29T09:19:02.000Z</updated>
     <category term="cmder" />
     <category term="git学习" />
     <category term="服务器环境配置mysql" />
@@ -12,50 +12,51 @@
     <category term="module" />
     <category term="私服" />
     <category term="测试" />
-    <category term="string" />
-    <category term="linux" />
-    <category term="内存" />
-    <category term="queue" />
-    <category term="笔记" />
-    <category term="nats" />
-    <category term="nodejs" />
     <category term="git" />
     <category term="git版本管理" />
+    <category term="string" />
     <category term="Vscode" />
     <category term="常用插件" />
     <category term="编辑器" />
     <category term="npm" />
+    <category term="linux" />
+    <category term="内存" />
     <category term="docker" />
     <category term="frp" />
     <category term="网络" />
     <category term="gulp" />
+    <category term="nodejs" />
     <category term="前端自动化" />
     <category term="虚拟主机" />
     <category term="mysql" />
     <category term="数据库" />
     <category term="node操作数据库" />
-    <category term="josn web token" />
-    <category term="jwt" />
     <category term="redis" />
     <category term="并发" />
+    <category term="josn web token" />
+    <category term="jwt" />
     <category term="composer" />
     <category term="php管理" />
     <category term="cli" />
-    <category term="openresty" />
-    <category term="nginx" />
-    <category term="lua" />
-    <category term="前端" />
     <category term="响应式图片" />
     <category term="移动端兼容" />
-    <category term="wrk" />
+    <category term="前端" />
     <category term="web" />
     <category term="dart" />
+    <category term="wrk" />
+    <category term="lua" />
+    <category term="openresty" />
+    <category term="nginx" />
+    <category term="queue" />
+    <category term="笔记" />
+    <category term="nats" />
     <category term="算法" />
     <category term="JSON" />
     <category term="XML" />
     <category term="Protobuf" />
     <category term="Msgpack" />
     <category term="CBOR" />
+    <category term="vscode" />
     <entry>
         <id>http://qiubo.ink/2023/12/29/Nats%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/</id>
         <title>Nats服务部署记录</title>
@@ -78,6 +79,6 @@
         <category term="queue" />
         <category term="笔记" />
         <category term="nats" />
-        <updated>2023-12-29T17:19:02.000Z</updated>
+        <updated>2023-12-29T09:19:02.000Z</updated>
     </entry>
 </feed>

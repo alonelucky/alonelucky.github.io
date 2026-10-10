@@ -44,9 +44,8 @@
 		}
 
 		#image-show {
-			height: auto;
-			max-width: 100%;
-			min-height: 50px;
+			width: 100%;
+			height: 100vh;
 			border: none;
 			overflow: hidden;
 		}
@@ -96,7 +95,12 @@
 			if (chooseImage.style.display != 'none') chooseImage.style.display = 'none';
 			return
 		};
-		if (this.value.indexOf('data:image') != 0) return;
+		if (this.value.indexOf('data:image') != 0) {
+			imageShow.src = this.value;
+			imageShow.style.display = '';
+			if (chooseImage.style.display != 'none') chooseImage.style.display = 'none';
+			return
+		}
 		imageShow.src = this.value;
 		imageShow.style.display = '';
 		if (chooseImage.style.display != 'none') chooseImage.style.display = 'none';

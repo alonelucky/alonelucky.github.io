@@ -1,0 +1,199 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=keywords content=加密,解密,AES,RSA,SM2,SM3,SM4><title>加解密</title><link rel=stylesheet href=/css/base.css><style>html,
+		body {
+			padding: 0;
+			margin: 0;
+		}
+
+		.clearfix::after,
+		.clearfix::before {
+			display: table;
+			content: ' ';
+			clear: both;
+		}
+
+		#app {
+			margin-top: 14px;
+		}
+
+		.nav {
+			display: flex;
+			justify-content: start;
+			align-items: center;
+		}
+
+		.nav li {
+			list-style: none;
+			min-width: 5vw;
+			height: 60px;
+			line-height: 60px;
+			text-align: center;
+			font-size: 20px;
+			font-weight: bold;
+			cursor: pointer;
+			color: #999;
+			background: #f6f6f6;
+			padding: 0 2em;
+		}
+
+		.nav li.active {
+			color: #333;
+			background: transparent;
+		}
+
+		.nav-content .content {
+			display: none;
+		}
+
+		.nav-content .content.active {
+			display: block;
+		}
+
+		#aes .head {
+			height: 65px;
+			font-size: 18px;
+		}
+
+		#aes .head label+label {
+			margin-left: 2em;
+		}
+
+		.aes-content {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.aes-content .input,
+		.aes-content .result {
+			width: 45%;
+			height: 100%;
+		}
+
+		.aes-content .operator .btn {
+			display: block;
+			margin: 2em;
+			width: 5em;
+		}
+
+		.aes-content textarea {
+			width: 100%;
+			height: 100%;
+		}</style></head><body><div id=app><div class=header-wrap><header><div class=site-brand><div class=site-title><a href=/ >小码农博客</a></div></div><nav class=site-navigation><ul class=nav-menu><li class="nav-item hover" data-path=/ ><a href=/ target=_self>主页</a></li><li class=nav-item data-path=/archives/ ><a href=/archives/ target=_self>归档</a></li><li class=nav-item data-path=/categories/ ><a href=/categories/ target=_self>分类</a></li><li class=nav-item data-path=/tags/ ><a href=/tags/ target=_self>标签</a></li></ul></nav><i class="iconfont icon-menu"></i></header></div></div><div id=container style="width: 80vw; height:100vh; margin: 0 auto"><ul class="nav clearfix"><li data-id=aes class=active>AES</li><li data-id=des>DES/3DES</li><li data-id=rsa>RSA</li><li data-id=sm>国密</li><li data-id=hash>Hash</li><li data-id=hamc>Hamc</li><li data-id=base64>Base64</li></ul><div class=nav-content><div id=aes data-id=aes class="content active"><div class=head style="display:flex; justify-content: start;align-items: center"><label for=Mode>Mode:<select name=mode id=aes-mode><option value=AES-ECB>AES-ECB</option><option value=AES-CBC selected=selected>AES-CBC</option><option value=AES-CFB>AES-CFB</option><option value=AES-OFB>AES-OFB</option><option value=AES-CTR>AES-CTR</option><option value=AES-GCM>AES-GCM</option></select></label><label for=Padding>Paddings:<select name=padding id=aes-padding><option value=PKCS5>PKCS#5</option><option value=PKCS7 selected=selected>PKCS#7</option><option value=PKCS12>PKCS#12</option><option value=ASN1>ASN.1</option><option value=Zero>Zero</option><option value=None>None</option></select></label><label for=Bit>Bit:<select name=bit id=aes-bit><option value=128 selected=selected>128</option><option value=196>196</option><option value=256>256</option></select></label><label for=Key>Key: <input id=aes-key value=""><select name=aes-key-type id=aes-key-type><option value=text selected=selected>Text</option><option value=base64>Base64</option><option value=hex>Hex</option></select></label><label for=IV>IV: <input id=aes-iv value=""><select name=aes-iv-type id=aes-iv-type><option value=text selected=selected>Text</option><option value=base64>Base64</option><option value=hex>Hex</option></select></label></div><div class=aes-content><div class=input><textarea name="" id=aes-input></textarea></div><div class=operator><div class=btn><button id=aes-encrypt onclick=activeAes()>加密</button><select name=aes-result-type id=aes-result-type><option value=base64>Base64</option><option value=hex>Hex</option></select></div><div class=btn><button id=aes-decrypt onclick="activeAes('decrypt')">解密</button><select name=aes-input-type id=aes-input-type><option value=base64>Base64</option><option value=hex>Hex</option></select></div></div><div class=result><textarea name="" id=aes-result readonly=readonly></textarea></div></div></div><div id=des data-id=des class=content>des</div><div id=rsa data-id=rsa class=content>rsa</div><div id=sm data-id=sm class=content>sm</div><div id=hash data-id=hash class=content><div><input id=hash-input onchange=activeHash()></div><div>MD5: <input name=md5 id=hash-result-md5 readonly=readonly> <input type=checkbox>base64</div><div>SHA1: <input name=sha1 id=hash-result-sha1 readonly=readonly> <input type=checkbox>base64</div><div>SHA256: <input name=sha256 id=hash-result-sha256 readonly=readonly> <input type=checkbox>base64</div><div>SHA512: <input name=sha512 id=hash-result-sha512 readonly=readonly> <input type=checkbox>base64</div><div>SM3: <input name=sha512 id=hash-result-sha512 readonly=readonly> <input type=checkbox>base64</div></div><div id=hamc data-id=sm class=content>hamc</div><div id=base64 data-id=base64 class=content>base64</div></div></div><script src=https://cdnjs.cloudflare.com/ajax/libs/forge/1.3.1/forge.min.js></script><script>const nav = document.querySelector('.nav');
+		const navContent = document.querySelector('.nav-content');
+
+		function main() {
+			// 解析 query
+			const u = new URL(location.href);
+			console.log(u.searchParams)
+			const tab = u.searchParams.get('tab');
+			setNavActive(tab);
+			switch (tab) {
+				case 'aes':
+					loadAes(u);
+					break;
+			}
+		}
+		main();
+
+		function loadAes(u) {
+			document.getElementById('aes-mode').value = u.searchParams.get('aes-mode') || 'AES-CBC';
+			document.getElementById('aes-bit').value = u.searchParams.get('aes-bit') || '128';
+			document.getElementById('aes-padding').value = u.searchParams.get('aes-padding') || 'PKCS7';
+			document.getElementById('aes-key').value = u.searchParams.get('aes-key') || '';
+			document.getElementById('aes-key-type').value = u.searchParams.get('aes-key-type') || 'text';
+			document.getElementById('aes-iv').value = u.searchParams.get('aes-iv') || '';
+			document.getElementById('aes-iv-type').value = u.searchParams.get('aes-iv-type') || 'text';
+		}
+
+		function activeHash() {
+
+		}
+
+		function activeAes(type) {
+			const mode = document.getElementById('aes-mode').value;
+			const bit = document.getElementById('aes-bit').value;
+			const key = document.getElementById('aes-key').value;
+			const iv = document.getElementById('aes-iv').value;
+			const input = document.getElementById('aes-input').value;
+			const resultype = document.getElementById('aes-result-type').value;
+			const inputype = document.getElementById('aes-input-type').value;
+			if ((bit == 128 && key.length != 16) ||
+				(bit == 196 && key.length != 24) ||
+				(bit == 256 && key.length != 32)) return alert("key 长度不对");
+			if (mode != 'AES-ECB' && iv == '') return alert("iv 必须");
+			try {
+				switch (type) {
+					case 'decrypt':
+						var decipher = forge.cipher.createDecipher(mode, key);
+						decipher.start({ iv: iv });
+						var buf;
+						if (inputype === 'hex') {
+							buf = forge.util.hexToBytes(input)
+						} else {
+							buf = forge.util.decode64(input)
+						}
+
+						decipher.update(forge.util.createBuffer(buf));
+						decipher.finish();
+						var decrypted = decipher.output;
+						document.getElementById('aes-result').value = decrypted.toString();
+						break;
+					default:
+						var cipher = forge.cipher.createCipher(mode, key);
+						cipher.start({ iv: iv });
+						cipher.update(forge.util.createBuffer(forge.util.encodeUtf8(input)));
+						cipher.finish();
+						var encrypted = cipher.output;
+						switch (resultype) {
+							case 'hex':
+								encrypted = encrypted.toHex()
+								break;
+							default:
+								encrypted = forge.util.encode64(encrypted.getBytes())
+								break;
+						}
+						document.getElementById('aes-result').value = encrypted;
+						break;
+				}
+			} catch (e) {
+				alert(e)
+			}
+
+			// const u = new URL(location.href);
+			// u.searchParams.set('aes-mode', document.getElementById('aes-mode').value || 'AES-CBC')
+			// u.searchParams.set('aes-bit', document.getElementById('aes-bit').value || '128')
+			// u.searchParams.set('aes-padding', document.getElementById('aes-padding').value || 'PKCS7')
+			// u.searchParams.set('aes-key', document.getElementById('aes-key').value || '')
+			// u.searchParams.set('aes-key-type', document.getElementById('aes-key-type').value || 'text')
+			// u.searchParams.set('aes-iv', document.getElementById('aes-iv').value || '')
+			// u.searchParams.set('aes-iv-type', document.getElementById('aes-iv-type').value || 'text')
+		}
+
+		function setNavActive(selc) {
+			nav.querySelectorAll('li').forEach(v => {
+				let c = (v.getAttribute('class') ?? '').replace('active', '');
+				v.setAttribute('class', c);
+				if (v.dataset['id'] == selc) v.setAttribute('class', c + " active");
+			});
+			setNavContentActive(selc)
+		}
+
+		function setNavContentActive(selc) {
+			navContent.querySelectorAll('.content').forEach(v => {
+				let c = (v.getAttribute('class') ?? '').replace('active', '');
+				v.setAttribute('class', c);
+				if (selc == v.id) v.setAttribute('class', c + " active");
+			});
+		}
+
+		nav.addEventListener('click', (e) => {
+			console.log(e)
+			setNavActive(e.target.dataset['id']);
+		})</script></body><script>var _hmt = _hmt || [];
+	(function () {
+		var hm = document.createElement("script");
+		hm.src = "https://hm.baidu.com/hm.js?db150be7214fe869c6daac9d53405523";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();</script></html>
